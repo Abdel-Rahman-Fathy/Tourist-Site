@@ -10,7 +10,7 @@ function Slider() {
     <div>
       <SimpleImageSlider
         width={"100%"}
-        height={"91.4vh"}
+        height={"100vh"}
         images={images}
         showBullets={false}
         showNavs={true}

@@ -1,0 +1,68 @@
+// @import "../../sass/breakpoints";
+
+:root {
+  --top-navbar-height: 5.2rem;
+}
+
+// @include Mobile {
+//   :root {
+//     --top-navbar-height: 0rem;
+//   }
+// }
+
+.top-navbar {
+  display: flex;
+  // flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10rem;
+  width: 100%;
+  overflow: hidden;
+  height: var(--top-navbar-height);
+  background: red;
+  // @include SmallScreenOrLess {
+  //   padding: 0 2rem;
+  // }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    .icon,
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .icon {
+      align-items: center;
+      padding: 0 0.4rem;
+      font-size: 2rem;
+    }
+    .title {
+      color: var(--main);
+      font-weight: 900;
+    }
+    .value {
+      color: var(--third);
+      width: fit-content;
+    }
+    &.main {
+      .icon {
+        box-sizing: content-box;
+        width: 4rem;
+        height: 4rem;
+        img,
+        svg {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      .title {
+        color: var(--third);
+      }
+      .value {
+        color: var(--main);
+      }
+    }
+  }
+}
