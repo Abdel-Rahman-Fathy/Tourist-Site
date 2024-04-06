@@ -10,6 +10,7 @@ function ButtonChip({ id, name }: PropsType) {
           py: 1,
           fontSize: "18px",
           fontWeight: "500",
+          width: "300px",
           "&:hover": {
             background: "#F19B02",
           },

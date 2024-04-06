@@ -1,9 +1,8 @@
 import { colors, createTheme } from "@mui/material";
-// import "../assets/fonts/include.scss";
+import "../assets/fonts/include.scss";
 import "./Mui_Custom.scss";
 
 export const theme = createTheme({
-  direction: "rtl",
   shape: {
     borderRadius: 10,
   },
@@ -32,7 +31,7 @@ export const theme = createTheme({
       default: "#FFFFFF",
     },
     text: {
-      primary: "#fff",
+      primary: "#0052a4",
       secondary: colors.grey[600],
       disabled: colors.grey[600],
     },
@@ -41,7 +40,7 @@ export const theme = createTheme({
     MuiTypography: {
       styleOverrides: {
         root: {
-          fontFamily: "TheSans",
+          fontFamily: "sans-serif",
         },
       },
     },
@@ -56,7 +55,7 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: [
-      "TheSans",
+      "Arial", // Update font family here
       "-apple-system",
       "BlinkMacSystemFont",
       '"Segoe UI"',

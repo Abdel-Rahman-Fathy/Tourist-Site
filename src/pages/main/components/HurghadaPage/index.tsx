@@ -1,5 +1,4 @@
 import { Box, Container, Grid, Paper, Typography } from "@mui/material";
-import React from "react";
 import ButtonChip from "../../../../Components/ButtonChip";
 import { useTranslation } from "react-i18next";
 const trips = [
@@ -24,23 +23,28 @@ const trips = [
     id: 5,
   },
 ];
-function Hurghada() {
+function HurghadaPage() {
   const [t, i18n] = useTranslation();
   return (
-    <Paper sx={{ padding: 4 }}>
+    <Paper sx={{ padding: "60px 0px" }}>
       <Container maxWidth="lg">
         <Typography
-          color={"primary.main"}
-          variant="h3"
+          variant="h4"
           sx={{
             py: 3,
             fontWeight: 600,
             textAlign: "center",
           }}
         >
-          {t("contact.whatsapp")}
+          Excursions From Hurghada
         </Typography>
-        <Grid container justifyContent={"center"} sx={{ py: 8 }} spacing={4}>
+        <Grid
+          container
+          justifyContent={"center"}
+          columnSpacing={15}
+          rowSpacing={3}
+          padding={"30px 0"}
+        >
           {trips.map((trip) => (
             <ButtonChip key={trip.id} name={trip.name} id={trip.id} />
           ))}
@@ -50,4 +54,4 @@ function Hurghada() {
   );
 }
 
-export default Hurghada;
+export default HurghadaPage;

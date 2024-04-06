@@ -1,6 +1,4 @@
-import React from "react";
 import SimpleImageSlider from "react-simple-image-slider";
-
 import image1 from "../../../../assets/slider/img1.jpg";
 import image2 from "../../../../assets/slider/img2.jpg";
 import image3 from "../../../../assets/slider/img3.jpg";
