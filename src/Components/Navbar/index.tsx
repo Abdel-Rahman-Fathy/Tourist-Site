@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <>
       <FristNavbar />
-      {/* <SecoundNavbar /> */}
+      <SecoundNavbar />
     </>
   );
 }

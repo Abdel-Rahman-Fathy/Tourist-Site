@@ -1,6 +1,4 @@
-import React from "react";
 import SimpleImageSlider from "react-simple-image-slider";
-
 import image1 from "../../../../assets/slider/img1.jpg";
 import image2 from "../../../../assets/slider/img2.jpg";
 import image3 from "../../../../assets/slider/img3.jpg";
@@ -10,7 +8,7 @@ function Slider() {
     <div>
       <SimpleImageSlider
         width={"100%"}
-        height={"91.4vh"}
+        height={"100vh"}
         images={images}
         showBullets={false}
         showNavs={true}

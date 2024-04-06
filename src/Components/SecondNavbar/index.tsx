@@ -1,149 +1,155 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {
+  AppBar,
+  Box,
+  Container,
+  Grid,
+  Toolbar,
+  Typography,
+  Drawer,
+  MenuItem,
+  IconButton,
+  Menu,
+} from "@mui/material";
+import AddLocationOutlinedIcon from "@mui/icons-material/AddLocationOutlined";
+import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
+import MenuIcon from "@mui/icons-material/Menu";
+import useWindowScrollPosition from "@rooks/use-window-scroll-position";
 
-function index() {
+function SecondNavbar() {
+  const { scrollY } = useWindowScrollPosition();
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [navBackground, setNavBackground] = useState("0");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<HTMLSpanElement | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    setScrollPosition(scrollY);
+  }, [scrollY]);
+
+  useEffect(() => {
+    if (scrollPosition > 0) {
+      setNavBackground("0");
+    } else {
+      setNavBackground("80px");
+    }
+  }, [scrollPosition]);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+  const handleDropdownOpen = () => {
+    setDropdownOpen(true);
+  };
+  const handleDropdownClose = () => {
+    setDropdownOpen(false);
+  };
+  const handleMenuClick = (
+    event: React.MouseEvent<HTMLSpanElement, MouseEvent>
+  ) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Flowbite
-          </span>
-        </a>
-        <button
-          data-collapse-toggle="navbar-dropdown"
-          type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-dropdown"
-          aria-expanded="false"
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
-        </button>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-dropdown">
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                aria-current="page"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <button
-                id="dropdownNavbarLink"
-                data-dropdown-toggle="dropdownNavbar"
-                className="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-              >
-                Dropdown{" "}
-                <svg
-                  className="w-2.5 h-2.5 ms-2.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
-              </button>
-              <div
-                id="dropdownNavbar"
-                className="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-              >
-                <ul
-                  className="py-2 text-sm text-gray-700 dark:text-gray-400"
-                  aria-labelledby="dropdownLargeButton"
-                >
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Dashboard
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Earnings
-                    </a>
-                  </li>
-                </ul>
-                <div className="py-1">
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    Sign out
-                  </a>
-                </div>
-              </div>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+    <AppBar
+      position="fixed"
+      sx={{
+        top: navBackground,
+        transition: "2s all ease",
+        background: "background",
+        color: "primary.main",
+      }}
+    >
+      <Container maxWidth="lg">
+        <Toolbar disableGutters>
+          <Grid container spacing={3}>
+            <Grid
+              display={"flex"}
+              flexDirection={"row"}
+              alignItems={"center"}
+              item
+              md={6}
+            >
+              <Box display={"flex"} flexDirection={"row"}>
+                <MailOutlineOutlinedIcon sx={{ mr: 1 }} />
+                <Typography>info</Typography>
+              </Box>
+            </Grid>
+            <Grid display={"flex"} flexDirection={"row"} gap={2} item md={4}>
+              <Typography
+                aria-controls="services-menu"
+                aria-haspopup="true"
+                onClick={handleMenuClick}
+                sx={{ cursor: "pointer" }}
               >
                 Services
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              </Typography>
+              <Menu
+                id="services-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+                sx={{ position: "fixed", top: "10px" }}
               >
-                Pricing
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                <Box sx={{ background: "red" }}>
+                  <MenuItem onClick={handleMenuClose}>Service 1</MenuItem>
+                  <MenuItem onClick={handleMenuClose}>Service 2</MenuItem>
+                  <MenuItem onClick={handleMenuClose}>Service 3</MenuItem>
+                </Box>
+              </Menu>
+            </Grid>
+            <Grid display={"flex"} flexDirection={"row"} gap={2} item md={2}>
+              <i className="bi bi-facebook"></i>
+              <i className="bi bi-youtube"></i>
+              <i className="bi bi-instagram"></i>
+              <i className="bi bi-tiktok"></i>
+            </Grid>
+          </Grid>
+          <Grid item md={6}>
+            {/* Mobile Menu */}
+            <Drawer
+              anchor="top"
+              open={mobileMenuOpen}
+              onClose={toggleMobileMenu}
+            >
+              <Box
+                sx={{ color: "primary.main" }}
+                role="presentation"
+                onClick={toggleMobileMenu}
+                onKeyDown={toggleMobileMenu}
               >
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+                <MenuItem>Home</MenuItem>
+                <MenuItem>About</MenuItem>
+                <MenuItem>Contact</MenuItem>
+                <MenuItem
+                  onClick={handleDropdownOpen}
+                  aria-haspopup="true"
+                  aria-controls="dropdown-menu"
+                >
+                  Services
+                </MenuItem>
+              </Box>
+            </Drawer>
+            {/* Mobile Menu Icon */}
+            <IconButton
+              color="inherit"
+              aria-label="open mobile menu"
+              edge="start"
+              onClick={toggleMobileMenu}
+              sx={{ display: { md: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Grid>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
 
-export default index;
+export default SecondNavbar;

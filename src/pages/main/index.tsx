@@ -1,13 +1,17 @@
+import AboutPage from "./components/AboutPage";
 import FixedIcon from "./components/FixedIcon";
-import Hurghada from "./components/Hurghada";
-import Slider from "./components/Slider";
+import HurghadaPage from "./components/HurghadaPage";
+import ShoppingPage from "./components/Shopping";
+import Slider from "./components/SliderPage";
 
 function MainPages() {
   return (
     <div>
       <Slider />
       <FixedIcon />
-      <Hurghada />
+      <HurghadaPage />
+      <ShoppingPage />
+      <AboutPage />
     </div>
   );
 }
