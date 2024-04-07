@@ -11,19 +11,51 @@ import {
   IconButton,
   Menu,
 } from "@mui/material";
-import AddLocationOutlinedIcon from "@mui/icons-material/AddLocationOutlined";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import useWindowScrollPosition from "@rooks/use-window-scroll-position";
-
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import logo from "../../assets/logo.png";
+const links = [
+  {
+    name: "Home",
+    id: "1",
+  },
+  {
+    name: "About Us",
+    id: "2",
+  },
+  {
+    name: "Excursions From Hurghada",
+    id: "3",
+  },
+  {
+    name: "Hotels",
+    id: "4",
+  },
+  {
+    name: "Shopping",
+    id: "5",
+  },
+  {
+    name: "Blog",
+    id: "6",
+  },
+  {
+    name: "Contact Us",
+    id: "7",
+  },
+];
 function SecondNavbar() {
+  const theme = useTheme();
   const { scrollY } = useWindowScrollPosition();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [navBackground, setNavBackground] = useState("0");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLSpanElement | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const isMediumScreen = useMediaQuery(theme.breakpoints.up("md"));
   useEffect(() => {
     setScrollPosition(scrollY);
   }, [scrollY]);
@@ -32,23 +64,15 @@ function SecondNavbar() {
     if (scrollPosition > 0) {
       setNavBackground("0");
     } else {
-      setNavBackground("80px");
+      setNavBackground(isMediumScreen ? "60px" : "120px");
     }
-  }, [scrollPosition]);
+  }, [scrollPosition, isMediumScreen]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
   const handleDropdownOpen = () => {
     setDropdownOpen(true);
-  };
-  const handleDropdownClose = () => {
-    setDropdownOpen(false);
-  };
-  const handleMenuClick = (
-    event: React.MouseEvent<HTMLSpanElement, MouseEvent>
-  ) => {
-    setAnchorEl(event.currentTarget);
   };
 
   const handleMenuClose = () => {
@@ -73,22 +97,31 @@ function SecondNavbar() {
               flexDirection={"row"}
               alignItems={"center"}
               item
-              md={6}
+              md={4}
             >
-              <Box display={"flex"} flexDirection={"row"}>
-                <MailOutlineOutlinedIcon sx={{ mr: 1 }} />
-                <Typography>info</Typography>
+              <Box display={"flex"} flexDirection={"row"} marginY={1}>
+                <img src={logo} alt="logo" width={"130px"} />
               </Box>
             </Grid>
-            <Grid display={"flex"} flexDirection={"row"} gap={2} item md={4}>
-              <Typography
-                aria-controls="services-menu"
-                aria-haspopup="true"
-                onClick={handleMenuClick}
-                sx={{ cursor: "pointer" }}
-              >
-                Services
-              </Typography>
+            <Grid
+              display={"flex"}
+              flexDirection={"row"}
+              alignItems={"center"}
+              gap={2}
+              item
+              md={8}
+            >
+              {links.map((item) => (
+                <Typography
+                  key={item.id}
+                  aria-controls="services-menu"
+                  aria-haspopup="true"
+                  variant="body1"
+                  sx={{ cursor: "pointer", fontWeight: "600", ml: 1 }}
+                >
+                  {item.name}
+                </Typography>
+              ))}
               <Menu
                 id="services-menu"
                 anchorEl={anchorEl}
@@ -103,15 +136,8 @@ function SecondNavbar() {
                 </Box>
               </Menu>
             </Grid>
-            <Grid display={"flex"} flexDirection={"row"} gap={2} item md={2}>
-              <i className="bi bi-facebook"></i>
-              <i className="bi bi-youtube"></i>
-              <i className="bi bi-instagram"></i>
-              <i className="bi bi-tiktok"></i>
-            </Grid>
           </Grid>
           <Grid item md={6}>
-            {/* Mobile Menu */}
             <Drawer
               anchor="top"
               open={mobileMenuOpen}

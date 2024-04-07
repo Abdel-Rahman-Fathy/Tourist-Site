@@ -13,6 +13,8 @@ import { ReactNode, useState, useEffect } from "react";
 import { SelectChangeEvent } from "@mui/material/Select";
 import useWindowScrollPosition from "@rooks/use-window-scroll-position";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "@mui/material/styles";
+
 const flags = [
   {
     name: "en",
@@ -35,14 +37,14 @@ function FristNavbar() {
     setCountary(event.target.value);
   };
   const { scrollY } = useWindowScrollPosition();
+  const theme = useTheme();
 
   useEffect(() => {
     setScrollPosition(scrollY);
-    console.log("abdo");
   }, [scrollY]);
   useEffect(() => {
     if (scrollPosition > 0) {
-      setNavbarPosition("-30px");
+      setNavbarPosition("-120px");
     } else {
       setNavbarPosition("0");
     }
@@ -56,7 +58,12 @@ function FristNavbar() {
         position: "fixed",
         top: navbarPosition,
         transition: "2s all  ease  ",
-        height: "80px",
+        [theme.breakpoints.up("md")]: {
+          height: "60px",
+        },
+        [theme.breakpoints.down("sm")]: {
+          height: "120px",
+        },
         display: "flex",
         alignItems: "center",
         justifyContent: "center ",
