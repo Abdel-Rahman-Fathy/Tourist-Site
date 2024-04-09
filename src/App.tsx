@@ -1,15 +1,12 @@
 import "./App.css";
-import { ThemeProvider } from "@mui/material";
-import { theme } from "./theme/MUI_Theme";
 import Layout from "./pages/layout";
+import { Box, Stack } from "@mui/material";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        <Layout />
-      </div>
-    </ThemeProvider>
+    <Stack component={"main"} className="App">
+      <Layout />
+    </Stack>
   );
 }
 

@@ -104,12 +104,12 @@ function SecondNavbar() {
               </Box>
             </Grid>
             <Grid
-              display={"flex"}
               flexDirection={"row"}
               alignItems={"center"}
               gap={2}
               item
               md={8}
+              sx={{ display: { md: "flex", xs: "none" } }}
             >
               {links.map((item) => (
                 <Typography
@@ -137,7 +137,7 @@ function SecondNavbar() {
               </Menu>
             </Grid>
           </Grid>
-          <Grid item md={6}>
+          <Grid item md={6} sx={{ display: { md: "none", xs: "block" } }}>
             <Drawer
               anchor="top"
               open={mobileMenuOpen}

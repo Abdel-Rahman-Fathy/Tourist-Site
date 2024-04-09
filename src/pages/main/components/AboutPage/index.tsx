@@ -25,12 +25,19 @@ function AboutPage() {
             alignItems: "center",
           }}
         >
-          <img src={aboutImg} alt="" width="450px" />
+          <Box
+            component="img"
+            sx={{
+              width: { md: "450px", xs: "350px" },
+            }}
+            src={aboutImg}
+          />
+          {/* <img src={aboutImg} alt="" width="450px" /> */}
         </Grid>
         <Grid item md={5} sx={{ display: "flex", alignItems: "center" }}>
           <Box>
             <Typography variant="h3" sx={{ fontWeight: 600, marginTop: 3 }}>
-              {t("about.title")}
+              ABOUT US
             </Typography>
             <Typography variant="h6" sx={{ fontWeight: 600 }}>
               About Egyptos travel

@@ -58,12 +58,16 @@ function FixedIcon() {
       <SpeedDial
         ariaLabel="SpeedDial openIcon example"
         sx={{ position: "absolute", bottom: 16, right: 16, fontSize: "200px" }}
-        icon={<SpeedDialIcon />}
-        openIcon={<EditIcon />}
+        icon={
+          <SpeedDialIcon
+            icon={<EditIcon />}
+            openIcon={<MarkUnreadChatAltIcon />}
+          />
+        }
       >
-        {actions.map((action) => (
+        {actions.map((action, index) => (
           <SpeedDialAction
-            key={action.name}
+            key={index}
             icon={action.icon}
             tooltipTitle={action.name}
             sx={{

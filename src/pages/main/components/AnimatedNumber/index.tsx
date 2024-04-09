@@ -29,7 +29,7 @@ const archievmentsList = [
   },
   {
     matric: "Years",
-    value: "5",
+    value: "10",
     Icon: ThumbUpAltIcon,
     title: "Customer reviews",
   },
@@ -37,7 +37,6 @@ const archievmentsList = [
 function AnimationNumber() {
   return (
     <Stack
-      className="animation_bg"
       padding={"50px"}
       style={{
         backgroundImage: `linear-gradient(rgba(0, 82, 164,.8), rgba(0, 82, 164,.8)
@@ -59,6 +58,7 @@ function AnimationNumber() {
         >
           {archievmentsList.map((arch, index) => (
             <Grid
+              key={index}
               item
               md={3}
               xs={12}
@@ -84,10 +84,13 @@ function AnimationNumber() {
                     fontSize: 50,
                     fontWeight: 600,
                     fontFamily: "sans-serif",
+                    color: "#fff",
                   }}
                 />
               </Typography>
-              <Typography variant="body1">{arch.title}</Typography>
+              <Typography variant="body1" color={"#fff"}>
+                {arch.title}
+              </Typography>
             </Grid>
           ))}
         </Grid>

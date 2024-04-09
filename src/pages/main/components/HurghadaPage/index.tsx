@@ -20,7 +20,7 @@ const trips = [
   },
   {
     name: "Entertainment and spa",
-    id: 5,
+    id: 10,
   },
 ];
 function HurghadaPage() {

@@ -69,13 +69,23 @@ function WhyusPage() {
             }}
           >
             <Box sx={{ p: 4 }}>
-              <Box sx={{ border: "solid 10px black" }}>
-                <img
+              <Box sx={{ border: "solid 10px #0052a4" }}>
+                <Box
+                  component="img"
+                  sx={{
+                    width: { md: "600px", xs: "250px" },
+                    position: "relative",
+                    top: "30px",
+                    right: "30px",
+                  }}
+                  src={aboutImg}
+                />
+                {/* <img
                   src={aboutImg}
                   alt=""
                   width="600px"
                   style={{ position: "relative", top: "30px", right: "30px" }}
-                />
+                /> */}
               </Box>
             </Box>
           </Grid>

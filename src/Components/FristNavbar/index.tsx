@@ -81,11 +81,15 @@ function FristNavbar() {
             >
               <Box display={"flex"} flexDirection={"row"}>
                 <MailOutlineOutlinedIcon sx={{ mr: 1 }} />
-                <Typography>info@Egyptos-Travel.com |</Typography>
+                <Typography variant="body1" color={"#fff"}>
+                  info@Egyptos-Travel.com |
+                </Typography>
               </Box>
               <Box display={"flex"} flexDirection={"row"}>
                 <AddLocationOutlinedIcon sx={{ mr: 1 }} />
-                <Typography>Hurghada, Egypt</Typography>
+                <Typography variant="body1" color={"#fff"}>
+                  Hurghada, Egypt
+                </Typography>
               </Box>
             </Grid>
             <Grid
@@ -126,9 +130,7 @@ function FristNavbar() {
                         gap={1}
                       >
                         <img src={item.path} height={"15px"} width={"30px"} />
-                        <Typography sx={{ color: "#000" }}>
-                          {item.name}
-                        </Typography>
+                        <Typography>{item.name}</Typography>
                       </Box>
                     </MenuItem>
                   ))}
