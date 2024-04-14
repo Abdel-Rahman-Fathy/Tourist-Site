@@ -1,6 +1,6 @@
 import "./App.css";
 import Layout from "./pages/layout";
-import { Box, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 
 function App() {
   return (

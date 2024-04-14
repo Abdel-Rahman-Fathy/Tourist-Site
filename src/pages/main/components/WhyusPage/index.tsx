@@ -80,12 +80,6 @@ function WhyusPage() {
                   }}
                   src={aboutImg}
                 />
-                {/* <img
-                  src={aboutImg}
-                  alt=""
-                  width="600px"
-                  style={{ position: "relative", top: "30px", right: "30px" }}
-                /> */}
               </Box>
             </Box>
           </Grid>

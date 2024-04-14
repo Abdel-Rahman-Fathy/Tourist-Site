@@ -1,6 +1,7 @@
 import AboutPage from "./components/AboutPage";
 import AnimationNumber from "./components/AnimatedNumber";
 import BlogPage from "./components/BlogPage";
+import ContactUs from "./components/ContactUs";
 import FixedIcon from "./components/FixedIcon";
 import HurghadaPage from "./components/HurghadaPage";
 import ImportPage from "./components/ImportantPage";
@@ -20,6 +21,7 @@ function MainPages() {
       <WhyusPage />
       <ImportPage />
       <BlogPage />
+      <ContactUs />
     </>
   );
 }
