@@ -8,6 +8,7 @@ import {
   useTheme,
 } from "@mui/material";
 import ButtonChip from "../../../../Components/ButtonChip";
+import { useTranslation } from "react-i18next";
 const trips = [
   {
     name: "Fruits",
@@ -43,6 +44,7 @@ const trips = [
   },
 ];
 function ShoppingPage() {
+  const [t] = useTranslation();
   return (
     <Stack sx={{ padding: "60px 0px" }}>
       <Container maxWidth="lg">
@@ -54,7 +56,7 @@ function ShoppingPage() {
             textAlign: "center",
           }}
         >
-          Shopping
+          {t("shopping")}
         </Typography>
         <Grid
           container

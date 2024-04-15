@@ -114,7 +114,7 @@ function FristNavbar() {
               md={2}
             >
               <FormControl variant="standard" fullWidth>
-                <Select value={countary} onChange={handleChange} label="Age">
+                <Select value={countary} onChange={handleChange}>
                   {flags.map((item) => (
                     <MenuItem
                       key={item.value}
@@ -130,7 +130,12 @@ function FristNavbar() {
                         gap={1}
                       >
                         <img src={item.path} height={"15px"} width={"30px"} />
-                        <Typography>{item.name}</Typography>
+                        <Typography
+                          variant="body1"
+                          sx={{ color: "#000", fontSize: "18px" }}
+                        >
+                          {item.name}
+                        </Typography>
                       </Box>
                     </MenuItem>
                   ))}

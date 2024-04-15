@@ -11,7 +11,7 @@ function SquuareTypeo({ title }: PropsType) {
   );
 }
 function AboutPage() {
-  const [t, i18n] = useTranslation();
+  const [t] = useTranslation();
   return (
     <Stack sx={{ padding: "80px 30px" }}>
       <Grid container>
@@ -36,7 +36,7 @@ function AboutPage() {
         <Grid item md={5} sx={{ display: "flex", alignItems: "center" }}>
           <Box>
             <Typography variant="h3" sx={{ fontWeight: 600, marginTop: 3 }}>
-              {t("about.title")}
+              {t("main.header")}
             </Typography>
             <Typography variant="h6" sx={{ fontWeight: 600 }}>
               About Egyptos travel

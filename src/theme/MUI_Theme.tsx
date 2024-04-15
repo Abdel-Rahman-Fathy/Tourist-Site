@@ -4,6 +4,7 @@ import "./Mui_Custom.scss";
 import { colors } from "@mui/material";
 
 export const theme = createTheme({
+  direction: "rtl",
   shape: {
     borderRadius: 10,
   },
