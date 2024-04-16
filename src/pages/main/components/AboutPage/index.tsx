@@ -5,13 +5,13 @@ import SquareIcon from "@mui/icons-material/Square";
 function SquuareTypeo({ title }: PropsType) {
   return (
     <Box display={"flex"} flexDirection={"row"} marginBottom={2} gap={1}>
-      <SquareIcon sx={{ color: "red" }} />
+      <SquareIcon sx={{ color: "#DDD" }} />
       <Typography variant="body1">{title}</Typography>
     </Box>
   );
 }
 function AboutPage() {
-  const [t, i18n] = useTranslation();
+  const [t] = useTranslation();
   return (
     <Stack sx={{ padding: "80px 30px" }}>
       <Grid container>
@@ -25,12 +25,18 @@ function AboutPage() {
             alignItems: "center",
           }}
         >
-          <img src={aboutImg} alt="" width="450px" />
+          <Box
+            component="img"
+            sx={{
+              width: { md: "450px", xs: "350px" },
+            }}
+            src={aboutImg}
+          />
         </Grid>
         <Grid item md={5} sx={{ display: "flex", alignItems: "center" }}>
           <Box>
             <Typography variant="h3" sx={{ fontWeight: 600, marginTop: 3 }}>
-              {t("about.title")}
+              {t("main.header")}
             </Typography>
             <Typography variant="h6" sx={{ fontWeight: 600 }}>
               About Egyptos travel
@@ -47,8 +53,8 @@ function AboutPage() {
             <SquuareTypeo title="Distinction" />
             <Box
               sx={{
-                borderTop: "3px solid black",
-                borderBottom: "3px solid black",
+                borderTop: "3px solid #EEE",
+                borderBottom: "3px solid #EEE",
               }}
             >
               <Typography
@@ -64,7 +70,6 @@ function AboutPage() {
                 variant="body1"
                 sx={{ position: "relative", bottom: "50px", left: "15px" }}
               >
-                {" "}
                 years of experience
               </Typography>
             </Box>

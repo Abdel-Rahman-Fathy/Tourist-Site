@@ -1,4 +1,12 @@
-import { Box, Container, Grid, Paper, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Paper,
+  Stack,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import ButtonChip from "../../../../Components/ButtonChip";
 import { useTranslation } from "react-i18next";
 const trips = [
@@ -24,19 +32,19 @@ const trips = [
   },
   {
     name: "Shrimps",
-    id: 5,
+    id: 6,
   },
   {
     name: "Souvenir",
-    id: 5,
+    id: 7,
   },
   {
     name: "Price of delivery",
-    id: 5,
+    id: 8,
   },
 ];
 function ShoppingPage() {
-  const [t, i18n] = useTranslation();
+  const [t] = useTranslation();
   return (
     <Stack sx={{ padding: "60px 0px" }}>
       <Container maxWidth="lg">
@@ -48,7 +56,7 @@ function ShoppingPage() {
             textAlign: "center",
           }}
         >
-          Shopping
+          {t("shopping")}
         </Typography>
         <Grid
           container

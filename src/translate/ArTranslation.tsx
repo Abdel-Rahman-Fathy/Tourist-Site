@@ -1,5 +1,7 @@
 const ArTranslation = {
-  test: "اختبار",
+  about: {
+    title: "حدثني",
+  },
   contact: {
     whatsapp: "تواصل معنا عبر الواتس اب",
     phone: "تواصل معنا عبر الهاتف",

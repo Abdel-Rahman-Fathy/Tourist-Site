@@ -5,26 +5,31 @@ const trips = [
   {
     name: "offers 💰",
     id: 1,
+    tranlate: "offers",
   },
   {
     name: "Historical trips",
     id: 2,
+    tranlate: "HistoricalTrips",
   },
   {
     name: "Sea trips",
     id: 3,
+    tranlate: "SeaTrips",
   },
   {
     name: "Safari and extreme",
     id: 4,
+    tranlate: "SafariAndExtreme",
   },
   {
     name: "Entertainment and spa",
-    id: 5,
+    id: 10,
+    tranlate: "EntertainmentAndSpa",
   },
 ];
 function HurghadaPage() {
-  const [t, i18n] = useTranslation();
+  const [t] = useTranslation();
   return (
     <Paper sx={{ padding: "60px 0px" }}>
       <Container maxWidth="lg">
@@ -36,7 +41,7 @@ function HurghadaPage() {
             textAlign: "center",
           }}
         >
-          Excursions From Hurghada
+          {t("ExursionsFromHurghada")}
         </Typography>
         <Grid
           container
@@ -46,7 +51,7 @@ function HurghadaPage() {
           padding={"30px 0"}
         >
           {trips.map((trip) => (
-            <ButtonChip key={trip.id} name={trip.name} id={trip.id} />
+            <ButtonChip key={trip.id} name={t(trip.tranlate)} id={trip.id} />
           ))}
         </Grid>
       </Container>

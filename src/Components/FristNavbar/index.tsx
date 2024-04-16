@@ -13,6 +13,8 @@ import { ReactNode, useState, useEffect } from "react";
 import { SelectChangeEvent } from "@mui/material/Select";
 import useWindowScrollPosition from "@rooks/use-window-scroll-position";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "@mui/material/styles";
+
 const flags = [
   {
     name: "en",
@@ -35,14 +37,14 @@ function FristNavbar() {
     setCountary(event.target.value);
   };
   const { scrollY } = useWindowScrollPosition();
+  const theme = useTheme();
 
   useEffect(() => {
     setScrollPosition(scrollY);
-    console.log("abdo");
   }, [scrollY]);
   useEffect(() => {
     if (scrollPosition > 0) {
-      setNavbarPosition("-30px");
+      setNavbarPosition("-120px");
     } else {
       setNavbarPosition("0");
     }
@@ -56,7 +58,12 @@ function FristNavbar() {
         position: "fixed",
         top: navbarPosition,
         transition: "2s all  ease  ",
-        height: "80px",
+        [theme.breakpoints.up("md")]: {
+          height: "60px",
+        },
+        [theme.breakpoints.down("sm")]: {
+          height: "120px",
+        },
         display: "flex",
         alignItems: "center",
         justifyContent: "center ",
@@ -74,11 +81,15 @@ function FristNavbar() {
             >
               <Box display={"flex"} flexDirection={"row"}>
                 <MailOutlineOutlinedIcon sx={{ mr: 1 }} />
-                <Typography>info@Egyptos-Travel.com |</Typography>
+                <Typography variant="body1" color={"#fff"}>
+                  info@Egyptos-Travel.com |
+                </Typography>
               </Box>
               <Box display={"flex"} flexDirection={"row"}>
                 <AddLocationOutlinedIcon sx={{ mr: 1 }} />
-                <Typography>Hurghada, Egypt</Typography>
+                <Typography variant="body1" color={"#fff"}>
+                  Hurghada, Egypt
+                </Typography>
               </Box>
             </Grid>
             <Grid
@@ -103,7 +114,7 @@ function FristNavbar() {
               md={2}
             >
               <FormControl variant="standard" fullWidth>
-                <Select value={countary} onChange={handleChange} label="Age">
+                <Select value={countary} onChange={handleChange}>
                   {flags.map((item) => (
                     <MenuItem
                       key={item.value}
@@ -119,7 +130,10 @@ function FristNavbar() {
                         gap={1}
                       >
                         <img src={item.path} height={"15px"} width={"30px"} />
-                        <Typography sx={{ color: "#000" }}>
+                        <Typography
+                          variant="body1"
+                          sx={{ color: "#000", fontSize: "18px" }}
+                        >
                           {item.name}
                         </Typography>
                       </Box>

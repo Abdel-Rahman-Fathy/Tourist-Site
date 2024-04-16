@@ -10,19 +10,28 @@ import {
   MenuItem,
   IconButton,
   Menu,
+  Paper,
+  MenuList,
 } from "@mui/material";
-import AddLocationOutlinedIcon from "@mui/icons-material/AddLocationOutlined";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import useWindowScrollPosition from "@rooks/use-window-scroll-position";
-
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import logo from "../../assets/logo.png";
+import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import "./SecondNavbar.css";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 function SecondNavbar() {
+  const [t] = useTranslation();
+  const theme = useTheme();
   const { scrollY } = useWindowScrollPosition();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [navBackground, setNavBackground] = useState("0");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState<HTMLSpanElement | null>(null);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const isMediumScreen = useMediaQuery(theme.breakpoints.up("md"));
 
   useEffect(() => {
     setScrollPosition(scrollY);
@@ -32,27 +41,17 @@ function SecondNavbar() {
     if (scrollPosition > 0) {
       setNavBackground("0");
     } else {
-      setNavBackground("80px");
+      setNavBackground(isMediumScreen ? "60px" : "120px");
     }
-  }, [scrollPosition]);
+  }, [scrollPosition, isMediumScreen]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-  const handleDropdownOpen = () => {
-    setDropdownOpen(true);
-  };
-  const handleDropdownClose = () => {
-    setDropdownOpen(false);
-  };
-  const handleMenuClick = (
-    event: React.MouseEvent<HTMLSpanElement, MouseEvent>
-  ) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const [isShoppingSubMenuOpen, setShoppingSubMenuOpen] = useState(false);
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
+  const toggleShoppingSubMenu = () => {
+    setShoppingSubMenuOpen(!isShoppingSubMenuOpen);
   };
 
   return (
@@ -73,45 +72,99 @@ function SecondNavbar() {
               flexDirection={"row"}
               alignItems={"center"}
               item
-              md={6}
+              md={4}
             >
-              <Box display={"flex"} flexDirection={"row"}>
-                <MailOutlineOutlinedIcon sx={{ mr: 1 }} />
-                <Typography>info</Typography>
+              <Box display={"flex"} flexDirection={"row"} marginY={1}>
+                <img src={logo} alt="logo" width={"130px"} />
               </Box>
             </Grid>
-            <Grid display={"flex"} flexDirection={"row"} gap={2} item md={4}>
-              <Typography
-                aria-controls="services-menu"
-                aria-haspopup="true"
-                onClick={handleMenuClick}
-                sx={{ cursor: "pointer" }}
-              >
-                Services
-              </Typography>
-              <Menu
-                id="services-menu"
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
-                sx={{ position: "fixed", top: "10px" }}
-              >
-                <Box sx={{ background: "red" }}>
-                  <MenuItem onClick={handleMenuClose}>Service 1</MenuItem>
-                  <MenuItem onClick={handleMenuClose}>Service 2</MenuItem>
-                  <MenuItem onClick={handleMenuClose}>Service 3</MenuItem>
-                </Box>
-              </Menu>
-            </Grid>
-            <Grid display={"flex"} flexDirection={"row"} gap={2} item md={2}>
-              <i className="bi bi-facebook"></i>
-              <i className="bi bi-youtube"></i>
-              <i className="bi bi-instagram"></i>
-              <i className="bi bi-tiktok"></i>
+            <Grid
+              flexDirection={"row"}
+              alignItems={"center"}
+              gap={2}
+              item
+              md={8}
+              sx={{ display: { md: "flex", xs: "none" } }}
+            >
+              <ul className="secNavbar">
+                <li>
+                  <NavLink className={"link"} to={""}>
+                    {t("home")}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className={"link"} to={""}>
+                    {t("aboutUs")}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className={"link"} to={""}>
+                    {t("ExursionsFromHurghada")}
+                  </NavLink>
+                  <Paper className="subMenu">
+                    <MenuList>
+                      <MenuItem component={NavLink} to="/e-services/design">
+                        test
+                      </MenuItem>
+                      <MenuItem
+                        component={NavLink}
+                        to="/e-services/infrastructure"
+                      >
+                        test1
+                      </MenuItem>
+                    </MenuList>
+                  </Paper>
+                </li>
+                <li>
+                  <NavLink className={"link"} to={""}>
+                    {t("hotales")}
+                  </NavLink>
+                  <Paper className="subMenu">
+                    <MenuList>
+                      <MenuItem component={NavLink} to="/e-services/design">
+                        test
+                      </MenuItem>
+                      <MenuItem
+                        component={NavLink}
+                        to="/e-services/infrastructure"
+                      >
+                        test1
+                      </MenuItem>
+                    </MenuList>
+                  </Paper>
+                </li>
+                <li>
+                  <NavLink className={"link"} to={""}>
+                    {t("shopping")}
+                  </NavLink>
+                  <Paper className="subMenu">
+                    <MenuList>
+                      <MenuItem component={NavLink} to="/e-services/design">
+                        test
+                      </MenuItem>
+                      <MenuItem
+                        component={NavLink}
+                        to="/e-services/infrastructure"
+                      >
+                        test1
+                      </MenuItem>
+                    </MenuList>
+                  </Paper>
+                </li>
+                <li>
+                  <NavLink className={"link"} to={""}>
+                    {t("blogs")}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className={"link"} to={""}>
+                    {t("contactUs")}
+                  </NavLink>
+                </li>
+              </ul>
             </Grid>
           </Grid>
-          <Grid item md={6}>
-            {/* Mobile Menu */}
+          <Grid item md={6} sx={{ display: { md: "none", xs: "block" } }}>
             <Drawer
               anchor="top"
               open={mobileMenuOpen}
@@ -120,19 +173,36 @@ function SecondNavbar() {
               <Box
                 sx={{ color: "primary.main" }}
                 role="presentation"
-                onClick={toggleMobileMenu}
                 onKeyDown={toggleMobileMenu}
               >
-                <MenuItem>Home</MenuItem>
-                <MenuItem>About</MenuItem>
-                <MenuItem>Contact</MenuItem>
-                <MenuItem
-                  onClick={handleDropdownOpen}
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                >
-                  Services
+                <MenuItem> {t("home")}</MenuItem>
+                <MenuItem> {t("aboutUs")}</MenuItem>
+                <MenuItem>{t("ExursionsFromHurghada")}</MenuItem>
+                <MenuItem> {t("hotales")}</MenuItem>
+                <MenuItem onClick={toggleShoppingSubMenu}>
+                  {t("shopping")}
+                  {isShoppingSubMenuOpen ? (
+                    <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  ) : (
+                    <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  )}
                 </MenuItem>
+                {isShoppingSubMenuOpen && (
+                  <Box
+                    sx={{
+                      backgroundColor: "primary.main",
+                      mx: 1,
+                      color: "#fff  ",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <MenuItem>{t("submenu1")}</MenuItem>
+                    <MenuItem>{t("submenu2")}</MenuItem>
+                    <MenuItem>{t("submenu3")}</MenuItem>
+                  </Box>
+                )}
+                <MenuItem> {t("blogs")}</MenuItem>
+                <MenuItem>{t("contactUs")}</MenuItem>
               </Box>
             </Drawer>
             {/* Mobile Menu Icon */}

@@ -1,8 +1,10 @@
-import { colors, createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import "../assets/fonts/include.scss";
 import "./Mui_Custom.scss";
+import { colors } from "@mui/material";
 
 export const theme = createTheme({
+  direction: "rtl",
   shape: {
     borderRadius: 10,
   },
@@ -38,6 +40,9 @@ export const theme = createTheme({
   },
   components: {
     MuiTypography: {
+      defaultProps: {
+        color: "text.primary",
+      },
       styleOverrides: {
         root: {
           fontFamily: "sans-serif",
