@@ -22,7 +22,7 @@
   width: 200px;
   background-color: #fff;
   box-shadow: 0 20px 45px #00000020;
-  margin-top: -50px;
+  margin-top: -300px;
   opacity: 0;
   z-index: -999;
   transition: all ease 0.5s;
@@ -30,5 +30,5 @@
 .secNavbar li:hover .subMenu {
   z-index: 999;
   opacity: 1;
-  margin-top: 35px;
+  margin-top: 0px;
 }

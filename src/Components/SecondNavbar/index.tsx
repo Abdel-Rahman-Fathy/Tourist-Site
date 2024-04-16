@@ -5,15 +5,12 @@ import {
   Container,
   Grid,
   Toolbar,
-  Typography,
   Drawer,
   MenuItem,
   IconButton,
-  Menu,
   Paper,
   MenuList,
 } from "@mui/material";
-import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import useWindowScrollPosition from "@rooks/use-window-scroll-position";
 import { useTheme } from "@mui/material/styles";
@@ -53,7 +50,13 @@ function SecondNavbar() {
   const toggleShoppingSubMenu = () => {
     setShoppingSubMenuOpen(!isShoppingSubMenuOpen);
   };
-
+  function SubMenu({ title, link }: PropsType) {
+    return (
+      <MenuItem sx={{ py: 1.5 }} component={NavLink} to={link}>
+        {title}
+      </MenuItem>
+    );
+  }
   return (
     <AppBar
       position="fixed"
@@ -93,7 +96,7 @@ function SecondNavbar() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className={"link"} to={""}>
+                  <NavLink className={"link"} to={"/about"}>
                     {t("aboutUs")}
                   </NavLink>
                 </li>
@@ -103,15 +106,11 @@ function SecondNavbar() {
                   </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
-                      <MenuItem component={NavLink} to="/e-services/design">
-                        test
-                      </MenuItem>
-                      <MenuItem
-                        component={NavLink}
-                        to="/e-services/infrastructure"
-                      >
-                        test1
-                      </MenuItem>
+                      <SubMenu title="offers 💰" link="" />
+                      <SubMenu title="Historical trips" link="" />
+                      <SubMenu title="Sea trips " link="" />
+                      <SubMenu title="Safari and extreme" link="" />
+                      <SubMenu title="Entertainment and spa" link="" />
                     </MenuList>
                   </Paper>
                 </li>
@@ -221,5 +220,10 @@ function SecondNavbar() {
     </AppBar>
   );
 }
+
+type PropsType = {
+  title: string;
+  link: string;
+};
 
 export default SecondNavbar;
