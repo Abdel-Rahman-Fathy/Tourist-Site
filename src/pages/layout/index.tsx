@@ -5,6 +5,7 @@ import NavbarContainers from "../../Components/navbars-container/NavbarsContaine
 import Footer from "../../Components/Footer";
 import { Route, Routes } from "react-router-dom";
 import AboutUs from "../AboutUs";
+import ContactUsPage from "../ContactUs";
 
 function Layout() {
   return (
@@ -15,6 +16,7 @@ function Layout() {
         <Routes>
           <Route path="" element={<MainPages />} />
           <Route path="about" element={<AboutUs />} />
+          <Route path="contact" element={<ContactUsPage />} />
         </Routes>
       </div>
       <Footer />

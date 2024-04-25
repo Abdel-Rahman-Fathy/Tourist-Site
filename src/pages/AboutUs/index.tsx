@@ -1,31 +1,13 @@
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
-import AboutImg from "../../assets/animatedNumberImage.png";
 import AboutUsImg from "../../assets/aboutUs.png";
 import "./About.css";
 import { useTranslation } from "react-i18next";
+import FixedSection from "../../Components/FixedSection";
 function AboutUs() {
   const [t] = useTranslation();
   return (
     <Stack>
-      <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 82, 164,.5),rgba(0, 82, 164,.5)
-        ), url(${AboutImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
-          padding: "100px 0px",
-          height: "85vh",
-        }}
-      >
-        <Typography
-          variant="h2"
-          sx={{ fontWeight: "900", color: "#fff", mt: 10 }}
-        >
-          {t("aboutUs")}
-        </Typography>
-      </Box>
+      <FixedSection title={t("aboutUs")} />
       <Container maxWidth={"lg"} sx={{ py: "80px" }}>
         <Grid container>
           <Grid item md={6}>

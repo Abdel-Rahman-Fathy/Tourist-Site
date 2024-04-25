@@ -6,7 +6,7 @@ import { colors } from "@mui/material";
 export const theme = createTheme({
   direction: "rtl",
   shape: {
-    borderRadius: 10,
+    borderRadius: 3,
   },
   palette: {
     primary: {

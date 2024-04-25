@@ -21,6 +21,20 @@ import { useTranslation } from "react-i18next";
 import "./SecondNavbar.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+
+function SubMenu({ title, link }: PropsType) {
+  return (
+    <MenuItem
+      className="subLink"
+      sx={{ py: 1.5 }}
+      component={NavLink}
+      to={link}
+    >
+      {title}
+    </MenuItem>
+  );
+}
+
 function SecondNavbar() {
   const [t] = useTranslation();
   const theme = useTheme();
@@ -50,13 +64,7 @@ function SecondNavbar() {
   const toggleShoppingSubMenu = () => {
     setShoppingSubMenuOpen(!isShoppingSubMenuOpen);
   };
-  function SubMenu({ title, link }: PropsType) {
-    return (
-      <MenuItem sx={{ py: 1.5 }} component={NavLink} to={link}>
-        {title}
-      </MenuItem>
-    );
-  }
+
   return (
     <AppBar
       position="fixed"
@@ -120,15 +128,11 @@ function SecondNavbar() {
                   </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
-                      <MenuItem component={NavLink} to="/e-services/design">
-                        test
-                      </MenuItem>
-                      <MenuItem
-                        component={NavLink}
-                        to="/e-services/infrastructure"
-                      >
-                        test1
-                      </MenuItem>
+                      <SubMenu title="offers 💰" link="" />
+                      <SubMenu title="Historical trips" link="" />
+                      <SubMenu title="Sea trips " link="" />
+                      <SubMenu title="Safari and extreme" link="" />
+                      <SubMenu title="Entertainment and spa" link="" />
                     </MenuList>
                   </Paper>
                 </li>
@@ -138,15 +142,11 @@ function SecondNavbar() {
                   </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
-                      <MenuItem component={NavLink} to="/e-services/design">
-                        test
-                      </MenuItem>
-                      <MenuItem
-                        component={NavLink}
-                        to="/e-services/infrastructure"
-                      >
-                        test1
-                      </MenuItem>
+                      <SubMenu title="offers 💰" link="" />
+                      <SubMenu title="Historical trips" link="" />
+                      <SubMenu title="Sea trips " link="" />
+                      <SubMenu title="Safari and extreme" link="" />
+                      <SubMenu title="Entertainment and spa" link="" />
                     </MenuList>
                   </Paper>
                 </li>
@@ -154,9 +154,18 @@ function SecondNavbar() {
                   <NavLink className={"link"} to={""}>
                     {t("blogs")}
                   </NavLink>
+                  <Paper className="subMenu">
+                    <MenuList>
+                      <SubMenu title="offers 💰" link="" />
+                      <SubMenu title="Historical trips" link="" />
+                      <SubMenu title="Sea trips " link="" />
+                      <SubMenu title="Safari and extreme" link="" />
+                      <SubMenu title="Entertainment and spa" link="" />
+                    </MenuList>
+                  </Paper>
                 </li>
                 <li>
-                  <NavLink className={"link"} to={""}>
+                  <NavLink className={"link"} to={"/contact"}>
                     {t("contactUs")}
                   </NavLink>
                 </li>
@@ -174,8 +183,12 @@ function SecondNavbar() {
                 role="presentation"
                 onKeyDown={toggleMobileMenu}
               >
-                <MenuItem> {t("home")}</MenuItem>
-                <MenuItem> {t("aboutUs")}</MenuItem>
+                <NavLink className={"link_down"} to={"/"}>
+                  <MenuItem onClick={toggleMobileMenu}>{t("home")}</MenuItem>
+                </NavLink>
+                <NavLink className={"link_down"} to={"/about"}>
+                  <MenuItem onClick={toggleMobileMenu}>{t("aboutUs")}</MenuItem>
+                </NavLink>
                 <MenuItem>{t("ExursionsFromHurghada")}</MenuItem>
                 <MenuItem> {t("hotales")}</MenuItem>
                 <MenuItem onClick={toggleShoppingSubMenu}>
@@ -201,7 +214,11 @@ function SecondNavbar() {
                   </Box>
                 )}
                 <MenuItem> {t("blogs")}</MenuItem>
-                <MenuItem>{t("contactUs")}</MenuItem>
+                <NavLink className={"link_down"} to={"/contact"}>
+                  <MenuItem onClick={toggleMobileMenu}>
+                    {t("contactUs")}
+                  </MenuItem>
+                </NavLink>
               </Box>
             </Drawer>
             {/* Mobile Menu Icon */}
