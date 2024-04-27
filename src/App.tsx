@@ -10,7 +10,6 @@ function App() {
   const currantLang = i18n.language;
   const [isArabic, setIsArabic] = useState(false);
   useEffect(() => {
-    console.log(currantLang);
     currantLang === "ar" ? setIsArabic(true) : setIsArabic(false);
   }, [currantLang]);
 
