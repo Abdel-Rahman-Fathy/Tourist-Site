@@ -1,6 +1,6 @@
+import { api } from "methods/api";
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-
 export const homeContext = createContext<HomeDataType>({ homeData: "" });
 
 export function HomeContextProvider({
@@ -11,7 +11,7 @@ export function HomeContextProvider({
   const [homeData, setHomeData] = useState<string>("");
   function getHomeData() {
     axios
-      .get(`https://react.hanstarcarrental.com/api`, {
+      .get(api(), {
         params: {
           lang: "en",
         },
