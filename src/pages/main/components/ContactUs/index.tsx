@@ -19,29 +19,19 @@ function ContactUs() {
       <Container maxWidth="md">
         <Grid container spacing={3}>
           <Grid item md={4} xs={12}>
-            <motion.div
-              initial={{ y: 500, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1, duration: 1.5 }}
+            <Typography
+              variant="h4"
+              sx={{
+                color: "#fff",
+                fontWeight: 600,
+                paddingBottom: "20px",
+              }}
             >
-              <Typography
-                variant="h4"
-                sx={{
-                  color: "#fff",
-                  fontWeight: 600,
-                  paddingBottom: "20px",
-                  textAlign: { md: "left", xs: "center" },
-                }}
-              >
-                Conatact Us
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{ color: "#fff", textAlign: "right", width: "70%" }}
-              >
-                You will be answered
-              </Typography>
-            </motion.div>
+              Conatact Us
+            </Typography>
+            <Typography variant="body1" sx={{ color: "#fff", width: "70%" }}>
+              You will be answered
+            </Typography>
           </Grid>
           <Grid item md={4} xs={6}>
             <Box sx={{ display: "flex", flexDirection: "row" }}>

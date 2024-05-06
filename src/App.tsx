@@ -5,6 +5,14 @@ import { theme } from "./theme/MUI_Theme";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 
+import axios from "axios";
+import { getLangCookie } from "./methods/getLangCookie";
+
+const currentLang = getLangCookie();
+
+axios.defaults.headers.common["lang"] = currentLang === "ar" ? "ar" : "en";
+axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+
 function App() {
   const [t, i18n] = useTranslation();
   const currantLang = i18n.language;
