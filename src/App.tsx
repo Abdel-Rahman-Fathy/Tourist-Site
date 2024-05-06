@@ -3,32 +3,25 @@ import Layout from "./pages/layout";
 import { Stack, ThemeProvider } from "@mui/material";
 import { theme } from "./theme/MUI_Theme";
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import axios from "axios";
-import { getLangCookie } from "./methods/getLangCookie";
-
-const currentLang = getLangCookie();
-
-axios.defaults.headers.common["lang"] = currentLang === "ar" ? "ar" : "en";
+import isRtl from "methods/isRtl";
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 function App() {
   const [t, i18n] = useTranslation();
-  const currantLang = i18n.language;
-  const [isArabic, setIsArabic] = useState(false);
-  useEffect(() => {
-    currantLang === "ar" ? setIsArabic(true) : setIsArabic(false);
-  }, [currantLang]);
+  const { language } = i18n;
+  axios.defaults.headers.common["lang"] = language;
 
   return (
     <ThemeProvider theme={theme}>
       <Stack
-        sx={{ direction: isArabic ? "rtl" : "ltr" }}
+        sx={{ direction: isRtl(language) ? "rtl" : "ltr" }}
         component={"main"}
         className="App"
       >
-        <Layout />
+        <Layout key={language} />
       </Stack>
     </ThemeProvider>
   );
