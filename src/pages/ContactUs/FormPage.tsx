@@ -1,4 +1,4 @@
-import { Button, Grid, Stack, TextField } from "@mui/material";
+import { Button, Container, Grid, Stack, TextField } from "@mui/material";
 import imgForm from "../../assets/imgForm.jpg";
 import { withStyles } from "@mui/styles";
 const styles = {
@@ -24,44 +24,63 @@ function FormPage() {
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
-        paddingTop: { md: "200px", xs: "750 px" },
+        pb: 4,
+        pt: 12,
       }}
     >
-      <Grid
-        container
-        component={"form"}
-        spacing={3}
-        sx={{ width: "80%", marginX: "auto", justifyContent: "center" }}
-      >
-        <Grid item md={6}>
-          <CustomTextField label={"Name"} fullWidth required />
+      <Container maxWidth="lg">
+        <Grid container component={"form"} spacing={3}>
+          <Grid item xs={12} md={6}>
+            <CustomTextField
+              variant="filled"
+              label={"Name"}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item md={6}>
+            <CustomTextField
+              variant="filled"
+              label={"Email"}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item md={6}>
+            <CustomTextField
+              variant="filled"
+              label={"Subject"}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item md={6}>
+            <CustomTextField
+              variant="filled"
+              label={"Phone"}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item md={12}>
+            <CustomTextField
+              variant="filled"
+              label={"Massage"}
+              fullWidth
+              required
+              multiline
+              rows={5}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Stack alignItems={"center"}>
+              <Button variant="contained" size="large" color="secondary">
+                Send
+              </Button>
+            </Stack>
+          </Grid>
         </Grid>
-        <Grid item md={6}>
-          <CustomTextField label={"Email"} fullWidth required />
-        </Grid>
-        <Grid item md={6}>
-          <CustomTextField label={"Subject"} fullWidth required />
-        </Grid>
-        <Grid item md={6}>
-          <CustomTextField label={"Phone"} fullWidth required />
-        </Grid>
-        <Grid item md={12}>
-          <CustomTextField
-            label={"Massage"}
-            fullWidth
-            required
-            multiline
-            rows={5}
-          />
-        </Grid>
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{ my: 3, padding: "10px 60px", borderRadius: "20px" }}
-        >
-          Send
-        </Button>
-      </Grid>
+      </Container>
     </Stack>
   );
 }

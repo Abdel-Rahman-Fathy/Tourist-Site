@@ -22,7 +22,7 @@ function ContactUsPage() {
           backgroundRepeat: "no-repeat",
           padding: "100px 0px 200px 0",
           textAlign: "center",
-          position: "relative",
+          pb: "150px",
         }}
       >
         <Box sx={{ mb: 5 }}>
@@ -39,9 +39,9 @@ function ContactUsPage() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            position: "absolute",
             bottom: 0,
-            transform: { md: "translateY(30%)", xs: "translateY(75%)" },
+            mt: "-150px",
+            transform: "translateY(200px)",
           }}
         >
           <Grid container sx={{ bgcolor: "#fff", width: "80%" }}>

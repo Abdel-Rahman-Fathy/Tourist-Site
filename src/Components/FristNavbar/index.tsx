@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import AddLocationOutlinedIcon from "@mui/icons-material/AddLocationOutlined";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
-import { FormControl, Grid, MenuItem, Select } from "@mui/material";
+import { FormControl, Grid, MenuItem, Select, TextField } from "@mui/material";
 import { ReactNode, useState, useEffect } from "react";
 import { SelectChangeEvent } from "@mui/material/Select";
 import useWindowScrollPosition from "@rooks/use-window-scroll-position";
@@ -17,25 +17,22 @@ import { useTheme } from "@mui/material/styles";
 
 const flags = [
   {
-    name: "en",
+    value: "en",
     path: logo,
-    value: 1,
   },
   {
-    name: "ar",
+    value: "ar",
     path: logo,
-    value: 2,
   },
 ];
 
 function FristNavbar() {
   const [t, i18n] = useTranslation();
-  const [countary, setCountary] = useState("1");
   const [scrollPosition, setScrollPosition] = useState(0);
   const [navbarPosition, setNavbarPosition] = useState("");
-  const handleChange = (event: SelectChangeEvent) => {
-    setCountary(event.target.value);
-  };
+  // const handleChange = (event: SelectChangeEvent) => {
+  //   setCountary(event.target.value);
+  // };
   const { scrollY } = useWindowScrollPosition();
   const theme = useTheme();
 
@@ -113,34 +110,32 @@ function FristNavbar() {
               item
               md={2}
             >
-              <FormControl variant="standard" fullWidth>
-                <Select value={countary} onChange={handleChange}>
-                  {flags.map((item) => (
-                    <MenuItem
-                      key={item.value}
-                      value={item.value}
-                      onClick={() => {
-                        handleLanguage(item.name);
-                      }}
+              <TextField variant="standard" select value={i18n.language}>
+                {flags.map((item) => (
+                  <MenuItem
+                    key={item.value}
+                    value={item.value}
+                    onClick={() => {
+                      handleLanguage(item.value);
+                    }}
+                  >
+                    <Box
+                      display={"flex"}
+                      flexDirection={"row"}
+                      alignItems={"center"}
+                      gap={1}
                     >
-                      <Box
-                        display={"flex"}
-                        flexDirection={"row"}
-                        alignItems={"center"}
-                        gap={1}
+                      <img src={item.path} height={"15px"} width={"30px"} />
+                      <Typography
+                        variant="body1"
+                        sx={{ color: "#000", fontSize: "18px" }}
                       >
-                        <img src={item.path} height={"15px"} width={"30px"} />
-                        <Typography
-                          variant="body1"
-                          sx={{ color: "#000", fontSize: "18px" }}
-                        >
-                          {item.name}
-                        </Typography>
-                      </Box>
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+                        {item.value}
+                      </Typography>
+                    </Box>
+                  </MenuItem>
+                ))}
+              </TextField>
             </Grid>
           </Grid>
         </Toolbar>
