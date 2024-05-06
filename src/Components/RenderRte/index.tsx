@@ -1,17 +1,17 @@
 import React, { useEffect, useRef } from "react";
 
-function RenderRtchText(props: PropsType) {
+function RenderRte(props: PropsType) {
   const ali = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    if (ali?.current) {
-      ali.current.innerHTML = props.rtchText;
+    if (ali?.current && props.rte) {
+      ali.current.innerHTML = props.rte;
     }
   });
   return <div ref={ali}></div>;
 }
 
-export default RenderRtchText;
+export default RenderRte;
 
 type PropsType = {
-  rtchText: string;
+  rte?: string;
 };

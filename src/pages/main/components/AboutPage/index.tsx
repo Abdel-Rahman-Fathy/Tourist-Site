@@ -2,6 +2,9 @@ import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import aboutImg from "../../../../assets/about.png";
 import { useTranslation } from "react-i18next";
 import SquareIcon from "@mui/icons-material/Square";
+import { useContext } from "react";
+import { homeContext } from "pages/layout/HomeContext";
+import RenderRte from "Components/RenderRte";
 function SquuareTypeo({ title }: PropsType) {
   return (
     <Box display={"flex"} flexDirection={"row"} marginBottom={2} gap={1}>
@@ -12,6 +15,9 @@ function SquuareTypeo({ title }: PropsType) {
 }
 function AboutPage() {
   const [t] = useTranslation();
+
+  const { homeData } = useContext(homeContext);
+
   return (
     <Stack sx={{ padding: "80px 30px" }}>
       <Grid container>
@@ -35,18 +41,11 @@ function AboutPage() {
         </Grid>
         <Grid item md={5} sx={{ display: "flex", alignItems: "center" }}>
           <Box>
-            <Typography variant="h3" sx={{ fontWeight: 600, marginTop: 3 }}>
-              {t("main.header")}
-            </Typography>
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>
-              About Egyptos travel
+            <Typography sx={{ fontWeight: 600, marginTop: 3 }}>
+              <RenderRte rte={homeData?.siteInformation?.about_title} />
             </Typography>
             <Typography variant="body1" sx={{ py: 2 }}>
-              We have well-trained professionals who are able to perform the
-              services of organizing and booking travel and providing all the
-              means for your convenience. We are ready to assist you every step
-              of your journey to ensure that you get maximum pleasure and the
-              best service.
+              {homeData?.siteInformation?.about_description}
             </Typography>
             <SquuareTypeo title="Distinction" />
             <SquuareTypeo title="Distinction" />

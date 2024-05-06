@@ -3,7 +3,7 @@ import AboutUsImg from "../../assets/aboutUs.png";
 import "./About.css";
 import { useTranslation } from "react-i18next";
 import FixedSection from "../../Components/FixedSection";
-import RenderRtchText from "../../Components/RenderRtchText";
+import RenderRtchText from "../../Components/RenderRte";
 function AboutUs() {
   const [t] = useTranslation();
 
@@ -28,7 +28,7 @@ function AboutUs() {
               variant="body1"
               sx={{ color: "rgb(3, 14, 44)", fontWeight: "600" }}
             >
-              <RenderRtchText rtchText="" />
+              <RenderRtchText rte="" />
             </Typography>
           </Grid>
         </Grid>
