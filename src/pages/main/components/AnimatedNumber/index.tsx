@@ -37,14 +37,14 @@ const archievmentsList = [
 function AnimationNumber() {
   return (
     <Stack
-      padding={"50px"}
-      style={{
+      sx={{
         backgroundImage: `linear-gradient(rgba(0, 82, 164,.8), rgba(0, 82, 164,.8)
 ), url(${bgAnimated})`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
+        padding: "50px",
       }}
     >
       <Container maxWidth="xl">

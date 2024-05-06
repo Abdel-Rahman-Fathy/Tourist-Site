@@ -1,6 +1,8 @@
 import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import ButtonChip from "../../../../Components/ButtonChip";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
+import { homeContext } from "../../../layout/HomeContext";
 const trips = [
   {
     name: "offers 💰",
@@ -30,6 +32,7 @@ const trips = [
 ];
 function HurghadaPage() {
   const [t] = useTranslation();
+  const { homeData } = useContext(homeContext);
   return (
     <Paper sx={{ padding: "60px 0px" }}>
       <Container maxWidth="lg">
