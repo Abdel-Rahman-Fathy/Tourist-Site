@@ -5,6 +5,7 @@ import SquareIcon from "@mui/icons-material/Square";
 import { useContext } from "react";
 import { homeContext } from "pages/layout/HomeContext";
 import RenderRte from "Components/RenderRte";
+import { imgPath } from "methods/img";
 function SquuareTypeo({ title }: PropsType) {
   return (
     <Box display={"flex"} flexDirection={"row"} marginBottom={2} gap={1}>
@@ -15,7 +16,6 @@ function SquuareTypeo({ title }: PropsType) {
 }
 function AboutPage() {
   const [t] = useTranslation();
-
   const { homeData } = useContext(homeContext);
 
   return (
@@ -36,20 +36,26 @@ function AboutPage() {
             sx={{
               width: { md: "450px", xs: "350px" },
             }}
-            src={aboutImg}
+            src={
+              "https://react.hanstarcarrental.com/public/upload/1711023636_SwUHlylPjap1XXxsym5J776bS.png"
+            }
+            alt="About Image"
           />
         </Grid>
         <Grid item md={5} sx={{ display: "flex", alignItems: "center" }}>
           <Box>
             <Typography sx={{ fontWeight: 600, marginTop: 3 }}>
-              <RenderRte rte={homeData?.siteInformation?.about_title} />
+              {/* <RenderRte rte={homeData?.siteContent[0]?.title} /> */}
             </Typography>
-            <Typography variant="body1" sx={{ py: 2 }}>
-              {homeData?.siteInformation?.about_description}
+            <Typography variant="h5" sx={{ py: 2 }}>
+              <RenderRte rte={homeData?.siteContent[0]?.title} />
             </Typography>
-            <SquuareTypeo title="Distinction" />
-            <SquuareTypeo title="Distinction" />
-            <SquuareTypeo title="Distinction" />
+            <Typography sx={{ py: 2 }}>
+              <RenderRte rte={homeData?.siteContent[0]?.description} />
+            </Typography>
+            <SquuareTypeo title={homeData?.siteContent[1].title} />
+            <SquuareTypeo title={homeData?.siteContent[2].title} />
+            <SquuareTypeo title={homeData?.siteContent[3].title} />
             <Box
               sx={{
                 borderTop: "3px solid #EEE",
@@ -61,15 +67,16 @@ function AboutPage() {
                   fontSize: "140px",
                   fontWeight: "600",
                   position: "relative",
+                  mb: 1,
                 }}
               >
-                14
+                <RenderRte rte={homeData?.siteContent[4].title} />
               </Typography>
               <Typography
                 variant="body1"
                 sx={{ position: "relative", bottom: "50px", left: "15px" }}
               >
-                years of experience
+                <RenderRte rte={homeData?.siteContent[4].description} />
               </Typography>
             </Box>
           </Box>
@@ -80,6 +87,6 @@ function AboutPage() {
 }
 
 type PropsType = {
-  title: string;
+  title?: string;
 };
 export default AboutPage;

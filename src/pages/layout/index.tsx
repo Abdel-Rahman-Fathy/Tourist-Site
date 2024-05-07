@@ -6,6 +6,7 @@ import AboutUs from "../AboutUs";
 import ContactUsPage from "../ContactUs";
 import FixedIcon from "../main/components/FixedIcon";
 import { HomeContextProvider } from "./HomeContext";
+import HurghadaCard from "pages/HurghadaCard";
 
 function Layout() {
   return (
@@ -15,6 +16,7 @@ function Layout() {
         <div className="main-view">
           <Routes>
             <Route path="" element={<MainPages />} />
+            <Route path="product/:id" element={<HurghadaCard />} />
             <Route path="about" element={<AboutUs />} />
             <Route path="contact" element={<ContactUsPage />} />
           </Routes>

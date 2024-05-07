@@ -4,28 +4,14 @@ import { useTranslation } from "react-i18next";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ModeStandbyIcon from "@mui/icons-material/ModeStandby";
 import BrightnessHighIcon from "@mui/icons-material/BrightnessHigh";
-const IconBox = [
-  {
-    id: 1,
-    title: "Our policy",
-    text: `Providing a first class personal service to all our clientsfrom the initial inquiry stages through to the completion ofthe tour`,
-    icon: VisibilityOffIcon,
-  },
-  {
-    id: 2,
-    title: "Our values",
-    text: "To be honest and transparent in all our dealings with customers",
-    icon: BrightnessHighIcon,
-  },
-  {
-    id: 3,
-    title: "Our goal",
-    text: "We look forward to providing the best services to our customers with the best quality and providing an unforgettable experience.",
-    icon: ModeStandbyIcon,
-  },
-];
+import { useContext } from "react";
+import { homeContext } from "pages/layout/HomeContext";
+import RenderRte from "Components/RenderRte";
+
 function WhyusPage() {
   const [t, i18n] = useTranslation();
+  const { homeData } = useContext(homeContext);
+
   return (
     <Stack sx={{ padding: "80px 30px" }}>
       <Container maxWidth="lg">
@@ -33,30 +19,66 @@ function WhyusPage() {
           <Grid item md={6}>
             <Box>
               <Typography variant="h3" sx={{ fontWeight: 600, marginTop: 3 }}>
-                WHY US ?
+                <RenderRte rte={homeData?.siteContent[5]?.title} />
               </Typography>
               <Typography variant="body1" sx={{ py: 2 }}>
-                Because we are working to provide distinguished service to our
-                customers through
+                <RenderRte rte={homeData?.siteContent[5]?.description} />
               </Typography>
             </Box>
-            {IconBox.map((item) => (
-              <Box
-                display={"flex"}
-                flexDirection={"row"}
-                key={item.id}
-                columnGap={2}
-                marginBottom={4}
-              >
-                <Box bgcolor={"primary.main"} height={"100%"} padding={0.5}>
-                  <item.icon sx={{ fontSize: "60pX", color: "#fff" }} />
-                </Box>
-                <Box>
-                  <Typography variant="h6">{item.title}</Typography>
-                  <Typography variant="body1">{item.text}</Typography>
-                </Box>
+            <Box
+              display={"flex"}
+              flexDirection={"row"}
+              columnGap={2}
+              marginBottom={4}
+            >
+              <Box bgcolor={"primary.main"} height={"100%"} padding={0.5}>
+                <VisibilityOffIcon sx={{ fontSize: "60pX", color: "#fff" }} />
               </Box>
-            ))}
+              <Box>
+                <Typography variant="h6">
+                  {homeData?.siteContent[6]?.title}
+                </Typography>
+                <Typography variant="body1">
+                  {homeData?.siteContent[6]?.description}
+                </Typography>
+              </Box>
+            </Box>
+            <Box
+              display={"flex"}
+              flexDirection={"row"}
+              columnGap={2}
+              marginBottom={4}
+            >
+              <Box bgcolor={"primary.main"} height={"100%"} padding={0.5}>
+                <BrightnessHighIcon sx={{ fontSize: "60pX", color: "#fff" }} />
+              </Box>
+              <Box>
+                <Typography variant="h6">
+                  {homeData?.siteContent[7]?.title}
+                </Typography>
+                <Typography variant="body1">
+                  {homeData?.siteContent[7]?.description}
+                </Typography>
+              </Box>
+            </Box>
+            <Box
+              display={"flex"}
+              flexDirection={"row"}
+              columnGap={2}
+              marginBottom={4}
+            >
+              <Box bgcolor={"primary.main"} height={"100%"} padding={0.5}>
+                <ModeStandbyIcon sx={{ fontSize: "60pX", color: "#fff" }} />
+              </Box>
+              <Box>
+                <Typography variant="h6">
+                  {homeData?.siteContent[8]?.title}
+                </Typography>
+                <Typography variant="body1">
+                  {homeData?.siteContent[8]?.description}
+                </Typography>
+              </Box>
+            </Box>
           </Grid>
           <Grid
             item

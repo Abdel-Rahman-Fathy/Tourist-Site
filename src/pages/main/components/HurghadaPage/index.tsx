@@ -49,12 +49,13 @@ function HurghadaPage() {
         <Grid
           container
           justifyContent={"center"}
-          columnSpacing={15}
-          rowSpacing={3}
+          // columnSpacing={10}
+          // rowSpacing={3}
+          spacing={3}
           padding={"30px 0"}
         >
-          {trips.map((trip) => (
-            <ButtonChip key={trip.id} name={t(trip.tranlate)} id={trip.id} />
+          {homeData?.Categories.map((trip) => (
+            <ButtonChip key={trip.id} name={trip.title} id={trip.id} />
           ))}
         </Grid>
       </Container>

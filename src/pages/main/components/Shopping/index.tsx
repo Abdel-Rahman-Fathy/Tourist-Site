@@ -9,42 +9,13 @@ import {
 } from "@mui/material";
 import ButtonChip from "../../../../Components/ButtonChip";
 import { useTranslation } from "react-i18next";
-const trips = [
-  {
-    name: "Fruits",
-    id: 1,
-  },
-  {
-    name: "Sim cards",
-    id: 2,
-  },
-  {
-    name: "Oils",
-    id: 3,
-  },
-  {
-    name: "Coffee and other drinks",
-    id: 4,
-  },
-  {
-    name: "Cotton",
-    id: 5,
-  },
-  {
-    name: "Shrimps",
-    id: 6,
-  },
-  {
-    name: "Souvenir",
-    id: 7,
-  },
-  {
-    name: "Price of delivery",
-    id: 8,
-  },
-];
+import { useContext } from "react";
+import { homeContext } from "pages/layout/HomeContext";
+
 function ShoppingPage() {
   const [t] = useTranslation();
+  const { homeData } = useContext(homeContext);
+
   return (
     <Stack sx={{ padding: "60px 0px" }}>
       <Container maxWidth="lg">
@@ -65,7 +36,7 @@ function ShoppingPage() {
           justifyContent={"center"}
           padding={"30px 0"}
         >
-          {trips.map((trip) => (
+          {homeData?.shippings.map((trip) => (
             <ButtonChip key={trip.id} name={trip.name} id={trip.id} />
           ))}
         </Grid>
