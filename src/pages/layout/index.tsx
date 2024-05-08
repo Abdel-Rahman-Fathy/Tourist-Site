@@ -7,6 +7,7 @@ import ContactUsPage from "../ContactUs";
 import FixedIcon from "../main/components/FixedIcon";
 import { HomeContextProvider } from "./HomeContext";
 import HurghadaCard from "pages/HurghadaCard";
+import Blog from "pages/Blog";
 
 function Layout() {
   return (
@@ -18,6 +19,7 @@ function Layout() {
             <Route path="" element={<MainPages />} />
             <Route path="product/:id" element={<HurghadaCard />} />
             <Route path="about" element={<AboutUs />} />
+            <Route path="blog" element={<Blog />} />
             <Route path="contact" element={<ContactUsPage />} />
           </Routes>
           <FixedIcon />

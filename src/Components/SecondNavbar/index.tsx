@@ -166,20 +166,9 @@ function SecondNavbar() {
                   </Paper>
                 </li>
                 <li>
-                  <NavLink className={"link"} to={""}>
+                  <NavLink className={"link"} to={"blog"}>
                     {t("blogs")}
                   </NavLink>
-                  <Paper className="subMenu">
-                    <MenuList>
-                      {homeData?.Categories.map((item) => (
-                        <SubMenu
-                          key={item.id}
-                          title={item.title}
-                          link={`product/${item.id}`}
-                        />
-                      ))}
-                    </MenuList>
-                  </Paper>
                 </li>
                 <li>
                   <NavLink className={"link"} to={"/contact"}>
@@ -206,7 +195,6 @@ function SecondNavbar() {
                 <NavLink className={"link_down"} to={"/about"}>
                   <MenuItem onClick={toggleMobileMenu}>{t("aboutUs")}</MenuItem>
                 </NavLink>
-
                 {/* Frist sub item */}
                 <MenuItem onClick={toggleExursionsSubMenu}>
                   {t("ExursionsFromHurghada")}{" "}
@@ -239,11 +227,8 @@ function SecondNavbar() {
                   </Box>
                 )}
                 {/* sec sub item */}
-
                 <MenuItem> {t("hotales")}</MenuItem>
-
                 {/* third sub item */}
-
                 <MenuItem onClick={toggleShoppingSubMenu}>
                   {t("shopping")}
                   {isShoppingSubMenuOpen ? (
@@ -252,7 +237,6 @@ function SecondNavbar() {
                     <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
                   )}
                 </MenuItem>
-
                 {isShoppingSubMenuOpen && (
                   <Box
                     sx={{
@@ -275,7 +259,9 @@ function SecondNavbar() {
                     ))}
                   </Box>
                 )}
-                <MenuItem> {t("blogs")}</MenuItem>
+                <NavLink className={"link_down"} to={"/blog"}>
+                  <MenuItem onClick={toggleMobileMenu}>{t("blogs")}</MenuItem>
+                </NavLink>{" "}
                 <NavLink className={"link_down"} to={"/contact"}>
                   <MenuItem onClick={toggleMobileMenu}>
                     {t("contactUs")}

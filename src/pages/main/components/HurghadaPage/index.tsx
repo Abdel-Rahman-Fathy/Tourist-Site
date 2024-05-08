@@ -46,14 +46,7 @@ function HurghadaPage() {
         >
           {t("ExursionsFromHurghada")}
         </Typography>
-        <Grid
-          container
-          justifyContent={"center"}
-          // columnSpacing={10}
-          // rowSpacing={3}
-          spacing={3}
-          padding={"30px 0"}
-        >
+        <Grid container padding={"30px 0"}>
           {homeData?.Categories.reverse().map((trip) => (
             <ButtonChip key={trip.id} name={trip.title} id={trip.id} />
           ))}

@@ -29,13 +29,7 @@ function ShoppingPage() {
         >
           {t("shopping")}
         </Typography>
-        <Grid
-          container
-          columnSpacing={15}
-          rowSpacing={3}
-          justifyContent={"center"}
-          padding={"30px 0"}
-        >
+        <Grid container padding={"30px 0"}>
           {homeData?.shippings.map((trip) => (
             <ButtonChip key={trip.id} name={trip.name} id={trip.id} />
           ))}

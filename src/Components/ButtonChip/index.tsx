@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 function ButtonChip({ id, name }: PropsType) {
   return (
-    <Grid item md={3} xs={12}>
+    <Grid sx={{ p: 1 }} item md={3} xs={12}>
       <Stack
         component={NavLink}
         to={`product/${id}`}
@@ -12,7 +12,7 @@ function ButtonChip({ id, name }: PropsType) {
           py: 2,
           fontSize: "18px",
           fontWeight: "600",
-          width: "280 px",
+          width: "100%",
           borderRadius: "10px",
           textAlign: "center",
           transition: "all .3s",
