@@ -10,11 +10,13 @@ import {
 } from "@mui/material";
 import FixedSection from "../../Components/FixedSection";
 import img1 from "../../assets/WhyUsImage.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
 import { BorderBottom } from "@mui/icons-material";
 function HurghadaCard() {
   const array1 = Array.from({ length: 5 });
+  const { id } = useParams();
+  console.log(id);
   return (
     <>
       <FixedSection title="Excursions From Hurghada" />

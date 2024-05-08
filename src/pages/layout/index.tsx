@@ -8,6 +8,8 @@ import FixedIcon from "../main/components/FixedIcon";
 import { HomeContextProvider } from "./HomeContext";
 import HurghadaCard from "pages/HurghadaCard";
 import Blog from "pages/Blog";
+import SliderPage from "pages/SliderPage";
+import SliderHurhada from "pages/SliderPage";
 
 function Layout() {
   return (
