@@ -1,6 +1,6 @@
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import man from "../../../../assets/manImage.jpg";
-import { homeContext } from "pages/layout/HomeContext";
+import { homeContext } from "pages/HomeContext";
 import { useContext } from "react";
 import RenderRte from "Components/RenderRte";
 function ImportPage() {

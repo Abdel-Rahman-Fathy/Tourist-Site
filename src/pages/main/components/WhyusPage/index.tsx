@@ -5,7 +5,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ModeStandbyIcon from "@mui/icons-material/ModeStandby";
 import BrightnessHighIcon from "@mui/icons-material/BrightnessHigh";
 import { useContext } from "react";
-import { homeContext } from "pages/layout/HomeContext";
+import { homeContext } from "pages/HomeContext";
 import RenderRte from "Components/RenderRte";
 
 function WhyusPage() {

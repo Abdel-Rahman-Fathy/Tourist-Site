@@ -5,30 +5,37 @@ import { Route, Routes } from "react-router-dom";
 import AboutUs from "../AboutUs";
 import ContactUsPage from "../ContactUs";
 import FixedIcon from "../main/components/FixedIcon";
-import { HomeContextProvider } from "./HomeContext";
+import { HomeContextProvider, homeContext } from "../HomeContext";
 import HurghadaCard from "pages/HurghadaCard";
 import Blog from "pages/Blog";
 import SliderPage from "pages/SliderPage";
 import SliderHurhada from "pages/SliderPage";
+import { useContext } from "react";
+import Spinner from "pages/SpinnerPage/Spinner";
 
 function Layout() {
+  const { status } = useContext(homeContext);
   return (
-    <div>
-      <HomeContextProvider>
-        <Navbar />
-        <div className="main-view">
-          <Routes>
-            <Route path="" element={<MainPages />} />
-            <Route path="product/:id" element={<HurghadaCard />} />
-            <Route path="about" element={<AboutUs />} />
-            <Route path="blog" element={<Blog />} />
-            <Route path="contact" element={<ContactUsPage />} />
-          </Routes>
-          <FixedIcon />
+    <>
+      {status === "done" ? (
+        <div>
+          <Navbar />
+          <div className="main-view">
+            <Routes>
+              <Route path="" element={<MainPages />} />
+              <Route path="product/:id" element={<HurghadaCard />} />
+              <Route path="about" element={<AboutUs />} />
+              <Route path="blog" element={<Blog />} />
+              <Route path="contact" element={<ContactUsPage />} />
+            </Routes>
+            <FixedIcon />
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </HomeContextProvider>
-    </div>
+      ) : (
+        <Spinner />
+      )}
+    </>
   );
 }
 

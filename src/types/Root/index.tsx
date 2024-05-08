@@ -34,10 +34,10 @@ export interface SiteInformation {
   metaDescription: string;
   logo: string;
   icon: string;
-  phone1: string;
-  phone2: unknown;
-  phone3: unknown;
-  phone4: unknown;
+  phone1: string | null;
+  phone2: string | null;
+  phone3: string | null;
+  phone4: string | null;
   home_contact_image: string;
   home_number_image: string;
   email: string;

@@ -2,7 +2,7 @@ import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import ButtonChip from "../../../../Components/ButtonChip";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
-import { homeContext } from "../../../layout/HomeContext";
+import { homeContext } from "../../../HomeContext";
 const trips = [
   {
     name: "offers 💰",

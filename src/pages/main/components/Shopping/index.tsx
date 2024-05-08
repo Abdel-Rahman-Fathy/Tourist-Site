@@ -10,7 +10,7 @@ import {
 import ButtonChip from "../../../../Components/ButtonChip";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
-import { homeContext } from "pages/layout/HomeContext";
+import { homeContext } from "pages/HomeContext";
 
 function ShoppingPage() {
   const [t] = useTranslation();

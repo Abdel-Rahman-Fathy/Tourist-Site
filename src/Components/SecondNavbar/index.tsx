@@ -21,7 +21,7 @@ import { useTranslation } from "react-i18next";
 import "./SecondNavbar.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { homeContext } from "pages/layout/HomeContext";
+import { homeContext } from "pages/HomeContext";
 
 function SubMenu({ title, link }: PropsType) {
   return (

@@ -5,7 +5,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LanguageIcon from "@mui/icons-material/Language";
 import { imgPath } from "methods/img";
-import { homeContext } from "pages/layout/HomeContext";
+import { homeContext } from "pages/HomeContext";
 import { useContext, useEffect, useState } from "react";
 function SliderAndTable() {
   const { homeData } = useContext(homeContext);

@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import AboutImg from "../../assets/animatedNumberImage.png";
 import { useTranslation } from "react-i18next";
+import RenderRte from "Components/RenderRte";
 
-function FixedSection({ title }: { title: string }) {
+function FixedSection({ title }: { title?: string }) {
   const [t] = useTranslation();
 
   return (
@@ -24,7 +25,7 @@ function FixedSection({ title }: { title: string }) {
         variant="h2"
         sx={{ fontWeight: "900", color: "#fff", mt: 10 }}
       >
-        {title}
+        <RenderRte rte={title} />
       </Typography>
     </Box>
   );

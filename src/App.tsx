@@ -4,9 +4,9 @@ import { Stack, ThemeProvider } from "@mui/material";
 import { theme } from "./theme/MUI_Theme";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
-
 import axios from "axios";
 import isRtl from "methods/isRtl";
+import { HomeContextProvider } from "pages/HomeContext";
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 function App() {
@@ -21,7 +21,9 @@ function App() {
         component={"main"}
         className="App"
       >
-        <Layout key={language} />
+        <HomeContextProvider>
+          <Layout key={language} />
+        </HomeContextProvider>
       </Stack>
     </ThemeProvider>
   );

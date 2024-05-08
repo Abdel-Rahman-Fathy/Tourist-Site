@@ -3,7 +3,7 @@ import aboutImg from "../../../../assets/about.png";
 import { useTranslation } from "react-i18next";
 import SquareIcon from "@mui/icons-material/Square";
 import { useContext } from "react";
-import { homeContext } from "pages/layout/HomeContext";
+import { homeContext } from "pages/HomeContext";
 import RenderRte from "Components/RenderRte";
 import { imgPath } from "methods/img";
 function SquuareTypeo({ title }: PropsType) {

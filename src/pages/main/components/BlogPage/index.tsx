@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Card,
   CardContent,
   Container,
@@ -9,8 +10,14 @@ import {
 } from "@mui/material";
 import img1 from "../../../../assets/pram.webp";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { homeContext } from "pages/HomeContext";
+import { imgPath } from "methods/img";
+import RenderRte from "Components/RenderRte";
 function BlogPage() {
   const array1 = Array.from({ length: 5 });
+  const { homeData } = useContext(homeContext);
+
   return (
     <Stack sx={{ padding: "80px 30px" }}>
       <Typography
@@ -21,7 +28,7 @@ function BlogPage() {
       </Typography>
       <Container>
         <Grid container spacing={2}>
-          {array1.map((card, index) => (
+          {homeData?.blogs.map((item, index) => (
             <Grid item md={4} key={index}>
               <Card variant="outlined">
                 <Box
@@ -34,14 +41,14 @@ function BlogPage() {
                   }}
                 >
                   <img
-                    src={img1}
+                    src={imgPath(item.image)}
                     style={{
                       width: "100%",
                       height: "250px",
                       objectFit: "cover",
                       transition: "all .5s",
                     }}
-                    alt=""
+                    alt={item.title}
                   />
                   <Typography
                     variant="h6"
@@ -76,11 +83,15 @@ function BlogPage() {
                   >
                     Pyramids of Giza
                   </Typography>
-                  <Typography variant="body1" sx={{ py: 2 }}>
-                    Archeologists have spent many centuries wondering about the
-                    glory of...
+                  <Typography
+                    variant="body1"
+                    sx={{ py: 2 }}
+                    className="limited-text"
+                  >
+                    {/* {data.title.length <= 18 ? data.title: (data.title.substr(0, 18) + "...")} */}
+                    <RenderRte rte={"lorem10"} limit={true} />
                   </Typography>
-                  <Typography variant="button">READ MORE</Typography>
+                  <Button variant="outlined">READ MORE</Button>
                 </CardContent>
               </Card>
             </Grid>
