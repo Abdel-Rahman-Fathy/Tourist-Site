@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   AppBar,
   Box,
@@ -21,6 +21,7 @@ import { useTranslation } from "react-i18next";
 import "./SecondNavbar.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { homeContext } from "pages/layout/HomeContext";
 
 function SubMenu({ title, link }: PropsType) {
   return (
@@ -37,6 +38,8 @@ function SubMenu({ title, link }: PropsType) {
 
 function SecondNavbar() {
   const [t] = useTranslation();
+  const { homeData } = useContext(homeContext);
+
   const theme = useTheme();
   const { scrollY } = useWindowScrollPosition();
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -59,6 +62,16 @@ function SecondNavbar() {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+
+  // Handle frist sub item
+  const [
+    isExursionsFromHurghadaSubMenuOpen,
+    setIsExursionsFromHurghadaSubMenuOpen,
+  ] = useState(false);
+  const toggleExursionsSubMenu = () => {
+    setIsExursionsFromHurghadaSubMenuOpen(!isExursionsFromHurghadaSubMenuOpen);
+  };
+  // secend sub
   const [isShoppingSubMenuOpen, setShoppingSubMenuOpen] = useState(false);
 
   const toggleShoppingSubMenu = () => {
@@ -114,11 +127,13 @@ function SecondNavbar() {
                   </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
-                      <SubMenu title="offers 💰" link="" />
-                      <SubMenu title="Historical trips" link="" />
-                      <SubMenu title="Sea trips " link="" />
-                      <SubMenu title="Safari and extreme" link="" />
-                      <SubMenu title="Entertainment and spa" link="" />
+                      {homeData?.Categories.reverse().map((item) => (
+                        <SubMenu
+                          key={item.id}
+                          title={item.title}
+                          link={`product/${item.id}`}
+                        />
+                      ))}
                     </MenuList>
                   </Paper>
                 </li>
@@ -156,11 +171,13 @@ function SecondNavbar() {
                   </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
-                      <SubMenu title="offers 💰" link="" />
-                      <SubMenu title="Historical trips" link="" />
-                      <SubMenu title="Sea trips " link="" />
-                      <SubMenu title="Safari and extreme" link="" />
-                      <SubMenu title="Entertainment and spa" link="" />
+                      {homeData?.Categories.map((item) => (
+                        <SubMenu
+                          key={item.id}
+                          title={item.title}
+                          link={`product/${item.id}`}
+                        />
+                      ))}
                     </MenuList>
                   </Paper>
                 </li>
@@ -189,8 +206,44 @@ function SecondNavbar() {
                 <NavLink className={"link_down"} to={"/about"}>
                   <MenuItem onClick={toggleMobileMenu}>{t("aboutUs")}</MenuItem>
                 </NavLink>
-                <MenuItem>{t("ExursionsFromHurghada")}</MenuItem>
+
+                {/* Frist sub item */}
+                <MenuItem onClick={toggleExursionsSubMenu}>
+                  {t("ExursionsFromHurghada")}{" "}
+                  {isExursionsFromHurghadaSubMenuOpen ? (
+                    <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  ) : (
+                    <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  )}
+                </MenuItem>
+                {isExursionsFromHurghadaSubMenuOpen && (
+                  <Box
+                    sx={{
+                      backgroundColor: "primary.main",
+                      mx: 1,
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {homeData?.Categories.reverse().map((item) => (
+                      <NavLink
+                        key={item.id}
+                        onClick={() => {
+                          toggleMobileMenu();
+                          toggleExursionsSubMenu();
+                        }}
+                        to={`product/${item.id}`}
+                      >
+                        <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
+                      </NavLink>
+                    ))}
+                  </Box>
+                )}
+                {/* sec sub item */}
+
                 <MenuItem> {t("hotales")}</MenuItem>
+
+                {/* third sub item */}
+
                 <MenuItem onClick={toggleShoppingSubMenu}>
                   {t("shopping")}
                   {isShoppingSubMenuOpen ? (
@@ -199,18 +252,27 @@ function SecondNavbar() {
                     <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
                   )}
                 </MenuItem>
+
                 {isShoppingSubMenuOpen && (
                   <Box
                     sx={{
                       backgroundColor: "primary.main",
                       mx: 1,
-                      color: "#fff  ",
                       borderRadius: "10px",
                     }}
                   >
-                    <MenuItem>{t("submenu1")}</MenuItem>
-                    <MenuItem>{t("submenu2")}</MenuItem>
-                    <MenuItem>{t("submenu3")}</MenuItem>
+                    {homeData?.shippings.map((item) => (
+                      <NavLink
+                        key={item.id}
+                        onClick={() => {
+                          toggleMobileMenu();
+                          toggleShoppingSubMenu();
+                        }}
+                        to={`product/${item.id}`}
+                      >
+                        <MenuItem sx={{ color: "#fff" }}>{item.name}</MenuItem>
+                      </NavLink>
+                    ))}
                   </Box>
                 )}
                 <MenuItem> {t("blogs")}</MenuItem>

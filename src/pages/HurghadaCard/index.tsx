@@ -34,6 +34,9 @@ function HurghadaCard() {
                     backgroundColor: "#fff",
                     border: "2px solid",
                     borderRadius: "10px",
+                    "&:hover .line": {
+                      width: 1,
+                    },
                   }}
                 >
                   <Stack sx={{ position: "relative" }}>
@@ -112,9 +115,30 @@ function HurghadaCard() {
                         justifyContent: "center",
                       }}
                     >
-                      <Button variant="contained">READ MORE</Button>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          borderRadius: "10px",
+                          backgroundColor: "rgba(40, 140, 160)",
+                          transition: "all .3s",
+                          "&:hover": {
+                            backgroundColor: "rgb(19, 113, 160)",
+                          },
+                        }}
+                      >
+                        READ MORE
+                      </Button>
                     </Box>
                   </CardContent>
+                  <Box
+                    sx={{
+                      width: 0,
+                      height: "5px",
+                      backgroundColor: "rgba(40, 140, 160)",
+                      transition: "all .8s",
+                    }}
+                    className={"line"}
+                  ></Box>
                 </Card>
               </Grid>
             ))}

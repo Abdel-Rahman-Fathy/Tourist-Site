@@ -54,7 +54,7 @@ function HurghadaPage() {
           spacing={3}
           padding={"30px 0"}
         >
-          {homeData?.Categories.map((trip) => (
+          {homeData?.Categories.reverse().map((trip) => (
             <ButtonChip key={trip.id} name={trip.title} id={trip.id} />
           ))}
         </Grid>
