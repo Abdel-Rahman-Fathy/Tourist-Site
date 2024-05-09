@@ -1,6 +1,13 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./FristNavbar.css";
-import logo from "../../assets/flags/Ger.png";
+import Ger from "../../assets/flags/Ger.png";
+import Hun from "../../assets/flags/Hun.png";
+import en from "../../assets/flags/en.png";
+import pol from "../../assets/flags/pol.png";
+import romania from "../../assets/flags/romania.png";
+import rus from "../../assets/flags/rus.png";
+import tur from "../../assets/flags/tur.png";
+import eg from "../../assets/flags/eg.png";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,21 +15,45 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import AddLocationOutlinedIcon from "@mui/icons-material/AddLocationOutlined";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
-import { FormControl, Grid, MenuItem, Select, TextField } from "@mui/material";
-import { ReactNode, useState, useEffect } from "react";
-import { SelectChangeEvent } from "@mui/material/Select";
+import { Grid, MenuItem, Select, TextField } from "@mui/material";
+import { ReactNode, useState, useEffect, useContext } from "react";
 import useWindowScrollPosition from "@rooks/use-window-scroll-position";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/material/styles";
+import { homeContext } from "pages/HomeContext";
 
 const flags = [
   {
     value: "en",
-    path: logo,
+    path: en,
   },
   {
     value: "ar",
-    path: logo,
+    path: eg,
+  },
+  {
+    value: "tur",
+    path: tur,
+  },
+  {
+    value: "rus",
+    path: rus,
+  },
+  {
+    value: "Ger",
+    path: Ger,
+  },
+  {
+    value: "Hun",
+    path: Hun,
+  },
+  {
+    value: "pol",
+    path: pol,
+  },
+  {
+    value: "romania",
+    path: romania,
   },
 ];
 
@@ -30,6 +61,7 @@ function FristNavbar() {
   const [t, i18n] = useTranslation();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [navbarPosition, setNavbarPosition] = useState("");
+  const { homeData } = useContext(homeContext);
   // const handleChange = (event: SelectChangeEvent) => {
   //   setCountary(event.target.value);
   // };
@@ -54,7 +86,7 @@ function FristNavbar() {
       sx={{
         position: "fixed",
         top: navbarPosition,
-        transition: "2s all  ease  ",
+        transition: "s all  ease  ",
         [theme.breakpoints.up("md")]: {
           height: "60px",
         },

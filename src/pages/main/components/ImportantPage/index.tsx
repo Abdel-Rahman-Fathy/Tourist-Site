@@ -1,10 +1,12 @@
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import man from "../../../../assets/manImage.jpg";
-import { homeContext } from "pages/HomeContext";
+import { homeContext, useHomeData } from "pages/HomeContext";
 import { useContext } from "react";
 import RenderRte from "Components/RenderRte";
 function ImportPage() {
   const { homeData } = useContext(homeContext);
+  const findObj = useHomeData(homeData?.siteContent);
+
   return (
     <Stack sx={{ margin: "20px 0px", backgroundColor: "primary.main" }}>
       <Box>
@@ -13,16 +15,16 @@ function ImportPage() {
             <Typography
               sx={{ color: "#fff", fontWeight: 600, fontSize: "30px", pr: 5 }}
             >
-              <RenderRte rte={homeData?.siteContent[13].description} />
+              <RenderRte rte={findObj("Why Choose Us")?.description} />
               <br />
             </Typography>
             <Typography
               sx={{ color: "#fff", fontWeight: 600, fontSize: "16px", py: 2 }}
             >
-              <RenderRte rte={homeData?.siteContent[14].description} />
+              <RenderRte rte={findObj("Why Choose Us 1")?.description} />
             </Typography>
             <Typography variant="body1" color={"#fff"}>
-              <RenderRte rte={homeData?.siteContent[15].description} />
+              <RenderRte rte={findObj("Why Choose Us 2")?.description} />
             </Typography>
           </Grid>
           <Grid item md={6} sx={{ display: { md: "block", xs: "none" } }}>

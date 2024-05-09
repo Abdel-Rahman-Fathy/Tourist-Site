@@ -5,12 +5,13 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ModeStandbyIcon from "@mui/icons-material/ModeStandby";
 import BrightnessHighIcon from "@mui/icons-material/BrightnessHigh";
 import { useContext } from "react";
-import { homeContext } from "pages/HomeContext";
+import { homeContext, useHomeData } from "pages/HomeContext";
 import RenderRte from "Components/RenderRte";
 
 function WhyusPage() {
   const [t, i18n] = useTranslation();
   const { homeData } = useContext(homeContext);
+  const findObj = useHomeData(homeData?.siteContent);
 
   return (
     <Stack sx={{ padding: "80px 30px" }}>
@@ -19,10 +20,10 @@ function WhyusPage() {
           <Grid item md={6}>
             <Box>
               <Typography variant="h3" sx={{ fontWeight: 600, marginTop: 3 }}>
-                <RenderRte rte={homeData?.siteContent[5]?.title} />
+                <RenderRte rte={findObj("Home Features")?.title} />
               </Typography>
               <Typography variant="body1" sx={{ py: 2 }}>
-                <RenderRte rte={homeData?.siteContent[5]?.description} />
+                <RenderRte rte={findObj("Home Features")?.description} />
               </Typography>
             </Box>
             <Box
@@ -36,10 +37,10 @@ function WhyusPage() {
               </Box>
               <Box>
                 <Typography variant="h6">
-                  {homeData?.siteContent[6]?.title}
+                  <RenderRte rte={findObj("Home Features 1")?.title} />
                 </Typography>
                 <Typography variant="body1">
-                  {homeData?.siteContent[6]?.description}
+                  <RenderRte rte={findObj("Home Features 1")?.description} />
                 </Typography>
               </Box>
             </Box>
@@ -54,10 +55,10 @@ function WhyusPage() {
               </Box>
               <Box>
                 <Typography variant="h6">
-                  {homeData?.siteContent[7]?.title}
+                  <RenderRte rte={findObj("Home Features 2")?.title} />
                 </Typography>
                 <Typography variant="body1">
-                  {homeData?.siteContent[7]?.description}
+                  <RenderRte rte={findObj("Home Features 2")?.description} />
                 </Typography>
               </Box>
             </Box>
@@ -72,10 +73,10 @@ function WhyusPage() {
               </Box>
               <Box>
                 <Typography variant="h6">
-                  {homeData?.siteContent[8]?.title}
+                  <RenderRte rte={findObj("Home Features 3")?.title} />
                 </Typography>
                 <Typography variant="body1">
-                  {homeData?.siteContent[8]?.description}
+                  <RenderRte rte={findObj("Home Features 3")?.description} />
                 </Typography>
               </Box>
             </Box>

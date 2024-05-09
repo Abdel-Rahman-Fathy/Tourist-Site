@@ -25,7 +25,7 @@ function Layout() {
               <Route path="" element={<MainPages />} />
               <Route path="product/:id" element={<HurghadaCard />} />
               <Route path="about" element={<AboutUs />} />
-              <Route path="blog" element={<Blog />} />
+              <Route path="blog/:id" element={<Blog />} />
               <Route path="contact" element={<ContactUsPage />} />
             </Routes>
             <FixedIcon />

@@ -3,7 +3,39 @@ import FixedSection from "Components/FixedSection";
 import img from "../../assets/imgForm.jpg";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CardRight from "./CardRight";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { api } from "methods/api";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { BlogType } from "types/Blog";
+import { imgPath } from "methods/img";
+import RenderRte from "Components/RenderRte";
 function Blog() {
+  const { id } = useParams();
+  const [status, setStatus] = useState<"none" | "loading" | "done">("none");
+  const [blogData, setBlogData] = useState<BlogType | undefined>(undefined);
+  const [t, i18n] = useTranslation();
+  const { language } = i18n;
+  function getAboutData() {
+    setStatus("loading");
+    // <{ data: ContactType }>
+    axios
+      .get<{ data: BlogType }>(api(`blog/${id}`))
+      .then(({ data }) => {
+        console.log(data.data);
+        setStatus("done");
+        setBlogData(data.data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+        setStatus("none");
+      });
+  }
+
+  useEffect(() => {
+    getAboutData();
+  }, [id]);
   return (
     <Stack>
       <FixedSection title={"Blog"} />
@@ -11,14 +43,19 @@ function Blog() {
         <Grid container spacing={4}>
           <Grid item md={8} xs={12}>
             <Box sx={{ width: 1 }}>
-              <img src={img} width={"100%"} height={"350px"} alt="" />
+              <img
+                src={imgPath(blogData?.blog.image)}
+                width={"100%"}
+                height={"350px"}
+                alt=""
+              />
             </Box>
             <Stack sx={{ p: 1 }} flexDirection={"row"}>
               <CalendarMonthIcon sx={{ mx: 1 }} color="primary" />
               <Typography variant="body1">Nov 18 , 2022</Typography>
             </Stack>
             <Typography variant="h4" sx={{ my: 2, fontWeight: "600" }}>
-              How to Plan A Trip to Egypt
+              <RenderRte rte={blogData?.blog.title} />
             </Typography>
             <Typography variant="body1">
               How to plan a trip to Egypt is a question that needs to be

@@ -10,6 +10,7 @@ import {
   IconButton,
   Paper,
   MenuList,
+  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import useWindowScrollPosition from "@rooks/use-window-scroll-position";
@@ -77,13 +78,18 @@ function SecondNavbar() {
   const toggleShoppingSubMenu = () => {
     setShoppingSubMenuOpen(!isShoppingSubMenuOpen);
   };
+  // Blogs sub
+  const [isBlogsSubMenuOpen, setBlogsSubMenuOpen] = useState(false);
 
+  const toggleBlogsSubMenu = () => {
+    setBlogsSubMenuOpen(!isBlogsSubMenuOpen);
+  };
   return (
     <AppBar
       position="fixed"
       sx={{
         top: navBackground,
-        transition: "2s all ease",
+        transition: ".2s all ease",
         background: "background",
         color: "primary.main",
       }}
@@ -166,9 +172,18 @@ function SecondNavbar() {
                   </Paper>
                 </li>
                 <li>
-                  <NavLink className={"link"} to={"blog"}>
-                    {t("blogs")}
-                  </NavLink>
+                  <Typography className="link">{t("blogs")}</Typography>
+                  <Paper className="subMenu">
+                    <MenuList>
+                      {homeData?.blogs.map((item) => (
+                        <SubMenu
+                          key={item.id}
+                          title={item.title}
+                          link={`blog/${item.id}`}
+                        />
+                      ))}
+                    </MenuList>
+                  </Paper>
                 </li>
                 <li>
                   <NavLink className={"link"} to={"/contact"}>
@@ -259,9 +274,39 @@ function SecondNavbar() {
                     ))}
                   </Box>
                 )}
-                <NavLink className={"link_down"} to={"/blog"}>
-                  <MenuItem onClick={toggleMobileMenu}>{t("blogs")}</MenuItem>
-                </NavLink>{" "}
+                {/* Blogs */}
+                <MenuItem onClick={toggleBlogsSubMenu}>
+                  {t("blogs")}
+                  {isBlogsSubMenuOpen ? (
+                    <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  ) : (
+                    <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  )}
+                </MenuItem>
+                {isBlogsSubMenuOpen && (
+                  <Box
+                    sx={{
+                      backgroundColor: "primary.main",
+                      mx: 1,
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {homeData?.blogs.map((item) => (
+                      <NavLink
+                        key={item.id}
+                        onClick={() => {
+                          toggleMobileMenu();
+                          toggleBlogsSubMenu();
+                        }}
+                        to={`blogs/${item.id}`}
+                      >
+                        <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
+                      </NavLink>
+                    ))}
+                  </Box>
+                )}
+                {/* End */}
+
                 <NavLink className={"link_down"} to={"/contact"}>
                   <MenuItem onClick={toggleMobileMenu}>
                     {t("contactUs")}

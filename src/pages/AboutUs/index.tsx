@@ -16,7 +16,7 @@ function AboutUs() {
   function getAboutData() {
     setStatus("loading");
     axios
-      .get<{ data: AboutType }>(api(`${language}/about`))
+      .get<{ data: AboutType }>(api(`about`))
       .then(({ data }) => {
         console.log({ data });
         setStatus("done");

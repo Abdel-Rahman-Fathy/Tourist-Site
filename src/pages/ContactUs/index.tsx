@@ -14,7 +14,6 @@ import { ContactType } from "types/Contact";
 import Spinner from "pages/SpinnerPage/Spinner";
 
 function ContactUsPage() {
-  //react.hanstarcarrental.com/api/en/contact
   const [status, setStatus] = useState<"none" | "loading" | "done">("none");
   const [contactData, setContactData] = useState<ContactType | undefined>(
     undefined
@@ -24,7 +23,7 @@ function ContactUsPage() {
   function getAboutData() {
     setStatus("loading");
     axios
-      .get<{ data: ContactType }>(api(`${language}/contact`))
+      .get<{ data: ContactType }>(api(`contact`))
       .then(({ data }) => {
         console.log({ data });
         setStatus("done");

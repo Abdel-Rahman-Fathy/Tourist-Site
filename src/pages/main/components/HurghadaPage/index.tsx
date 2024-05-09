@@ -3,33 +3,7 @@ import ButtonChip from "../../../../Components/ButtonChip";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
 import { homeContext } from "../../../HomeContext";
-const trips = [
-  {
-    name: "offers 💰",
-    id: 1,
-    tranlate: "offers",
-  },
-  {
-    name: "Historical trips",
-    id: 2,
-    tranlate: "HistoricalTrips",
-  },
-  {
-    name: "Sea trips",
-    id: 3,
-    tranlate: "SeaTrips",
-  },
-  {
-    name: "Safari and extreme",
-    id: 4,
-    tranlate: "SafariAndExtreme",
-  },
-  {
-    name: "Entertainment and spa",
-    id: 10,
-    tranlate: "EntertainmentAndSpa",
-  },
-];
+
 function HurghadaPage() {
   const [t] = useTranslation();
   const { homeData } = useContext(homeContext);

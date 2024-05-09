@@ -1,10 +1,13 @@
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
-import { motion } from "framer-motion";
-
 import contactUs from "../../../../assets/ContactUs.jpg";
 import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import { useContext } from "react";
+import { homeContext, useHomeData } from "pages/HomeContext";
+import RenderRte from "Components/RenderRte";
 function ContactUs() {
+  const { homeData } = useContext(homeContext);
+  const findObj = useHomeData(homeData?.siteContent);
   return (
     <Stack
       style={{
@@ -27,10 +30,10 @@ function ContactUs() {
                 paddingBottom: "20px",
               }}
             >
-              Conatact Us
+              <RenderRte rte={findObj("Home Contact")?.title} />
             </Typography>
             <Typography variant="body1" sx={{ color: "#fff", width: "70%" }}>
-              You will be answered
+              <RenderRte rte={findObj("Home Contact")?.description} />
             </Typography>
           </Grid>
           <Grid item md={4} xs={6}>
@@ -49,12 +52,26 @@ function ContactUs() {
               </Typography>
             </Box>
             <Box sx={{ margin: "10px 0 0 20px" }}>
-              <Typography variant="body1" sx={{ color: "#fff" }}>
-                +20 100 492 04 73
-              </Typography>
-              <Typography variant="body1" sx={{ color: "#fff" }}>
-                +20 100 944 30 73
-              </Typography>
+              {homeData?.siteInformation?.phone1 && (
+                <Typography variant="body1" sx={{ color: "#fff" }}>
+                  {homeData?.siteInformation?.phone1}
+                </Typography>
+              )}
+              {homeData?.siteInformation?.phone2 && (
+                <Typography variant="body1" sx={{ color: "#fff" }}>
+                  {homeData?.siteInformation?.phone2}
+                </Typography>
+              )}
+              {homeData?.siteInformation?.phone3 && (
+                <Typography variant="body1" sx={{ color: "#fff" }}>
+                  {homeData?.siteInformation?.phone3}
+                </Typography>
+              )}
+              {homeData?.siteInformation?.phone4 && (
+                <Typography variant="body1" sx={{ color: "#fff" }}>
+                  {homeData?.siteInformation?.phone4}
+                </Typography>
+              )}
             </Box>
           </Grid>
           <Grid item md={4} xs={6}>
@@ -69,12 +86,12 @@ function ContactUs() {
                   marginLeft: 5,
                 }}
               >
-                Call Us
+                Email
               </Typography>
             </Box>
             <Box sx={{ margin: "10px 0 0 20px" }}>
               <Typography variant="body1" sx={{ color: "#fff" }}>
-                info@Egyptos-Travel.com
+                {homeData?.siteInformation?.email}
               </Typography>
             </Box>
           </Grid>

@@ -3,7 +3,7 @@ import aboutImg from "../../../../assets/about.png";
 import { useTranslation } from "react-i18next";
 import SquareIcon from "@mui/icons-material/Square";
 import { useContext } from "react";
-import { homeContext } from "pages/HomeContext";
+import { homeContext, useHomeData } from "pages/HomeContext";
 import RenderRte from "Components/RenderRte";
 import { imgPath } from "methods/img";
 function SquuareTypeo({ title }: PropsType) {
@@ -17,7 +17,7 @@ function SquuareTypeo({ title }: PropsType) {
 function AboutPage() {
   const [t] = useTranslation();
   const { homeData } = useContext(homeContext);
-
+  const findObj = useHomeData(homeData?.siteContent);
   return (
     <Stack sx={{ padding: "80px 30px" }}>
       <Grid container>
@@ -48,14 +48,14 @@ function AboutPage() {
               {/* <RenderRte rte={homeData?.siteContent[0]?.title} /> */}
             </Typography>
             <Typography variant="h5" sx={{ py: 2 }}>
-              <RenderRte rte={homeData?.siteContent[0]?.title} />
+              <RenderRte rte={findObj("Home About")?.title} />
             </Typography>
             <Typography sx={{ py: 2 }}>
-              <RenderRte rte={homeData?.siteContent[0]?.description} />
+              <RenderRte rte={findObj("Home About")?.description} />
             </Typography>
-            <SquuareTypeo title={homeData?.siteContent[1].title} />
-            <SquuareTypeo title={homeData?.siteContent[2].title} />
-            <SquuareTypeo title={homeData?.siteContent[3].title} />
+            <SquuareTypeo title={findObj("Home About 1")?.description} />
+            <SquuareTypeo title={findObj("Home About 2")?.description} />
+            <SquuareTypeo title={findObj("Home About 3")?.description} />
             <Box
               sx={{
                 borderTop: "3px solid #EEE",
@@ -70,13 +70,13 @@ function AboutPage() {
                   mb: 1,
                 }}
               >
-                <RenderRte rte={homeData?.siteContent[4].title} />
+                <RenderRte rte={findObj("Home About Years")?.title} />
               </Typography>
               <Typography
                 variant="body1"
                 sx={{ position: "relative", bottom: "50px", left: "15px" }}
               >
-                <RenderRte rte={homeData?.siteContent[4].description} />
+                <RenderRte rte={findObj("Home About Years")?.description} />
               </Typography>
             </Box>
           </Box>
