@@ -37,7 +37,7 @@ function AboutUs() {
       <Container maxWidth={"lg"} sx={{ py: "80px" }}>
         <Grid container>
           <Grid item md={6}>
-            <Box sx={{ width: "440px" }}>
+            <Box sx={{ width: { md: "440px", xs: "300px" } }}>
               <img src={aboutData?.metaImage} width={"100%"} alt="AboutUsImg" />
             </Box>
           </Grid>

@@ -13,10 +13,36 @@ import img1 from "../../assets/WhyUsImage.png";
 import { NavLink, useParams } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
 import { BorderBottom } from "@mui/icons-material";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import axios from "axios";
+import { api } from "methods/api";
 function HurghadaCard() {
   const array1 = Array.from({ length: 5 });
   const { id } = useParams();
-  console.log(id);
+  const [status, setStatus] = useState<"none" | "loading" | "done">("none");
+  // const [blogData, setBlogData] = useState<BlogType | undefined>(undefined);
+  const [t, i18n] = useTranslation();
+  const { language } = i18n;
+  function getAboutData() {
+    setStatus("loading");
+    // <{ data: ContactType }>
+    axios
+      .get(api(`product/${id}`))
+      .then(({ data }) => {
+        // console.log(data.data);
+        setStatus("done");
+        // setBlogData(data.data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+        setStatus("none");
+      });
+  }
+
+  useEffect(() => {
+    getAboutData();
+  }, [id]);
   return (
     <>
       <FixedSection title="Excursions From Hurghada" />

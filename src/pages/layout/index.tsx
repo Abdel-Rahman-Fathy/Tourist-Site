@@ -23,7 +23,7 @@ function Layout() {
           <div className="main-view">
             <Routes>
               <Route path="" element={<MainPages />} />
-              <Route path="product/:id" element={<HurghadaCard />} />
+              <Route path="products/:id" element={<HurghadaCard />} />
               <Route path="about" element={<AboutUs />} />
               <Route path="blog/:id" element={<Blog />} />
               <Route path="contact" element={<ContactUsPage />} />

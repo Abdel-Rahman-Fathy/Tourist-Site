@@ -77,7 +77,7 @@ function ContactUsPage() {
               }}
             >
               <Grid container sx={{ bgcolor: "#fff", width: "80%" }}>
-                <Grid item md={4} sx={{ py: 8 }}>
+                <Grid item md={4} xs={12} sx={{ py: 8 }}>
                   <LocationOnOutlinedIcon
                     sx={{ fontSize: "60px", color: "primary.main", mb: 2 }}
                   />
@@ -94,7 +94,7 @@ function ContactUsPage() {
                     {contactData?.siteInformation.address}
                   </Typography>
                 </Grid>
-                <Grid item md={4} sx={{ py: 8 }}>
+                <Grid item md={4} xs={12} sx={{ py: 8 }}>
                   <PhoneAndroidOutlinedIcon
                     sx={{ fontSize: "60px", color: "primary.main", mb: 2 }}
                   />
@@ -146,7 +146,7 @@ function ContactUsPage() {
                     </Typography>
                   )}
                 </Grid>
-                <Grid item md={4} sx={{ py: 8 }}>
+                <Grid item md={4} xs={12} sx={{ py: 8 }}>
                   <EmailOutlinedIcon
                     sx={{ fontSize: "60px", color: "primary.main", mb: 2 }}
                   />

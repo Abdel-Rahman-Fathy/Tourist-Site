@@ -22,7 +22,12 @@ function HurghadaPage() {
         </Typography>
         <Grid container padding={"30px 0"}>
           {homeData?.Categories.reverse().map((trip) => (
-            <ButtonChip key={trip.id} name={trip.title} id={trip.id} />
+            <ButtonChip
+              key={trip.id}
+              name={trip.title}
+              id={trip.id}
+              link={"products"}
+            />
           ))}
         </Grid>
       </Container>

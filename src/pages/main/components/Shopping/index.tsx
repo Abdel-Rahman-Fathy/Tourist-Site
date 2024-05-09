@@ -31,7 +31,7 @@ function ShoppingPage() {
         </Typography>
         <Grid container padding={"30px 0"}>
           {homeData?.shippings.map((trip) => (
-            <ButtonChip key={trip.id} name={trip.name} id={trip.id} />
+            <ButtonChip key={trip.id} name={trip.name} id={trip.id} link="" />
           ))}
         </Grid>
       </Container>
