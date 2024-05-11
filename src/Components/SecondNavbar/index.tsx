@@ -133,7 +133,7 @@ function SecondNavbar() {
                   </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
-                      {homeData?.Categories.reverse().map((item) => (
+                      {homeData?.Categories.map((item) => (
                         <SubMenu
                           key={item.id}
                           title={item.title}
@@ -227,7 +227,7 @@ function SecondNavbar() {
                       borderRadius: "10px",
                     }}
                   >
-                    {homeData?.Categories.reverse().map((item) => (
+                    {homeData?.Categories.map((item) => (
                       <NavLink
                         key={item.id}
                         onClick={() => {

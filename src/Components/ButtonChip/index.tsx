@@ -2,7 +2,6 @@ import { Box, Button, Grid, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 function ButtonChip({ id, name, link }: PropsType) {
-  console.log(link);
   return (
     <Grid sx={{ p: 1 }} item md={3} xs={12}>
       <Stack

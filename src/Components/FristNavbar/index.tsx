@@ -36,7 +36,7 @@ const flags = [
     path: tur,
   },
   {
-    value: "rus",
+    value: "ru",
     path: rus,
   },
   {

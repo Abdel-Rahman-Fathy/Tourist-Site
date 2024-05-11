@@ -7,9 +7,16 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers";
 import { Dispatch, SetStateAction } from "react";
+import { useForm } from "react-hook-form";
+import { ProductSliderType } from "types/HardProducts";
 
-function DialogForm({ open, setOpen }: PropsType) {
+function DialogForm({ open, setOpen, productInfo }: PropsType) {
+  const { register, reset, handleSubmit } = useForm();
+  const onSubmit = () => {
+    // console.log(data);
+  };
   return (
     <>
       <Dialog
@@ -20,6 +27,7 @@ function DialogForm({ open, setOpen }: PropsType) {
           setOpen(!open);
         }}
         component={"form"}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <DialogTitle
           sx={{
@@ -33,20 +41,32 @@ function DialogForm({ open, setOpen }: PropsType) {
         </DialogTitle>
         <Grid container spacing={3} sx={{ py: 5, px: 3 }}>
           <Grid item md={6}>
-            <TextField label="Name / Family Name" fullWidth size="small" />
+            <TextField
+              label="Name / Family Name"
+              fullWidth
+              size="small"
+              {...register("name")}
+            />
           </Grid>
           <Grid item md={6}>
-            <TextField label="Email" fullWidth size="small" />
+            <TextField
+              label="Email"
+              fullWidth
+              size="small"
+              {...register("email")}
+            />
           </Grid>
           <Grid item md={6}>
             <TextField
               label="Phone (Viber or whatsapp or telegram)"
               fullWidth
               size="small"
+              {...register("phone")}
             />
           </Grid>
           <Grid item md={6}>
-            <TextField label="Trip Date" fullWidth size="small" />
+            {/* <DatePicker label="name" name="startDate" /> */}
+            <TextField label="date" fullWidth size="small" />
           </Grid>
           <Grid item md={12}>
             <Typography
@@ -62,10 +82,20 @@ function DialogForm({ open, setOpen }: PropsType) {
             </Typography>
           </Grid>
           <Grid item md={4}>
-            <TextField label="Adults" fullWidth size="small" />
+            <TextField
+              label="Adults"
+              fullWidth
+              size="small"
+              {...register("adults")}
+            />
           </Grid>
           <Grid item md={4}>
-            <TextField label="Childern (ages 5-11)" fullWidth size="small" />
+            <TextField
+              label="Childern (ages 5-11)"
+              fullWidth
+              size="small"
+              {...register("childern")}
+            />
           </Grid>
           <Grid item md={4}>
             <TextField label="Infant (ages 5-11)" fullWidth size="small" />
@@ -77,10 +107,15 @@ function DialogForm({ open, setOpen }: PropsType) {
               rows={5}
               fullWidth
               size="small"
+              {...register("message")}
             />
           </Grid>
           <Grid item md={12} sx={{ display: "flex", justifyContent: "center" }}>
-            <Button variant="contained" sx={{ borderRadius: "10px" }}>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ borderRadius: "10px" }}
+            >
               Book Now
             </Button>
           </Grid>
@@ -94,4 +129,5 @@ export default DialogForm;
 type PropsType = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  productInfo?: ProductSliderType;
 };

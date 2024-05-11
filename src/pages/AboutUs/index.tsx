@@ -18,7 +18,6 @@ function AboutUs() {
     axios
       .get<{ data: AboutType }>(api(`about`))
       .then(({ data }) => {
-        console.log({ data });
         setStatus("done");
         setAboutData(data.data);
       })

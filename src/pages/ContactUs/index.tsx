@@ -25,7 +25,6 @@ function ContactUsPage() {
     axios
       .get<{ data: ContactType }>(api(`contact`))
       .then(({ data }) => {
-        console.log({ data });
         setStatus("done");
         setContactData(data.data);
       })

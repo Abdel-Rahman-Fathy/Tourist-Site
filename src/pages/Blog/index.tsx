@@ -23,7 +23,6 @@ function Blog() {
     axios
       .get<{ data: BlogType }>(api(`blog/${id}`))
       .then(({ data }) => {
-        console.log(data.data);
         setStatus("done");
         setBlogData(data.data);
       })

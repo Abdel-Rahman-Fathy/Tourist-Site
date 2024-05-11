@@ -21,7 +21,7 @@ function HurghadaPage() {
           {t("ExursionsFromHurghada")}
         </Typography>
         <Grid container padding={"30px 0"}>
-          {homeData?.Categories.reverse().map((trip) => (
+          {homeData?.Categories.map((trip) => (
             <ButtonChip
               key={trip.id}
               name={trip.title}
