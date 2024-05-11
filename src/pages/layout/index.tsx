@@ -11,6 +11,7 @@ import Blog from "pages/Blog";
 import { useContext } from "react";
 import Spinner from "pages/SpinnerPage/Spinner";
 import SliderHurhada from "pages/SliderPage";
+import HotelCard from "pages/HotelCard";
 
 function Layout() {
   const { status } = useContext(homeContext);
@@ -24,6 +25,7 @@ function Layout() {
               <Route path="" element={<MainPages />} />
               <Route path="products/:id" element={<HurghadaCard />} />
               <Route path="product/:id" element={<SliderHurhada />} />
+              <Route path="hotel/:id" element={<HotelCard />} />
               <Route path="about" element={<AboutUs />} />
               <Route path="blog/:id" element={<Blog />} />
               <Route path="contact" element={<ContactUsPage />} />

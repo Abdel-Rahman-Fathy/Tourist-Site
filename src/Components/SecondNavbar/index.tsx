@@ -23,6 +23,7 @@ import "./SecondNavbar.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { homeContext } from "pages/HomeContext";
+import { imgPath } from "methods/img";
 
 function SubMenu({ title, link }: PropsType) {
   return (
@@ -84,6 +85,12 @@ function SecondNavbar() {
   const toggleBlogsSubMenu = () => {
     setBlogsSubMenuOpen(!isBlogsSubMenuOpen);
   };
+  // Hotel sub
+  const [isHotelSubMenuOpen, setHotelSubMenuOpen] = useState(false);
+
+  const toggleHotelSubMenu = () => {
+    setHotelSubMenuOpen(!isHotelSubMenuOpen);
+  };
   return (
     <AppBar
       position="fixed"
@@ -105,7 +112,11 @@ function SecondNavbar() {
               md={4}
             >
               <Box display={"flex"} flexDirection={"row"} marginY={1}>
-                <img src={logo} alt="logo" width={"130px"} />
+                <img
+                  src={imgPath(homeData?.siteInformation.logo)}
+                  alt="logo"
+                  width={"130px"}
+                />
               </Box>
             </Grid>
             <Grid
@@ -149,11 +160,13 @@ function SecondNavbar() {
                   </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
-                      <SubMenu title="offers 💰" link="" />
-                      <SubMenu title="Historical trips" link="" />
-                      <SubMenu title="Sea trips " link="" />
-                      <SubMenu title="Safari and extreme" link="" />
-                      <SubMenu title="Entertainment and spa" link="" />
+                      {homeData?.category_hotels.map((item, index) => (
+                        <SubMenu
+                          key={item.id}
+                          title={item.title}
+                          link={`hotel/${item.id}`}
+                        />
+                      ))}
                     </MenuList>
                   </Paper>
                 </li>
@@ -243,6 +256,36 @@ function SecondNavbar() {
                 )}
                 {/* sec sub item */}
                 <MenuItem> {t("hotales")}</MenuItem>
+                <MenuItem onClick={toggleHotelSubMenu}>
+                  {t("hotales")}
+                  {isHotelSubMenuOpen ? (
+                    <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  ) : (
+                    <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  )}
+                </MenuItem>
+                {isHotelSubMenuOpen && (
+                  <Box
+                    sx={{
+                      backgroundColor: "primary.main",
+                      mx: 1,
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {homeData?.category_hotels.map((item) => (
+                      <NavLink
+                        key={item.id}
+                        onClick={() => {
+                          toggleMobileMenu();
+                          toggleHotelSubMenu();
+                        }}
+                        to={`hotel/${item.id}`}
+                      >
+                        <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
+                      </NavLink>
+                    ))}
+                  </Box>
+                )}
                 {/* third sub item */}
                 <MenuItem onClick={toggleShoppingSubMenu}>
                   {t("shopping")}

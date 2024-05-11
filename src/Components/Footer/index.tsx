@@ -10,6 +10,9 @@ import {
 import "./footer.css";
 import footer from "../../assets/FooterImg.png";
 import { makeStyles } from "@mui/styles";
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { homeContext } from "pages/HomeContext";
 
 const useStyles = makeStyles({
   root: {
@@ -24,6 +27,7 @@ const useStyles = makeStyles({
 });
 function Footer() {
   const classes = useStyles();
+  const { homeData } = useContext(homeContext);
 
   return (
     <Stack bgcolor="primary.main" padding={"80px 0px 80px 0px"}>
@@ -48,9 +52,15 @@ function Footer() {
               best service.
             </Typography>
             <Box>
-              <i className="bi bi-facebook"></i>
-              <i className="bi bi-youtube"></i>
-              <i className="bi bi-instagram"></i>
+              <NavLink to={homeData?.socialMedia[0].link || ""}>
+                <i className="bi bi-facebook"></i>
+              </NavLink>
+              <NavLink to={homeData?.socialMedia[1].link || ""}>
+                <i className="bi bi-youtube"></i>
+              </NavLink>
+              <NavLink to={homeData?.socialMedia[2].link || ""}>
+                <i className="bi bi-instagram"></i>
+              </NavLink>
               <i className="bi bi-tiktok"></i>
             </Box>
           </Grid>

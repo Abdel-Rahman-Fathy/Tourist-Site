@@ -1,6 +1,5 @@
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import FixedSection from "Components/FixedSection";
-import img from "../../assets/imgForm.jpg";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CardRight from "./CardRight";
 import { useEffect, useState } from "react";
@@ -19,7 +18,6 @@ function Blog() {
   const { language } = i18n;
   function getAboutData() {
     setStatus("loading");
-    // <{ data: ContactType }>
     axios
       .get<{ data: BlogType }>(api(`blog/${id}`))
       .then(({ data }) => {
@@ -56,29 +54,8 @@ function Blog() {
             <Typography variant="h4" sx={{ my: 2, fontWeight: "600" }}>
               <RenderRte rte={blogData?.blog.title} />
             </Typography>
-            <Typography variant="body1">
-              How to plan a trip to Egypt is a question that needs to be
-              answered in great detail. This article's main purpose is to offer
-              every traveler all the necessary information to have the most
-              incredible vacation in Egypt. This article was written by a number
-              of highly skilled and expert tour operators, tour guides, and
-              travel consultants who have more than two decades of experience in
-              the field creating the most ideal vacation trips in Egypt.Quoted
-              from one of our dear guests who said that Egypt has been a fantasy
-              novel that had to be read to sleep peacefully, a tour to Egypt
-              needs to be arranged even at least once in life to live the
-              adventure that you have always heard of and wanted to try. What
-              distinguishes Egypt from any other country all over the world is
-              the history that was created by its great pharaohs, kings, and
-              rulers via its different ages and eras.While planning a tour to
-              your second country ‘Egypt’, many questions may come to your mind,
-              how you will arrange your accommodation there? Is it safe enough
-              to travel alone or among a group! Where should you go and how much
-              time you should spend on each site? What are the things to avoid?
-              Things to know about before traveling to Egypt!! And many more
-              questions that we will try via our next articles to clarify to our
-              dear travelers to make sure that you have the key to knowing all
-              about the basic factors for how to plan a trip to Egypt.
+            <Typography>
+              <RenderRte rte={blogData?.blog.description} />
             </Typography>
           </Grid>
           <CardRight />

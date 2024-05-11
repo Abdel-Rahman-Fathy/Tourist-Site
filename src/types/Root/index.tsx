@@ -19,6 +19,7 @@ export interface Root {
   sliders: Slider[];
   Categories: Category[];
   shippings: Shipping[];
+  category_hotels: HotelCat[];
 }
 
 export interface SiteInformation {
@@ -69,6 +70,13 @@ export interface SiteInformation {
   home_about_description: string;
   home_about_image: string;
 }
+export interface HotelCat {
+  id: string;
+  title: string;
+  metaTags: string;
+  description: string;
+  image: string;
+}
 
 export interface SiteContent {
   id: number;
@@ -93,6 +101,7 @@ export interface Blog {
   description: string;
   metaDescription: unknown;
   image: string;
+  created_at: string;
 }
 
 export interface Brand {

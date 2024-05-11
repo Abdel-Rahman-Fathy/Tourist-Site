@@ -21,6 +21,7 @@ import useWindowScrollPosition from "@rooks/use-window-scroll-position";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/material/styles";
 import { homeContext } from "pages/HomeContext";
+import { NavLink } from "react-router-dom";
 
 const flags = [
   {
@@ -62,9 +63,6 @@ function FristNavbar() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [navbarPosition, setNavbarPosition] = useState("");
   const { homeData } = useContext(homeContext);
-  // const handleChange = (event: SelectChangeEvent) => {
-  //   setCountary(event.target.value);
-  // };
   const { scrollY } = useWindowScrollPosition();
   const theme = useTheme();
 
@@ -106,18 +104,18 @@ function FristNavbar() {
               flexDirection={"row"}
               alignItems={"center"}
               item
-              md={6}
+              md={7}
             >
               <Box display={"flex"} flexDirection={"row"}>
-                <MailOutlineOutlinedIcon sx={{ mr: 1 }} />
+                <MailOutlineOutlinedIcon sx={{ mx: 0.3 }} />
                 <Typography variant="body1" color={"#fff"}>
-                  info@Egyptos-Travel.com |
+                  {homeData?.siteInformation.email} |
                 </Typography>
               </Box>
               <Box display={"flex"} flexDirection={"row"}>
-                <AddLocationOutlinedIcon sx={{ mr: 1 }} />
+                <AddLocationOutlinedIcon sx={{ mx: 0.3 }} />
                 <Typography variant="body1" color={"#fff"}>
-                  Hurghada, Egypt
+                  {homeData?.siteInformation.address}
                 </Typography>
               </Box>
             </Grid>
@@ -128,11 +126,17 @@ function FristNavbar() {
               alignItems={"center"}
               gap={2}
               item
-              md={4}
+              md={3}
             >
-              <i className="bi bi-facebook"></i>
-              <i className="bi bi-youtube"></i>
-              <i className="bi bi-instagram"></i>
+              <NavLink to={homeData?.socialMedia[0].link || ""}>
+                <i className="bi bi-facebook"></i>
+              </NavLink>
+              <NavLink to={homeData?.socialMedia[1].link || ""}>
+                <i className="bi bi-youtube"></i>
+              </NavLink>
+              <NavLink to={homeData?.socialMedia[2].link || ""}>
+                <i className="bi bi-instagram"></i>
+              </NavLink>
               <i className="bi bi-tiktok"></i>
             </Grid>
             <Grid
