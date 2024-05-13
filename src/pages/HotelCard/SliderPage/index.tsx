@@ -50,7 +50,18 @@ function SliderHotel() {
           >
             <SliderAndTableHotel cardHotelInfo={cardHotelInfo} />
             <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
-              <Button variant="contained">Book Now</Button>
+              <Button
+                target="_blank"
+                variant="contained"
+                href=""
+                sx={{
+                  borderRadius: "10px",
+                  backgroundColor: "#0052a4",
+                  transition: "all .3s",
+                }}
+              >
+                View Video
+              </Button>
             </Box>
           </Stack>
         </>

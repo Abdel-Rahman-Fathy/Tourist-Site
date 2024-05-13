@@ -63,7 +63,9 @@ function Footer() {
               <NavLink to={homeData?.socialMedia[2].link || ""}>
                 <FontAwesomeIcon icon={faInstagram} className="icons" />
               </NavLink>
-              <FontAwesomeIcon icon={faTiktok} className="icons" />
+              <NavLink to={homeData?.socialMedia[3]?.link || ""}>
+                <FontAwesomeIcon icon={faTiktok} className="icons" />
+              </NavLink>
             </Box>
           </Grid>
           <Grid item md={6}>
@@ -78,7 +80,7 @@ function Footer() {
             </Typography>
             <TextField
               className={classes.root}
-              placeholder="Password"
+              placeholder="Email"
               variant="outlined"
               sx={{ color: "red", width: "80%" }}
             />

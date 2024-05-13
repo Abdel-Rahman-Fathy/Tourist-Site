@@ -18,7 +18,7 @@ function FixedSection({ title }: { title?: string }) {
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
         padding: "100px 0px",
-        height: "95vh",
+        height: "85vh",
       }}
     >
       <Typography

@@ -1,5 +1,6 @@
 .secNavbar {
   display: flex;
+  align-items: center !important;
 }
 .secNavbar li {
   margin: 0 10px;
@@ -9,13 +10,10 @@
 }
 .secNavbar li .link {
   font-weight: 600;
-  font-size: 17px;
+  font-size: 1.1rem;
   color: #0052a4;
   font-family: sans-serif;
   transition: ease all 0.3s;
-  height: 80px;
-  display: inline-block;
-  padding-top: 25px;
   cursor: pointer;
 }
 .secNavbar li .link:hover {
@@ -30,11 +28,10 @@
 }
 .secNavbar .subMenu {
   position: absolute;
-  /* width: 300px; */
   background-color: #fff;
   box-shadow: 0 20px 45px #00000020;
-  margin-top: 50px;
-  z-index: -999;
+  margin-top: 100px;
+  z-index: 999;
   height: 0;
   overflow: hidden;
   transition: all ease 0.3s;

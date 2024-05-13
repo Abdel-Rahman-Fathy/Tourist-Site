@@ -156,11 +156,8 @@ function HotelCard() {
                             variant="contained"
                             sx={{
                               borderRadius: "10px",
-                              backgroundColor: "rgba(40, 140, 160)",
+                              backgroundColor: "#0052a4",
                               transition: "all .3s",
-                              "&:hover": {
-                                backgroundColor: "rgb(19, 113, 160)",
-                              },
                             }}
                             onClick={() => {
                               navigate(`/hotel/${card.id}`);
@@ -174,7 +171,7 @@ function HotelCard() {
                         sx={{
                           width: 0,
                           height: "5px",
-                          backgroundColor: "rgba(40, 140, 160)",
+                          backgroundColor: "#0052a4",
                           transition: "all .8s",
                         }}
                         className={"line"}

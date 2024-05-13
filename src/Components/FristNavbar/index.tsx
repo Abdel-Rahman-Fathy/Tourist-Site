@@ -31,35 +31,43 @@ const flags = [
   {
     value: "en",
     path: en,
-  },
-  {
-    value: "ar",
-    path: eg,
-  },
-  {
-    value: "tu",
-    path: tur,
+    name: "EN",
   },
   {
     value: "ru",
     path: rus,
+    name: "RUS",
   },
   {
     value: "ge",
     path: Ger,
-  },
-  {
-    value: "hu",
-    path: Hun,
+    name: "GER",
   },
   {
     value: "po",
     path: pol,
+    name: "POL",
+  },
+
+  {
+    value: "hu",
+    path: Hun,
+    name: "HUN",
   },
   {
-    value: "bu",
-    path: pol,
+    value: "tu",
+    path: tur,
+    name: "TUR",
   },
+
+  // {
+  //   value: "bu",
+  //   path: pol,
+  // },
+  // {
+  //   value: "ar",
+  //   path: eg,
+  // },
 ];
 
 function FristNavbar() {
@@ -141,7 +149,9 @@ function FristNavbar() {
               <NavLink to={homeData?.socialMedia[2].link || ""}>
                 <FontAwesomeIcon icon={faInstagram} className="icons" />
               </NavLink>
-              <FontAwesomeIcon icon={faTiktok} className="icons" />
+              <NavLink to={homeData?.socialMedia[3]?.link || ""}>
+                <FontAwesomeIcon icon={faTiktok} className="icons" />
+              </NavLink>
             </Grid>
             <Grid
               display={"flex"}
@@ -170,7 +180,7 @@ function FristNavbar() {
                         variant="body1"
                         sx={{ color: "#000", fontSize: "18px" }}
                       >
-                        {item.value}
+                        {item.name}
                       </Typography>
                     </Box>
                   </MenuItem>

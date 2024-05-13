@@ -75,6 +75,8 @@ function HurghadaCard() {
                     >
                       <Stack sx={{ position: "relative" }}>
                         <Box
+                          component={NavLink}
+                          to={`/product/${card.id}`}
                           sx={{
                             overflow: "hidden",
                             "&:hover img": {
@@ -94,30 +96,30 @@ function HurghadaCard() {
                             alt=""
                           />
                         </Box>
-                        {/* <Typography
-                      variant="h6"
-                      sx={{
-                        backgroundColor: "primary.main",
-                        color: "#fff",
-                        textAlign: "center",
-                        position: "absolute",
-                        bottom: "0",
-                        left: "50%",
-                        fontWeight: "700",
-                        p: "3px 20px",
-                        transform: "translateY(50%) translateX(-50%)",
-                        borderRadius: "10px",
-                      }}
-                    >
-                      18 $
-                    </Typography> */}
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            backgroundColor: "primary.main",
+                            color: "#fff",
+                            textAlign: "center",
+                            position: "absolute",
+                            bottom: "0",
+                            left: "50%",
+                            fontWeight: "700",
+                            p: "3px 20px",
+                            transform: "translateY(50%) translateX(-50%)",
+                            borderRadius: "10px",
+                          }}
+                        >
+                          {card.price}
+                        </Typography>
                       </Stack>
 
                       <CardContent>
                         <Typography
                           variant="h6"
                           component={NavLink}
-                          to="#"
+                          to={`/product/${card.id}`}
                           sx={{
                             fontWeight: 700,
                             marginY: 1,
@@ -156,11 +158,8 @@ function HurghadaCard() {
                             variant="contained"
                             sx={{
                               borderRadius: "10px",
-                              backgroundColor: "rgba(40, 140, 160)",
+                              backgroundColor: "#0052a4",
                               transition: "all .3s",
-                              "&:hover": {
-                                backgroundColor: "rgb(19, 113, 160)",
-                              },
                             }}
                             onClick={() => {
                               navigate(`/product/${card.id}`);
@@ -174,7 +173,7 @@ function HurghadaCard() {
                         sx={{
                           width: 0,
                           height: "5px",
-                          backgroundColor: "rgba(40, 140, 160)",
+                          backgroundColor: "#0052a4",
                           transition: "all .8s",
                         }}
                         className={"line"}

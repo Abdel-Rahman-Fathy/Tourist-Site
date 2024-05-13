@@ -102,7 +102,7 @@ function SecondNavbar() {
     >
       <Container maxWidth="lg">
         <Toolbar disableGutters>
-          <Grid container spacing={3}>
+          <Grid container>
             <Grid
               display={"flex"}
               flexDirection={"row"}
@@ -120,11 +120,12 @@ function SecondNavbar() {
             </Grid>
             <Grid
               flexDirection={"row"}
-              alignItems={"center"}
-              gap={2}
               item
               md={8}
-              sx={{ display: { md: "flex", xs: "none" } }}
+              sx={{
+                display: { md: "flex", xs: "none" },
+                justifyContent: "center",
+              }}
             >
               <ul className="secNavbar">
                 <li>
@@ -138,9 +139,9 @@ function SecondNavbar() {
                   </NavLink>
                 </li>
                 <li>
-                  <Typography className={"link"}>
+                  <NavLink className={"link"} to={""}>
                     {t("main.ExursionsFromHurghada")}
-                  </Typography>
+                  </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
                       {homeData?.Categories.map((item) => (
@@ -154,7 +155,10 @@ function SecondNavbar() {
                   </Paper>
                 </li>
                 <li>
-                  <Typography className={"link"}>{t("main.Hotels")}</Typography>
+                  <NavLink className={"link"} to={""}>
+                    {t("main.Hotels")}{" "}
+                  </NavLink>
+
                   <Paper className="subMenu">
                     <MenuList>
                       {homeData?.category_hotels.map((item, index) => (
@@ -184,7 +188,9 @@ function SecondNavbar() {
                   </Paper>
                 </li>
                 <li>
-                  <Typography className="link">{t("main.Blog")}</Typography>
+                  <NavLink className={"link"} to={""}>
+                    {t("main.Blog")}
+                  </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
                       {homeData?.blogs.map((item) => (
