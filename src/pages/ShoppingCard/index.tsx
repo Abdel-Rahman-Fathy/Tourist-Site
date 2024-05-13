@@ -21,14 +21,14 @@ import { HardProductsType } from "types/HardProducts";
 import RenderRte from "Components/RenderRte";
 import Spinner from "pages/SpinnerPage/Spinner";
 import { imgPath } from "methods/img";
-import { HotelCardType } from "types/Hotel";
-function HotelCard() {
+import { ShoppingCardType } from "types/Shopping";
+function ShopCard() {
   const [t, i18n] = useTranslation();
   const { language } = i18n;
   const navigate = useNavigate();
   const { id } = useParams();
   const [status, setStatus] = useState<"none" | "loading" | "done">("none");
-  const [products, setProducts] = useState<HotelCardType | undefined>(
+  const [products, setProducts] = useState<ShoppingCardType | undefined>(
     undefined
   );
 
@@ -36,10 +36,11 @@ function HotelCard() {
     setStatus("loading");
     //
     axios
-      .get<{ data: HotelCardType }>(api(`hotels/${id}`))
+      .get<{ data: ShoppingCardType }>(api(`shop/${id}`))
       .then(({ data }) => {
         setStatus("done");
         setProducts(data.data);
+        console.log("data", products);
       })
       .catch((error) => {
         console.log("error", error);
@@ -64,7 +65,7 @@ function HotelCard() {
             </Typography>
             <Container>
               <Grid container spacing={2}>
-                {products?.hotels?.map((card, index) => (
+                {products?.shops?.map((card, index) => (
                   <Grid item md={4} key={index}>
                     <Card
                       sx={{
@@ -87,7 +88,7 @@ function HotelCard() {
                           }}
                         >
                           <img
-                            src={imgPath(card?.metaImage[0].image)}
+                            src={imgPath(card?.images[0].image)}
                             style={{
                               width: "100%",
                               height: "100%",
@@ -119,56 +120,39 @@ function HotelCard() {
                       <CardContent>
                         <Typography
                           variant="h6"
-                          component={NavLink}
-                          to="#"
                           sx={{
                             fontWeight: 700,
                             marginY: 0.5,
                             display: "inline-block",
                           }}
                         >
-                          {card.title}
+                          {card.name}
                         </Typography>
                         <Box
+                          color={"warning.main"}
                           sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            marginBottom: 1,
+                            borderBottom: "dashed 1px #000",
+                            pb: 2,
                           }}
                         >
-                          {Array.from({ length: card.stars }, (_, i) => (
-                            <StarIcon
-                              key={i}
-                              sx={{ color: "warning.main", fontSize: 20 }}
-                            />
-                          ))}
+                          <StarIcon />
+                          <StarIcon />
+                          <StarIcon />
+                          <StarIcon />
+                          <StarIcon />
                         </Box>
-                        <Typography variant="body1" sx={{ py: 1 }}>
-                          {card.stars} stars
+                        <Typography variant="body1" sx={{ my: 1 }}>
+                          1 kg
                         </Typography>
-                        <Box
+                        <Typography
+                          variant="h4"
                           sx={{
-                            display: "flex",
-                            justifyContent: "center",
+                            fontWeight: 600,
+                            color: "rgba(40, 140, 160)",
                           }}
                         >
-                          <Button
-                            variant="contained"
-                            sx={{
-                              borderRadius: "10px",
-                              backgroundColor: "rgba(40, 140, 160)",
-                              transition: "all .3s",
-                              "&:hover": {
-                                backgroundColor: "rgb(19, 113, 160)",
-                              },
-                            }}
-                            onClick={() => {
-                              navigate(`/hotel/${card.id}`);
-                            }}
-                          >
-                            READ MORE
-                          </Button>
-                        </Box>
+                          {card.cost}
+                        </Typography>
                       </CardContent>
                       <Box
                         sx={{
@@ -193,4 +177,4 @@ function HotelCard() {
   );
 }
 
-export default HotelCard;
+export default ShopCard;

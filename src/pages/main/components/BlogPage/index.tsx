@@ -74,6 +74,7 @@ function BlogPage() {
                     // component={NavLink}
                     // to="#"
                     sx={{
+                      fontSize: "17px",
                       fontWeight: 600,
                       "&:hover": {
                         letterSpacing: ".3px",
@@ -81,7 +82,7 @@ function BlogPage() {
                       transition: "all .4s",
                     }}
                   >
-                    Pyramids of Giza
+                    {item.title}
                   </Typography>
                   <Typography
                     variant="body1"

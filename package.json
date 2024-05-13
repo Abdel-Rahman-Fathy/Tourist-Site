@@ -6,6 +6,7 @@
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@hookform/resolvers": "^3.3.4",
     "@mui/base": "^5.0.0-beta.40",
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "5.15.14",
@@ -22,12 +23,14 @@
     "@types/react-dom": "^18.2.22",
     "axios": "^1.6.8",
     "bootstrap-icons": "^1.11.3",
+    "dayjs": "^1.11.11",
     "framer-motion": "^11.0.28",
     "i": "^0.3.7",
     "i18next": "^23.10.1",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-http-backend": "^2.5.0",
     "js-cookie": "^3.0.5",
+    "notistack": "^3.0.1",
     "npm": "^10.5.1",
     "react": "^18.2.0",
     "react-animated-numbers": "^0.18.0",
@@ -40,7 +43,8 @@
     "react-simple-image-slider": "^2.4.1",
     "sass": "^1.72.0",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zod": "^3.23.8"
   },
   "scripts": {
     "start": "react-scripts start",

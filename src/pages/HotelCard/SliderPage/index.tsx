@@ -1,32 +1,31 @@
 import { Box, Button, Stack } from "@mui/material";
 import FixedSection from "Components/FixedSection";
 import { useEffect, useState } from "react";
-import DialogForm from "./DialogForm";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { api } from "methods/api";
 import axios from "axios";
 import { ProductSliderType } from "types/HardProducts";
-import SliderAndTable from "./SliderAndTable";
 import Spinner from "pages/SpinnerPage/Spinner";
+import SliderAndTableHotel from "./SliderAndTable";
+import { HotelSliderType } from "types/Hotel";
 
-function SliderHurhada() {
+function SliderHotel() {
   const [t, i18n] = useTranslation();
   const { language } = i18n;
   const { id } = useParams();
-  const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<"none" | "loading" | "done">("none");
-  const [productInfo, setProductInfo] = useState<ProductSliderType | undefined>(
-    undefined
-  );
+  const [cardHotelInfo, setcardHotelInfo] = useState<
+    HotelSliderType | undefined
+  >(undefined);
   function getProductData() {
     setStatus("loading");
     //
     axios
-      .get<{ data: ProductSliderType }>(api(`product/${id}`))
+      .get<{ data: HotelSliderType }>(api(`hotel/${id}`))
       .then(({ data }) => {
         setStatus("done");
-        setProductInfo(data.data);
+        setcardHotelInfo(data.data);
       })
       .catch((error) => {
         console.log("error", error);
@@ -49,19 +48,11 @@ function SliderHurhada() {
               margin: " 0 auto",
             }}
           >
-            <SliderAndTable productInfo={productInfo} />
+            <SliderAndTableHotel cardHotelInfo={cardHotelInfo} />
             <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  setOpen(!open);
-                }}
-              >
-                Book Now
-              </Button>
+              <Button variant="contained">Book Now</Button>
             </Box>
           </Stack>
-          <DialogForm open={open} setOpen={setOpen} />
         </>
       ) : (
         <Spinner />
@@ -70,4 +61,4 @@ function SliderHurhada() {
   );
 }
 
-export default SliderHurhada;
+export default SliderHotel;

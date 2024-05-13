@@ -33,7 +33,7 @@ const flags = [
     path: eg,
   },
   {
-    value: "tur",
+    value: "tu",
     path: tur,
   },
   {
@@ -41,20 +41,20 @@ const flags = [
     path: rus,
   },
   {
-    value: "Ger",
+    value: "ge",
     path: Ger,
   },
   {
-    value: "Hun",
+    value: "hu",
     path: Hun,
   },
   {
-    value: "pol",
+    value: "po",
     path: pol,
   },
   {
-    value: "romania",
-    path: romania,
+    value: "bu",
+    path: pol,
   },
 ];
 

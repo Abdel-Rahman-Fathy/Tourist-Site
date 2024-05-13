@@ -1,6 +1,19 @@
-import { Button, Container, Grid, Stack, TextField } from "@mui/material";
+import {
+  Button,
+  Container,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import imgForm from "../../assets/imgForm.jpg";
 import { withStyles } from "@mui/styles";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, SubmitHandler } from "react-hook-form";
+import z from "zod";
+import axios from "axios";
+import { SnackbarProvider, useSnackbar } from "notistack";
+import { api } from "methods/api";
 const styles = {
   root: {
     "& .MuiInputLabel-root": {
@@ -16,6 +29,33 @@ const styles = {
 };
 const CustomTextField = withStyles(styles)(TextField);
 function FormPage() {
+  const contactSchema = z.object({
+    name: z.string().min(1, { message: "Name is required" }),
+    email: z.string().min(1, { message: "Email is required" }).email(),
+    phone: z.string().min(1, { message: "phone is required" }),
+    subject: z.string().min(1, { message: "subject is required" }),
+    message: z.string().min(1, { message: "message is required" }),
+  });
+  type InputContact = z.infer<typeof contactSchema>;
+  const { enqueueSnackbar } = useSnackbar();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<InputContact>({
+    mode: "onChange",
+    resolver: zodResolver(contactSchema),
+  });
+  const onSubmit: SubmitHandler<InputContact> = (data) => {
+    axios
+      .post(api(`contact`), { ...data })
+      .then(() => {
+        enqueueSnackbar("تم حذف الخدمة بنجاح");
+      })
+      .catch((err) => {
+        enqueueSnackbar("تعذر في حذف الخدمة", { variant: "error" });
+      });
+  };
   return (
     <Stack
       sx={{
@@ -29,52 +69,88 @@ function FormPage() {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container component={"form"} spacing={3}>
+        <Grid
+          container
+          component={"form"}
+          onSubmit={handleSubmit(onSubmit)}
+          spacing={3}
+        >
           <Grid item xs={12} md={6}>
             <CustomTextField
+              {...register("name")}
               variant="filled"
               label={"Name"}
               fullWidth
-              required
             />
+            {errors.name && (
+              <Typography variant="body2" sx={{ color: "error.main" }}>
+                {errors.name.message}
+              </Typography>
+            )}
           </Grid>
           <Grid item xs={12} md={6}>
             <CustomTextField
+              {...register("email")}
               variant="filled"
               label={"Email"}
               fullWidth
-              required
             />
+            {errors.email && (
+              <Typography variant="body2" sx={{ color: "error.main" }}>
+                {errors.email.message}
+              </Typography>
+            )}
           </Grid>
           <Grid item xs={12} md={6}>
             <CustomTextField
+              {...register("subject")}
               variant="filled"
               label={"Subject"}
               fullWidth
-              required
             />
+            {errors.subject && (
+              <Typography variant="body2" sx={{ color: "error.main" }}>
+                {errors.subject.message}
+              </Typography>
+            )}
           </Grid>
           <Grid item xs={12} md={6}>
             <CustomTextField
+              {...register("phone")}
               variant="filled"
               label={"Phone"}
               fullWidth
-              required
             />
+            {errors.phone && (
+              <Typography variant="body2" sx={{ color: "error.main" }}>
+                {errors.phone.message}
+              </Typography>
+            )}
           </Grid>
           <Grid item xs={12}>
             <CustomTextField
+              {...register("message")}
               variant="filled"
-              label={"Massage"}
+              label={"Message"}
               fullWidth
-              required
               multiline
               rows={5}
             />
+            {errors.message && (
+              <Typography variant="body2" sx={{ color: "error.main" }}>
+                {errors.message.message}
+              </Typography>
+            )}
           </Grid>
           <Grid item md={12}>
             <Stack alignItems={"center"}>
-              <Button variant="contained" size="large" color="secondary">
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                color="secondary"
+                disabled={isSubmitting}
+              >
                 Send
               </Button>
             </Stack>

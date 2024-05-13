@@ -139,9 +139,9 @@ function SecondNavbar() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className={"link"} to={""}>
+                  <Typography className={"link"}>
                     {t("ExursionsFromHurghada")}
-                  </NavLink>
+                  </Typography>
                   <Paper className="subMenu">
                     <MenuList>
                       {homeData?.Categories.map((item) => (
@@ -155,16 +155,14 @@ function SecondNavbar() {
                   </Paper>
                 </li>
                 <li>
-                  <NavLink className={"link"} to={""}>
-                    {t("hotales")}
-                  </NavLink>
+                  <Typography className={"link"}>{t("hotales")}</Typography>
                   <Paper className="subMenu">
                     <MenuList>
                       {homeData?.category_hotels.map((item, index) => (
                         <SubMenu
                           key={item.id}
                           title={item.title}
-                          link={`hotel/${item.id}`}
+                          link={`hotels/${item.id}`}
                         />
                       ))}
                     </MenuList>
@@ -176,11 +174,13 @@ function SecondNavbar() {
                   </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
-                      <SubMenu title="offers 💰" link="" />
-                      <SubMenu title="Historical trips" link="" />
-                      <SubMenu title="Sea trips " link="" />
-                      <SubMenu title="Safari and extreme" link="" />
-                      <SubMenu title="Entertainment and spa" link="" />
+                      {homeData?.shippings.map((item, index) => (
+                        <SubMenu
+                          key={item.id}
+                          title={item.name}
+                          link={`shopping/${item.id}`}
+                        />
+                      ))}
                     </MenuList>
                   </Paper>
                 </li>
@@ -279,7 +279,7 @@ function SecondNavbar() {
                           toggleMobileMenu();
                           toggleHotelSubMenu();
                         }}
-                        to={`hotel/${item.id}`}
+                        to={`hotels/${item.id}`}
                       >
                         <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
                       </NavLink>
@@ -310,7 +310,7 @@ function SecondNavbar() {
                           toggleMobileMenu();
                           toggleShoppingSubMenu();
                         }}
-                        to={`product/${item.id}`}
+                        to={`shopping/${item.id}`}
                       >
                         <MenuItem sx={{ color: "#fff" }}>{item.name}</MenuItem>
                       </NavLink>
@@ -341,7 +341,7 @@ function SecondNavbar() {
                           toggleMobileMenu();
                           toggleBlogsSubMenu();
                         }}
-                        to={`blogs/${item.id}`}
+                        to={`blog/${item.id}`}
                       >
                         <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
                       </NavLink>
