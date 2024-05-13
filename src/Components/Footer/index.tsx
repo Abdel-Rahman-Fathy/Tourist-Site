@@ -10,9 +10,14 @@ import {
 import "./footer.css";
 import footer from "../../assets/FooterImg.png";
 import { makeStyles } from "@mui/styles";
-import { NavLink } from "react-router-dom";
-import { useContext } from "react";
 import { homeContext, useHomeData } from "pages/HomeContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTiktok } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -50,15 +55,15 @@ function Footer() {
             </Typography>
             <Box>
               <NavLink to={homeData?.socialMedia[0].link || ""}>
-                <i className="bi bi-facebook"></i>
+                <FontAwesomeIcon icon={faFacebook} className="icons" />
               </NavLink>
               <NavLink to={homeData?.socialMedia[1].link || ""}>
-                <i className="bi bi-youtube"></i>
+                <FontAwesomeIcon icon={faYoutube} className="icons" />
               </NavLink>
               <NavLink to={homeData?.socialMedia[2].link || ""}>
-                <i className="bi bi-instagram"></i>
+                <FontAwesomeIcon icon={faInstagram} className="icons" />
               </NavLink>
-              <i className="bi bi-tiktok"></i>
+              <FontAwesomeIcon icon={faTiktok} className="icons" />
             </Box>
           </Grid>
           <Grid item md={6}>

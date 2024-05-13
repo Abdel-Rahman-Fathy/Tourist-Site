@@ -22,7 +22,11 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/material/styles";
 import { homeContext } from "pages/HomeContext";
 import { NavLink } from "react-router-dom";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTiktok } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 const flags = [
   {
     value: "en",
@@ -129,15 +133,15 @@ function FristNavbar() {
               md={3}
             >
               <NavLink to={homeData?.socialMedia[0].link || ""}>
-                <i className="bi bi-facebook"></i>
+                <FontAwesomeIcon icon={faFacebook} className="icons" />
               </NavLink>
               <NavLink to={homeData?.socialMedia[1].link || ""}>
-                <i className="bi bi-youtube"></i>
+                <FontAwesomeIcon icon={faYoutube} className="icons" />
               </NavLink>
               <NavLink to={homeData?.socialMedia[2].link || ""}>
-                <i className="bi bi-instagram"></i>
+                <FontAwesomeIcon icon={faInstagram} className="icons" />
               </NavLink>
-              <i className="bi bi-tiktok"></i>
+              <FontAwesomeIcon icon={faTiktok} className="icons" />
             </Grid>
             <Grid
               display={"flex"}
