@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   AppBar,
   Box,
@@ -10,17 +10,19 @@ import {
   IconButton,
   Paper,
   MenuList,
+  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import useWindowScrollPosition from "@rooks/use-window-scroll-position";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import logo from "../../assets/logo.png";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./SecondNavbar.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { homeContext } from "pages/HomeContext";
+import { imgPath } from "methods/img";
 
 function SubMenu({ title, link }: PropsType) {
   return (
@@ -37,6 +39,8 @@ function SubMenu({ title, link }: PropsType) {
 
 function SecondNavbar() {
   const [t] = useTranslation();
+  const { homeData } = useContext(homeContext);
+
   const theme = useTheme();
   const { scrollY } = useWindowScrollPosition();
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -59,18 +63,39 @@ function SecondNavbar() {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+
+  // Handle frist sub item
+  const [
+    isExursionsFromHurghadaSubMenuOpen,
+    setIsExursionsFromHurghadaSubMenuOpen,
+  ] = useState(false);
+  const toggleExursionsSubMenu = () => {
+    setIsExursionsFromHurghadaSubMenuOpen(!isExursionsFromHurghadaSubMenuOpen);
+  };
+  // secend sub
   const [isShoppingSubMenuOpen, setShoppingSubMenuOpen] = useState(false);
 
   const toggleShoppingSubMenu = () => {
     setShoppingSubMenuOpen(!isShoppingSubMenuOpen);
   };
+  // Blogs sub
+  const [isBlogsSubMenuOpen, setBlogsSubMenuOpen] = useState(false);
 
+  const toggleBlogsSubMenu = () => {
+    setBlogsSubMenuOpen(!isBlogsSubMenuOpen);
+  };
+  // Hotel sub
+  const [isHotelSubMenuOpen, setHotelSubMenuOpen] = useState(false);
+
+  const toggleHotelSubMenu = () => {
+    setHotelSubMenuOpen(!isHotelSubMenuOpen);
+  };
   return (
     <AppBar
       position="fixed"
       sx={{
         top: navBackground,
-        transition: "2s all ease",
+        transition: ".2s all ease",
         background: "background",
         color: "primary.main",
       }}
@@ -86,7 +111,11 @@ function SecondNavbar() {
               md={4}
             >
               <Box display={"flex"} flexDirection={"row"} marginY={1}>
-                <img src={logo} alt="logo" width={"130px"} />
+                <img
+                  src={imgPath(homeData?.siteInformation.logo)}
+                  alt="logo"
+                  width={"130px"}
+                />
               </Box>
             </Grid>
             <Grid
@@ -100,73 +129,77 @@ function SecondNavbar() {
               <ul className="secNavbar">
                 <li>
                   <NavLink className={"link"} to={""}>
-                    {t("home")}
+                    {t("main.Home")}
                   </NavLink>
                 </li>
                 <li>
                   <NavLink className={"link"} to={"/about"}>
-                    {t("aboutUs")}
+                    {t("main.AboutUs")}
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className={"link"} to={""}>
-                    {t("ExursionsFromHurghada")}
-                  </NavLink>
+                  <Typography className={"link"}>
+                    {t("main.ExursionsFromHurghada")}
+                  </Typography>
                   <Paper className="subMenu">
                     <MenuList>
-                      <SubMenu title="offers 💰" link="" />
-                      <SubMenu title="Historical trips" link="" />
-                      <SubMenu title="Sea trips " link="" />
-                      <SubMenu title="Safari and extreme" link="" />
-                      <SubMenu title="Entertainment and spa" link="" />
+                      {homeData?.Categories.map((item) => (
+                        <SubMenu
+                          key={item.id}
+                          title={item.title}
+                          link={`products/${item.id}`}
+                        />
+                      ))}
+                    </MenuList>
+                  </Paper>
+                </li>
+                <li>
+                  <Typography className={"link"}>{t("main.Hotels")}</Typography>
+                  <Paper className="subMenu">
+                    <MenuList>
+                      {homeData?.category_hotels.map((item, index) => (
+                        <SubMenu
+                          key={item.id}
+                          title={item.title}
+                          link={`hotels/${item.id}`}
+                        />
+                      ))}
                     </MenuList>
                   </Paper>
                 </li>
                 <li>
                   <NavLink className={"link"} to={""}>
-                    {t("hotales")}
+                    {t("main.Shopping")}
                   </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
-                      <SubMenu title="offers 💰" link="" />
-                      <SubMenu title="Historical trips" link="" />
-                      <SubMenu title="Sea trips " link="" />
-                      <SubMenu title="Safari and extreme" link="" />
-                      <SubMenu title="Entertainment and spa" link="" />
+                      {homeData?.shippings.map((item, index) => (
+                        <SubMenu
+                          key={item.id}
+                          title={item.name}
+                          link={`shopping/${item.id}`}
+                        />
+                      ))}
                     </MenuList>
                   </Paper>
                 </li>
                 <li>
-                  <NavLink className={"link"} to={""}>
-                    {t("shopping")}
-                  </NavLink>
+                  <Typography className="link">{t("main.Blog")}</Typography>
                   <Paper className="subMenu">
                     <MenuList>
-                      <SubMenu title="offers 💰" link="" />
-                      <SubMenu title="Historical trips" link="" />
-                      <SubMenu title="Sea trips " link="" />
-                      <SubMenu title="Safari and extreme" link="" />
-                      <SubMenu title="Entertainment and spa" link="" />
-                    </MenuList>
-                  </Paper>
-                </li>
-                <li>
-                  <NavLink className={"link"} to={""}>
-                    {t("blogs")}
-                  </NavLink>
-                  <Paper className="subMenu">
-                    <MenuList>
-                      <SubMenu title="offers 💰" link="" />
-                      <SubMenu title="Historical trips" link="" />
-                      <SubMenu title="Sea trips " link="" />
-                      <SubMenu title="Safari and extreme" link="" />
-                      <SubMenu title="Entertainment and spa" link="" />
+                      {homeData?.blogs.map((item) => (
+                        <SubMenu
+                          key={item.id}
+                          title={item.title}
+                          link={`blog/${item.id}`}
+                        />
+                      ))}
                     </MenuList>
                   </Paper>
                 </li>
                 <li>
                   <NavLink className={"link"} to={"/contact"}>
-                    {t("contactUs")}
+                    {t("main.ContactUs")}
                   </NavLink>
                 </li>
               </ul>
@@ -184,15 +217,80 @@ function SecondNavbar() {
                 onKeyDown={toggleMobileMenu}
               >
                 <NavLink className={"link_down"} to={"/"}>
-                  <MenuItem onClick={toggleMobileMenu}>{t("home")}</MenuItem>
+                  <MenuItem onClick={toggleMobileMenu}>
+                    {t("main.Home")}
+                  </MenuItem>
                 </NavLink>
                 <NavLink className={"link_down"} to={"/about"}>
-                  <MenuItem onClick={toggleMobileMenu}>{t("aboutUs")}</MenuItem>
+                  <MenuItem onClick={toggleMobileMenu}>
+                    {t("main.AboutUs")}
+                  </MenuItem>
                 </NavLink>
-                <MenuItem>{t("ExursionsFromHurghada")}</MenuItem>
-                <MenuItem> {t("hotales")}</MenuItem>
+                {/* Frist sub item */}
+                <MenuItem onClick={toggleExursionsSubMenu}>
+                  {t("main.ExursionsFromHurghada")}{" "}
+                  {isExursionsFromHurghadaSubMenuOpen ? (
+                    <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  ) : (
+                    <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  )}
+                </MenuItem>
+                {isExursionsFromHurghadaSubMenuOpen && (
+                  <Box
+                    sx={{
+                      backgroundColor: "primary.main",
+                      mx: 1,
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {homeData?.Categories.map((item) => (
+                      <NavLink
+                        key={item.id}
+                        onClick={() => {
+                          toggleMobileMenu();
+                          toggleExursionsSubMenu();
+                        }}
+                        to={`products/${item.id}`}
+                      >
+                        <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
+                      </NavLink>
+                    ))}
+                  </Box>
+                )}
+                {/* sec sub item */}
+                <MenuItem onClick={toggleHotelSubMenu}>
+                  {t("main.Hotels")}
+                  {isHotelSubMenuOpen ? (
+                    <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  ) : (
+                    <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  )}
+                </MenuItem>
+                {isHotelSubMenuOpen && (
+                  <Box
+                    sx={{
+                      backgroundColor: "primary.main",
+                      mx: 1,
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {homeData?.category_hotels.map((item) => (
+                      <NavLink
+                        key={item.id}
+                        onClick={() => {
+                          toggleMobileMenu();
+                          toggleHotelSubMenu();
+                        }}
+                        to={`hotels/${item.id}`}
+                      >
+                        <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
+                      </NavLink>
+                    ))}
+                  </Box>
+                )}
+                {/* third sub item */}
                 <MenuItem onClick={toggleShoppingSubMenu}>
-                  {t("shopping")}
+                  {t("main.Shopping")}
                   {isShoppingSubMenuOpen ? (
                     <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
                   ) : (
@@ -204,19 +302,59 @@ function SecondNavbar() {
                     sx={{
                       backgroundColor: "primary.main",
                       mx: 1,
-                      color: "#fff  ",
                       borderRadius: "10px",
                     }}
                   >
-                    <MenuItem>{t("submenu1")}</MenuItem>
-                    <MenuItem>{t("submenu2")}</MenuItem>
-                    <MenuItem>{t("submenu3")}</MenuItem>
+                    {homeData?.shippings.map((item) => (
+                      <NavLink
+                        key={item.id}
+                        onClick={() => {
+                          toggleMobileMenu();
+                          toggleShoppingSubMenu();
+                        }}
+                        to={`shopping/${item.id}`}
+                      >
+                        <MenuItem sx={{ color: "#fff" }}>{item.name}</MenuItem>
+                      </NavLink>
+                    ))}
                   </Box>
                 )}
-                <MenuItem> {t("blogs")}</MenuItem>
+                {/* Blogs */}
+                <MenuItem onClick={toggleBlogsSubMenu}>
+                  {t("main.Blog")}
+                  {isBlogsSubMenuOpen ? (
+                    <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  ) : (
+                    <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
+                  )}
+                </MenuItem>
+                {isBlogsSubMenuOpen && (
+                  <Box
+                    sx={{
+                      backgroundColor: "primary.main",
+                      mx: 1,
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {homeData?.blogs.map((item) => (
+                      <NavLink
+                        key={item.id}
+                        onClick={() => {
+                          toggleMobileMenu();
+                          toggleBlogsSubMenu();
+                        }}
+                        to={`blog/${item.id}`}
+                      >
+                        <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
+                      </NavLink>
+                    ))}
+                  </Box>
+                )}
+                {/* End */}
+
                 <NavLink className={"link_down"} to={"/contact"}>
                   <MenuItem onClick={toggleMobileMenu}>
-                    {t("contactUs")}
+                    {t("main.ContactUs")}
                   </MenuItem>
                 </NavLink>
               </Box>

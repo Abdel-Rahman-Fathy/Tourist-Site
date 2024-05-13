@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import AboutImg from "../../assets/animatedNumberImage.png";
 import { useTranslation } from "react-i18next";
+import RenderRte from "Components/RenderRte";
 
-function FixedSection({ title }: { title: string }) {
+function FixedSection({ title }: { title?: string }) {
   const [t] = useTranslation();
 
   return (
@@ -17,14 +18,14 @@ function FixedSection({ title }: { title: string }) {
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
         padding: "100px 0px",
-        height: "85vh",
+        height: "95vh",
       }}
     >
       <Typography
-        variant="h2"
-        sx={{ fontWeight: "900", color: "#fff", mt: 10 }}
+        variant="h3"
+        sx={{ fontWeight: "700", color: "#fff", mt: 10, textAlign: "center" }}
       >
-        {title}
+        <RenderRte rte={title} />
       </Typography>
     </Box>
   );

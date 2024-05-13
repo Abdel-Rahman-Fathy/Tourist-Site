@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Card,
   CardContent,
   Container,
@@ -7,21 +8,31 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import img1 from "../../../../assets/pram.webp";
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { homeContext } from "pages/HomeContext";
+import { imgPath } from "methods/img";
+import RenderRte from "Components/RenderRte";
+import { useTranslation } from "react-i18next";
 function BlogPage() {
-  const array1 = Array.from({ length: 5 });
+  const [t] = useTranslation();
+  const { homeData } = useContext(homeContext);
+
   return (
     <Stack sx={{ padding: "80px 30px" }}>
       <Typography
         variant="h3"
-        sx={{ textAlign: "center", fontWeight: 600, mb: 10 }}
+        sx={{
+          textAlign: "center",
+          fontWeight: 700,
+          mb: 10,
+          textTransform: "uppercase",
+        }}
       >
-        Blog
+        {t("main.Blog")}
       </Typography>
       <Container>
         <Grid container spacing={2}>
-          {array1.map((card, index) => (
+          {homeData?.blogs.map((item, index) => (
             <Grid item md={4} key={index}>
               <Card variant="outlined">
                 <Box
@@ -34,14 +45,14 @@ function BlogPage() {
                   }}
                 >
                   <img
-                    src={img1}
+                    src={imgPath(item.image)}
                     style={{
                       width: "100%",
                       height: "250px",
                       objectFit: "cover",
                       transition: "all .5s",
                     }}
-                    alt=""
+                    alt={item.title}
                   />
                   <Typography
                     variant="h6"
@@ -67,6 +78,7 @@ function BlogPage() {
                     // component={NavLink}
                     // to="#"
                     sx={{
+                      fontSize: "17px",
                       fontWeight: 600,
                       "&:hover": {
                         letterSpacing: ".3px",
@@ -74,13 +86,18 @@ function BlogPage() {
                       transition: "all .4s",
                     }}
                   >
-                    Pyramids of Giza
+                    {item.title}
                   </Typography>
-                  <Typography variant="body1" sx={{ py: 2 }}>
-                    Archeologists have spent many centuries wondering about the
-                    glory of...
+                  <Typography
+                    variant="body1"
+                    sx={{ py: 2 }}
+                    className="max-lines"
+                  >
+                    <RenderRte rte={item.description} />
                   </Typography>
-                  <Typography variant="button">READ MORE</Typography>
+                  <Button variant="outlined" sx={{ mt: 2 }}>
+                    {t("main.ReadMore")}
+                  </Button>
                 </CardContent>
               </Card>
             </Grid>

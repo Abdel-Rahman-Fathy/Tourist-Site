@@ -3,11 +3,12 @@ import aboutImg from "../../../../assets/about.png";
 import { useTranslation } from "react-i18next";
 import SquareIcon from "@mui/icons-material/Square";
 import { useContext } from "react";
-import { homeContext } from "pages/layout/HomeContext";
+import { homeContext, useHomeData } from "pages/HomeContext";
 import RenderRte from "Components/RenderRte";
+import { imgPath } from "methods/img";
 function SquuareTypeo({ title }: PropsType) {
   return (
-    <Box display={"flex"} flexDirection={"row"} marginBottom={2} gap={1}>
+    <Box display={"flex"} flexDirection={"row"} marginBottom={2} gap={3}>
       <SquareIcon sx={{ color: "#DDD" }} />
       <Typography variant="body1">{title}</Typography>
     </Box>
@@ -15,9 +16,8 @@ function SquuareTypeo({ title }: PropsType) {
 }
 function AboutPage() {
   const [t] = useTranslation();
-
   const { homeData } = useContext(homeContext);
-
+  const findObj = useHomeData(homeData?.siteContent);
   return (
     <Stack sx={{ padding: "80px 30px" }}>
       <Grid container>
@@ -37,19 +37,26 @@ function AboutPage() {
               width: { md: "450px", xs: "350px" },
             }}
             src={aboutImg}
+            alt="About Image"
           />
         </Grid>
         <Grid item md={5} sx={{ display: "flex", alignItems: "center" }}>
           <Box>
-            <Typography sx={{ fontWeight: 600, marginTop: 3 }}>
-              <RenderRte rte={homeData?.siteInformation?.about_title} />
+            <Typography
+              variant="h3"
+              sx={{ fontWeight: 700, marginTop: 1, textTransform: "uppercase" }}
+            >
+              {t("main.AboutUs")}
             </Typography>
-            <Typography variant="body1" sx={{ py: 2 }}>
-              {homeData?.siteInformation?.about_description}
+            <Typography variant="h5" fontWeight={600}>
+              <RenderRte rte={findObj("Home About")?.title} />
             </Typography>
-            <SquuareTypeo title="Distinction" />
-            <SquuareTypeo title="Distinction" />
-            <SquuareTypeo title="Distinction" />
+            <Typography sx={{ py: 2 }}>
+              <RenderRte rte={findObj("Home About")?.description} />
+            </Typography>
+            <SquuareTypeo title={findObj("Home About 1")?.description} />
+            <SquuareTypeo title={findObj("Home About 2")?.description} />
+            <SquuareTypeo title={findObj("Home About 3")?.description} />
             <Box
               sx={{
                 borderTop: "3px solid #EEE",
@@ -61,15 +68,16 @@ function AboutPage() {
                   fontSize: "140px",
                   fontWeight: "600",
                   position: "relative",
+                  mb: 1,
                 }}
               >
-                14
+                <RenderRte rte={findObj("Home About Years")?.title} />
               </Typography>
               <Typography
                 variant="body1"
                 sx={{ position: "relative", bottom: "50px", left: "15px" }}
               >
-                years of experience
+                <RenderRte rte={findObj("Home About Years")?.description} />
               </Typography>
             </Box>
           </Box>
@@ -80,6 +88,6 @@ function AboutPage() {
 }
 
 type PropsType = {
-  title: string;
+  title?: string;
 };
 export default AboutPage;

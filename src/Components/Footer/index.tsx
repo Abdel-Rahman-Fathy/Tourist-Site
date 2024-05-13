@@ -10,6 +10,9 @@ import {
 import "./footer.css";
 import footer from "../../assets/FooterImg.png";
 import { makeStyles } from "@mui/styles";
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { homeContext, useHomeData } from "pages/HomeContext";
 
 const useStyles = makeStyles({
   root: {
@@ -24,6 +27,8 @@ const useStyles = makeStyles({
 });
 function Footer() {
   const classes = useStyles();
+  const { homeData } = useContext(homeContext);
+  const findObj = useHomeData(homeData?.siteContent);
 
   return (
     <Stack bgcolor="primary.main" padding={"80px 0px 80px 0px"}>
@@ -35,22 +40,24 @@ function Footer() {
               variant="h5"
               sx={{ color: "#fff", py: 3, fontWeight: "600" }}
             >
-              About Egyptos travel
+              {findObj("Footer")?.title}
             </Typography>
             <Typography
               variant="body1"
               sx={{ color: "#fff", pb: 3, width: "88%" }}
             >
-              We have well-trained professionals who are able to perform the
-              services of organizing and booking travel and providing all the
-              means for your convenience. We are ready to assist you every step
-              of your journey to ensure that you get maximum pleasure and the
-              best service.
+              {findObj("Footer")?.description}
             </Typography>
             <Box>
-              <i className="bi bi-facebook"></i>
-              <i className="bi bi-youtube"></i>
-              <i className="bi bi-instagram"></i>
+              <NavLink to={homeData?.socialMedia[0].link || ""}>
+                <i className="bi bi-facebook"></i>
+              </NavLink>
+              <NavLink to={homeData?.socialMedia[1].link || ""}>
+                <i className="bi bi-youtube"></i>
+              </NavLink>
+              <NavLink to={homeData?.socialMedia[2].link || ""}>
+                <i className="bi bi-instagram"></i>
+              </NavLink>
               <i className="bi bi-tiktok"></i>
             </Box>
           </Grid>
@@ -59,10 +66,10 @@ function Footer() {
               variant="h6"
               sx={{ color: "#fff", py: 3, fontWeight: "600" }}
             >
-              subscribe now
+              {findObj("Newsletter")?.title}
             </Typography>
             <Typography variant="body1" sx={{ color: "#fff", pb: 3 }}>
-              Contact us to reach all new
+              {findObj("Newsletter")?.description}
             </Typography>
             <TextField
               className={classes.root}
@@ -71,7 +78,7 @@ function Footer() {
               sx={{ color: "red", width: "80%" }}
             />
             <Button variant="contained" color="secondary" sx={{ mt: 3 }}>
-              Subscribe
+              {findObj("Newsletter")?.title}
             </Button>
           </Grid>
         </Grid>

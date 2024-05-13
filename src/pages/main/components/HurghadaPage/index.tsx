@@ -2,34 +2,8 @@ import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import ButtonChip from "../../../../Components/ButtonChip";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
-import { homeContext } from "../../../layout/HomeContext";
-const trips = [
-  {
-    name: "offers 💰",
-    id: 1,
-    tranlate: "offers",
-  },
-  {
-    name: "Historical trips",
-    id: 2,
-    tranlate: "HistoricalTrips",
-  },
-  {
-    name: "Sea trips",
-    id: 3,
-    tranlate: "SeaTrips",
-  },
-  {
-    name: "Safari and extreme",
-    id: 4,
-    tranlate: "SafariAndExtreme",
-  },
-  {
-    name: "Entertainment and spa",
-    id: 10,
-    tranlate: "EntertainmentAndSpa",
-  },
-];
+import { homeContext } from "../../../HomeContext";
+
 function HurghadaPage() {
   const [t] = useTranslation();
   const { homeData } = useContext(homeContext);
@@ -44,17 +18,16 @@ function HurghadaPage() {
             textAlign: "center",
           }}
         >
-          {t("ExursionsFromHurghada")}
+          {t("main.ExursionsFromHurghada")}
         </Typography>
-        <Grid
-          container
-          justifyContent={"center"}
-          columnSpacing={15}
-          rowSpacing={3}
-          padding={"30px 0"}
-        >
-          {trips.map((trip) => (
-            <ButtonChip key={trip.id} name={t(trip.tranlate)} id={trip.id} />
+        <Grid container padding={"30px 0"}>
+          {homeData?.Categories.map((trip) => (
+            <ButtonChip
+              key={trip.id}
+              name={trip.title}
+              id={trip.id}
+              link={"products"}
+            />
           ))}
         </Grid>
       </Container>

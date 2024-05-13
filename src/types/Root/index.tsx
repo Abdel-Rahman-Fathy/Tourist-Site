@@ -19,6 +19,7 @@ export interface Root {
   sliders: Slider[];
   Categories: Category[];
   shippings: Shipping[];
+  category_hotels: HotelCat[];
 }
 
 export interface SiteInformation {
@@ -34,10 +35,10 @@ export interface SiteInformation {
   metaDescription: string;
   logo: string;
   icon: string;
-  phone1: string;
-  phone2: unknown;
-  phone3: unknown;
-  phone4: unknown;
+  phone1: string | null;
+  phone2: string | null;
+  phone3: string | null;
+  phone4: string | null;
   home_contact_image: string;
   home_number_image: string;
   email: string;
@@ -69,6 +70,13 @@ export interface SiteInformation {
   home_about_description: string;
   home_about_image: string;
 }
+export interface HotelCat {
+  id: string;
+  title: string;
+  metaTags: string;
+  description: string;
+  image: string;
+}
 
 export interface SiteContent {
   id: number;
@@ -93,6 +101,7 @@ export interface Blog {
   description: string;
   metaDescription: unknown;
   image: string;
+  created_at: string;
 }
 
 export interface Brand {
