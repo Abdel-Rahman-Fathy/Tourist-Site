@@ -15,6 +15,7 @@ import HotelCard from "pages/HotelCard";
 import SliderHotel from "pages/HotelCard/SliderPage";
 import ShopCard from "pages/ShoppingCard";
 import { Stack, Typography } from "@mui/material";
+import NotFound from "Components/NotFound";
 
 function Layout() {
   const { status } = useContext(homeContext);
@@ -38,22 +39,7 @@ function Layout() {
               <Route path="about" element={<AboutUs />} />
               <Route path="blog/:id" element={<Blog />} />
               <Route path="contact" element={<ContactUsPage />} />
-              <Route
-                path="*"
-                element={
-                  <Stack
-                    sx={{
-                      height: "100vh",
-                      backgroundColor: "primary.main",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Typography variant="h4">لا يوجد </Typography>{" "}
-                  </Stack>
-                }
-              />
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <FixedIcon />
           </div>
