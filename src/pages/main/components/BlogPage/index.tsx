@@ -91,12 +91,13 @@ function BlogPage() {
                   <Typography
                     variant="body1"
                     sx={{ py: 2 }}
-                    className="limited-text"
+                    className="max-lines"
                   >
-                    {/* {data.title.length <= 18 ? data.title: (data.title.substr(0, 18) + "...")} */}
-                    <RenderRte rte={"lorem10"} limit={true} />
+                    <RenderRte rte={item.description} />
                   </Typography>
-                  <Button variant="outlined">READ MORE</Button>
+                  <Button variant="outlined" sx={{ mt: 2 }}>
+                    {t("main.ReadMore")}
+                  </Button>
                 </CardContent>
               </Card>
             </Grid>

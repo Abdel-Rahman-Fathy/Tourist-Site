@@ -9,10 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 import FixedSection from "../../Components/FixedSection";
-import img1 from "../../assets/WhyUsImage.png";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
-import { BorderBottom } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
@@ -21,6 +19,7 @@ import { HardProductsType } from "types/HardProducts";
 import RenderRte from "Components/RenderRte";
 import Spinner from "pages/SpinnerPage/Spinner";
 import { imgPath } from "methods/img";
+import "./main.css";
 function HurghadaCard() {
   const [t, i18n] = useTranslation();
   const { language } = i18n;
@@ -140,7 +139,11 @@ function HurghadaCard() {
                           <StarIcon />
                           <StarIcon />
                         </Box>
-                        <Typography variant="body1" sx={{ py: 2 }}>
+                        <Typography
+                          className="limit_word"
+                          variant="body1"
+                          sx={{ py: 2 }}
+                        >
                           <RenderRte rte={card.description} />
                         </Typography>
                         <Box
