@@ -16,7 +16,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import useWindowScrollPosition from "@rooks/use-window-scroll-position";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import logo from "../../assets/logo.png";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./SecondNavbar.css";
@@ -185,7 +184,7 @@ function SecondNavbar() {
                   </Paper>
                 </li>
                 <li>
-                  <Typography className="link">{t("blogs")}</Typography>
+                  <Typography className="link">{t("main.Blog")}</Typography>
                   <Paper className="subMenu">
                     <MenuList>
                       {homeData?.blogs.map((item) => (
@@ -200,7 +199,7 @@ function SecondNavbar() {
                 </li>
                 <li>
                   <NavLink className={"link"} to={"/contact"}>
-                    {t("contactUs")}
+                    {t("main.ContactUs")}
                   </NavLink>
                 </li>
               </ul>

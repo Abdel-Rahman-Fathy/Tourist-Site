@@ -1,12 +1,4 @@
-import {
-  Box,
-  Container,
-  Grid,
-  Paper,
-  Stack,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Container, Grid, Stack, Typography } from "@mui/material";
 import ButtonChip from "../../../../Components/ButtonChip";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
@@ -31,7 +23,12 @@ function ShoppingPage() {
         </Typography>
         <Grid container padding={"30px 0"}>
           {homeData?.shippings.map((trip) => (
-            <ButtonChip key={trip.id} name={trip.name} id={trip.id} link="" />
+            <ButtonChip
+              key={trip.id}
+              name={trip.name}
+              id={trip.id}
+              link="shopping"
+            />
           ))}
         </Grid>
       </Container>

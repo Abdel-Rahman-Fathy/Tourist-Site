@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import man from "../../../../assets/manImage.jpg";
 import { homeContext, useHomeData } from "pages/HomeContext";
 import { useContext } from "react";

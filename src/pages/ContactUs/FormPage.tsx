@@ -12,8 +12,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import z from "zod";
 import axios from "axios";
-import { SnackbarProvider, useSnackbar } from "notistack";
+import { useSnackbar } from "notistack";
 import { api } from "methods/api";
+import { useTranslation } from "react-i18next";
 const styles = {
   root: {
     "& .MuiInputLabel-root": {
@@ -29,6 +30,7 @@ const styles = {
 };
 const CustomTextField = withStyles(styles)(TextField);
 function FormPage() {
+  const [t, i18n] = useTranslation();
   const contactSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
     email: z.string().min(1, { message: "Email is required" }).email(),
@@ -79,7 +81,7 @@ function FormPage() {
             <CustomTextField
               {...register("name")}
               variant="filled"
-              label={"Name"}
+              label={t("ContactUs.Name")}
               fullWidth
             />
             {errors.name && (
@@ -92,7 +94,7 @@ function FormPage() {
             <CustomTextField
               {...register("email")}
               variant="filled"
-              label={"Email"}
+              label={t("ContactUs.Email")}
               fullWidth
             />
             {errors.email && (
@@ -105,7 +107,7 @@ function FormPage() {
             <CustomTextField
               {...register("subject")}
               variant="filled"
-              label={"Subject"}
+              label={t("ContactUs.Subject")}
               fullWidth
             />
             {errors.subject && (
@@ -118,7 +120,7 @@ function FormPage() {
             <CustomTextField
               {...register("phone")}
               variant="filled"
-              label={"Phone"}
+              label={t("ContactUs.Phone")}
               fullWidth
             />
             {errors.phone && (
@@ -131,7 +133,7 @@ function FormPage() {
             <CustomTextField
               {...register("message")}
               variant="filled"
-              label={"Message"}
+              label={t("ContactUs.Message")}
               fullWidth
               multiline
               rows={5}
@@ -151,7 +153,7 @@ function FormPage() {
                 color="secondary"
                 disabled={isSubmitting}
               >
-                Send
+                {t("ContactUs.Send")}
               </Button>
             </Stack>
           </Grid>

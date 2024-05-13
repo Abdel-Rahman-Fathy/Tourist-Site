@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import FixedSection from "../../Components/FixedSection";
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import contactUs2 from "../../assets/ContactUs2.jpg";
 import { NavLink } from "react-router-dom";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
@@ -14,12 +14,11 @@ import { ContactType } from "types/Contact";
 import Spinner from "pages/SpinnerPage/Spinner";
 
 function ContactUsPage() {
+  const [t] = useTranslation();
   const [status, setStatus] = useState<"none" | "loading" | "done">("none");
   const [contactData, setContactData] = useState<ContactType | undefined>(
     undefined
   );
-  const [t, i18n] = useTranslation();
-  const { language } = i18n;
   function getAboutData() {
     setStatus("loading");
     axios
@@ -41,7 +40,7 @@ function ContactUsPage() {
     <>
       {status === "done" ? (
         <Stack>
-          <FixedSection title={t("contactUs")} />
+          <FixedSection title={t("main.ContactUs")} />
           <Box
             sx={{
               backgroundImage: `url(${contactUs2})`,
@@ -81,7 +80,7 @@ function ContactUsPage() {
                     sx={{ fontSize: "60px", color: "primary.main", mb: 2 }}
                   />
                   <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
-                    Address
+                    {t("ContactUs.Address")}
                   </Typography>
                   <Typography
                     variant="body1"
@@ -98,7 +97,7 @@ function ContactUsPage() {
                     sx={{ fontSize: "60px", color: "primary.main", mb: 2 }}
                   />
                   <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
-                    Phone
+                    {t("ContactUs.Phone")}
                   </Typography>
                   {contactData?.siteInformation?.phone1 && (
                     <Typography
@@ -150,7 +149,7 @@ function ContactUsPage() {
                     sx={{ fontSize: "60px", color: "primary.main", mb: 2 }}
                   />
                   <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
-                    Email
+                    {t("ContactUs.Email")}
                   </Typography>
                   <Typography
                     variant="body1"

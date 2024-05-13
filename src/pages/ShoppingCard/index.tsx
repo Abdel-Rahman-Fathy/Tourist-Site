@@ -34,13 +34,11 @@ function ShopCard() {
 
   function getProductsData() {
     setStatus("loading");
-    //
     axios
       .get<{ data: ShoppingCardType }>(api(`shop/${id}`))
       .then(({ data }) => {
         setStatus("done");
         setProducts(data.data);
-        console.log("data", products);
       })
       .catch((error) => {
         console.log("error", error);

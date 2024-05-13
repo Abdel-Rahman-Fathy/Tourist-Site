@@ -10,7 +10,6 @@ import { ProductSliderType } from "types/HardProducts";
 import RenderRte from "Components/RenderRte";
 import { HotelSliderType } from "types/Hotel";
 function SliderAndTableHotel({ cardHotelInfo }: PropsType) {
-  console.log("cardHotelInfo", cardHotelInfo?.hotel);
   const images = [
     ...(cardHotelInfo?.hotel?.metaImage?.map((item) => ({
       url: imgPath(item.image),
