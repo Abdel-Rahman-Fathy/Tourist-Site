@@ -8,23 +8,27 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import img1 from "../../../../assets/pram.webp";
-import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { homeContext } from "pages/HomeContext";
 import { imgPath } from "methods/img";
 import RenderRte from "Components/RenderRte";
+import { useTranslation } from "react-i18next";
 function BlogPage() {
-  const array1 = Array.from({ length: 5 });
+  const [t] = useTranslation();
   const { homeData } = useContext(homeContext);
 
   return (
     <Stack sx={{ padding: "80px 30px" }}>
       <Typography
         variant="h3"
-        sx={{ textAlign: "center", fontWeight: 600, mb: 10 }}
+        sx={{
+          textAlign: "center",
+          fontWeight: 700,
+          mb: 10,
+          textTransform: "uppercase",
+        }}
       >
-        Blog
+        {t("main.Blog")}
       </Typography>
       <Container>
         <Grid container spacing={2}>

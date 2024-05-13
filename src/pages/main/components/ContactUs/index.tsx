@@ -5,7 +5,9 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { useContext } from "react";
 import { homeContext, useHomeData } from "pages/HomeContext";
 import RenderRte from "Components/RenderRte";
+import { useTranslation } from "react-i18next";
 function ContactUs() {
+  const [t] = useTranslation();
   const { homeData } = useContext(homeContext);
   const findObj = useHomeData(homeData?.siteContent);
   return (
@@ -48,7 +50,7 @@ function ContactUs() {
                   marginLeft: 5,
                 }}
               >
-                Call Us
+                {t("main.CallUs")}
               </Typography>
             </Box>
             <Box sx={{ margin: "10px 0 0 20px" }}>
@@ -86,7 +88,7 @@ function ContactUs() {
                   marginLeft: 5,
                 }}
               >
-                Email
+                {t("main.Email")}
               </Typography>
             </Box>
             <Box sx={{ margin: "10px 0 0 20px" }}>

@@ -18,7 +18,7 @@ function HurghadaPage() {
             textAlign: "center",
           }}
         >
-          {t("ExursionsFromHurghada")}
+          {t("main.ExursionsFromHurghada")}
         </Typography>
         <Grid container padding={"30px 0"}>
           {homeData?.Categories.map((trip) => (

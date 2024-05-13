@@ -54,7 +54,7 @@ function HotelCard() {
     <>
       {status == "done" ? (
         <>
-          <FixedSection title="Excursions From Hurghada" />
+          <FixedSection title={t("main.Hotels")} />
           <Stack sx={{ padding: "80px 30px" }}>
             <Typography
               variant="h3"
@@ -144,7 +144,7 @@ function HotelCard() {
                           ))}
                         </Box>
                         <Typography variant="body1" sx={{ py: 1 }}>
-                          {card.stars} stars
+                          {card.stars} {t("Hotel.Stars")}
                         </Typography>
                         <Box
                           sx={{
@@ -166,7 +166,7 @@ function HotelCard() {
                               navigate(`/hotel/${card.id}`);
                             }}
                           >
-                            READ MORE
+                            {t("main.ReadMore")}
                           </Button>
                         </Box>
                       </CardContent>

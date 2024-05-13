@@ -20,9 +20,11 @@ import { DateOnlyFormatString } from "methods/DateFormat";
 import axios from "axios";
 import { api } from "methods/api";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function DialogForm({ open, setOpen }: PropsType) {
   const { id } = useParams();
+  const [t] = useTranslation();
   const BookSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
     email: z.string().min(1, { message: "Email is required" }).email(),
@@ -68,12 +70,22 @@ function DialogForm({ open, setOpen }: PropsType) {
         onSubmit={handleSubmit(onSubmit)}
       >
         <DialogTitle>
-          <Typography variant="h6">Book your trip online</Typography>
+          <Typography
+            variant="h4"
+            sx={{
+              textAlign: "center",
+              fontWeight: "700",
+              borderBottom: "dashed 2px #999  ",
+              pb: 2,
+            }}
+          >
+            {t("Hurghada.Bookyourtriponline")}
+          </Typography>
         </DialogTitle>
         <Grid container spacing={3} sx={{ py: 5, px: 3 }}>
           <Grid item md={6}>
             <TextField
-              label="Name / Family Name"
+              label={t("Hurghada.NameFamilyName")}
               fullWidth
               size="small"
               {...register("name")}
@@ -81,7 +93,7 @@ function DialogForm({ open, setOpen }: PropsType) {
           </Grid>
           <Grid item md={6}>
             <TextField
-              label="Email"
+              label={t("Hurghada.Email")}
               fullWidth
               size="small"
               {...register("email")}
@@ -89,7 +101,7 @@ function DialogForm({ open, setOpen }: PropsType) {
           </Grid>
           <Grid item md={6}>
             <TextField
-              label="Phone (Viber or whatsapp or telegram)"
+              label={t("Hurghada.Phone")}
               fullWidth
               size="small"
               {...register("phone")}
@@ -101,7 +113,7 @@ function DialogForm({ open, setOpen }: PropsType) {
               name="date"
               render={({ field }) => (
                 <DatePicker
-                  label={"Date"}
+                  label={t("Hurghada.Date")}
                   slotProps={{ textField: { fullWidth: true, size: "small" } }}
                   value={field.value ? dayjs(field.value) : null}
                   onChange={(newValue) => {
@@ -121,12 +133,12 @@ function DialogForm({ open, setOpen }: PropsType) {
                 fontSize: "30px",
               }}
             >
-              Number Of People
+              {t("Hurghada.NumberOfPeople")}
             </Typography>
           </Grid>
           <Grid item md={4}>
             <TextField
-              label="Adults"
+              label={t("Hurghada.Adults")}
               fullWidth
               size="small"
               {...register("adults")}
@@ -134,7 +146,7 @@ function DialogForm({ open, setOpen }: PropsType) {
           </Grid>
           <Grid item md={4}>
             <TextField
-              label="Children (ages 5-11)"
+              label={t("Hurghada.Children")}
               fullWidth
               size="small"
               {...register("children")}
@@ -142,7 +154,7 @@ function DialogForm({ open, setOpen }: PropsType) {
           </Grid>
           <Grid item md={4}>
             <TextField
-              label="Infant (ages 0-4)"
+              label={t("Hurghada.Infant")}
               fullWidth
               size="small"
               {...register("infant")}
@@ -150,7 +162,7 @@ function DialogForm({ open, setOpen }: PropsType) {
           </Grid>
           <Grid item md={12}>
             <TextField
-              label="Message"
+              label={t("Hurghada.Message")}
               multiline
               rows={5}
               fullWidth
@@ -164,7 +176,7 @@ function DialogForm({ open, setOpen }: PropsType) {
               variant="contained"
               sx={{ borderRadius: "10px" }}
             >
-              Book Now
+              {t("Hurghada.BookNow")}
             </Button>
           </Grid>
         </Grid>

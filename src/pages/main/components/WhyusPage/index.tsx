@@ -19,10 +19,20 @@ function WhyusPage() {
         <Grid container>
           <Grid item md={6}>
             <Box>
-              <Typography variant="h3" sx={{ fontWeight: 600, marginTop: 3 }}>
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: 700,
+                  marginTop: 3,
+                  textTransform: "uppercase",
+                }}
+              >
                 <RenderRte rte={findObj("Home Features")?.title} />
               </Typography>
-              <Typography variant="body1" sx={{ py: 2 }}>
+              <Typography
+                variant="body1"
+                sx={{ py: 3, fontWeight: "600", fontSize: "25px" }}
+              >
                 <RenderRte rte={findObj("Home Features")?.description} />
               </Typography>
             </Box>

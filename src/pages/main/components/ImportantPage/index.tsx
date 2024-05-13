@@ -16,7 +16,6 @@ function ImportPage() {
               sx={{ color: "#fff", fontWeight: 600, fontSize: "30px", pr: 5 }}
             >
               <RenderRte rte={findObj("Why Choose Us")?.description} />
-              <br />
             </Typography>
             <Typography
               sx={{ color: "#fff", fontWeight: 600, fontSize: "16px", py: 2 }}

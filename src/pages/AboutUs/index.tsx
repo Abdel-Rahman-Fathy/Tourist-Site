@@ -41,10 +41,17 @@ function AboutUs() {
             </Box>
           </Grid>
           <Grid item md={6}>
-            <Typography variant="h3" sx={{ fontWeight: 600 }}>
-              {t("aboutUs")}
+            <Typography
+              variant="h3"
+              sx={{ fontWeight: 700, textTransform: "uppercase " }}
+            >
+              {t("main.AboutUs")}
             </Typography>
-            <Typography className="subAbout" variant="h5" sx={{ py: 3 }}>
+            <Typography
+              className="subAbout"
+              variant="h5"
+              sx={{ py: 3, fontWeight: "600" }}
+            >
               {aboutData?.siteInformation?.about}
             </Typography>
             <Typography

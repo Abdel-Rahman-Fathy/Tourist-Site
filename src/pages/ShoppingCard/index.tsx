@@ -55,7 +55,7 @@ function ShopCard() {
     <>
       {status == "done" ? (
         <>
-          <FixedSection title="Excursions From Hurghada" />
+          <FixedSection title={t("main.Shopping")} />
           <Stack sx={{ padding: "80px 30px" }}>
             <Typography
               variant="h3"

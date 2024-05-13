@@ -130,17 +130,17 @@ function SecondNavbar() {
               <ul className="secNavbar">
                 <li>
                   <NavLink className={"link"} to={""}>
-                    {t("home")}
+                    {t("main.Home")}
                   </NavLink>
                 </li>
                 <li>
                   <NavLink className={"link"} to={"/about"}>
-                    {t("aboutUs")}
+                    {t("main.AboutUs")}
                   </NavLink>
                 </li>
                 <li>
                   <Typography className={"link"}>
-                    {t("ExursionsFromHurghada")}
+                    {t("main.ExursionsFromHurghada")}
                   </Typography>
                   <Paper className="subMenu">
                     <MenuList>
@@ -155,7 +155,7 @@ function SecondNavbar() {
                   </Paper>
                 </li>
                 <li>
-                  <Typography className={"link"}>{t("hotales")}</Typography>
+                  <Typography className={"link"}>{t("main.Hotels")}</Typography>
                   <Paper className="subMenu">
                     <MenuList>
                       {homeData?.category_hotels.map((item, index) => (
@@ -170,7 +170,7 @@ function SecondNavbar() {
                 </li>
                 <li>
                   <NavLink className={"link"} to={""}>
-                    {t("shopping")}
+                    {t("main.Shopping")}
                   </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
@@ -218,14 +218,18 @@ function SecondNavbar() {
                 onKeyDown={toggleMobileMenu}
               >
                 <NavLink className={"link_down"} to={"/"}>
-                  <MenuItem onClick={toggleMobileMenu}>{t("home")}</MenuItem>
+                  <MenuItem onClick={toggleMobileMenu}>
+                    {t("main.Home")}
+                  </MenuItem>
                 </NavLink>
                 <NavLink className={"link_down"} to={"/about"}>
-                  <MenuItem onClick={toggleMobileMenu}>{t("aboutUs")}</MenuItem>
+                  <MenuItem onClick={toggleMobileMenu}>
+                    {t("main.AboutUs")}
+                  </MenuItem>
                 </NavLink>
                 {/* Frist sub item */}
                 <MenuItem onClick={toggleExursionsSubMenu}>
-                  {t("ExursionsFromHurghada")}{" "}
+                  {t("main.ExursionsFromHurghada")}{" "}
                   {isExursionsFromHurghadaSubMenuOpen ? (
                     <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
                   ) : (
@@ -255,9 +259,8 @@ function SecondNavbar() {
                   </Box>
                 )}
                 {/* sec sub item */}
-                <MenuItem> {t("hotales")}</MenuItem>
                 <MenuItem onClick={toggleHotelSubMenu}>
-                  {t("hotales")}
+                  {t("main.Hotels")}
                   {isHotelSubMenuOpen ? (
                     <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
                   ) : (
@@ -288,7 +291,7 @@ function SecondNavbar() {
                 )}
                 {/* third sub item */}
                 <MenuItem onClick={toggleShoppingSubMenu}>
-                  {t("shopping")}
+                  {t("main.Shopping")}
                   {isShoppingSubMenuOpen ? (
                     <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
                   ) : (
@@ -319,7 +322,7 @@ function SecondNavbar() {
                 )}
                 {/* Blogs */}
                 <MenuItem onClick={toggleBlogsSubMenu}>
-                  {t("blogs")}
+                  {t("main.Blog")}
                   {isBlogsSubMenuOpen ? (
                     <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
                   ) : (
@@ -352,7 +355,7 @@ function SecondNavbar() {
 
                 <NavLink className={"link_down"} to={"/contact"}>
                   <MenuItem onClick={toggleMobileMenu}>
-                    {t("contactUs")}
+                    {t("main.ContactUs")}
                   </MenuItem>
                 </NavLink>
               </Box>

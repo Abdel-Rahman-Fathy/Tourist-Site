@@ -57,7 +57,7 @@ function SliderHurhada() {
                   setOpen(!open);
                 }}
               >
-                Book Now
+                {t("Hurghada.BookNow")}
               </Button>
             </Box>
           </Stack>

@@ -52,7 +52,7 @@ function HurghadaCard() {
     <>
       {status == "done" ? (
         <>
-          <FixedSection title="Excursions From Hurghada" />
+          <FixedSection title={t("main.ExursionsFromHurghada")} />
           <Stack sx={{ padding: "80px 30px" }}>
             <Typography
               variant="h3"
@@ -163,7 +163,7 @@ function HurghadaCard() {
                               navigate(`/product/${card.id}`);
                             }}
                           >
-                            READ MORE
+                            {t("main.ReadMore")}
                           </Button>
                         </Box>
                       </CardContent>

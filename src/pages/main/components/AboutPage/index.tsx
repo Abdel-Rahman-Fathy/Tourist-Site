@@ -8,7 +8,7 @@ import RenderRte from "Components/RenderRte";
 import { imgPath } from "methods/img";
 function SquuareTypeo({ title }: PropsType) {
   return (
-    <Box display={"flex"} flexDirection={"row"} marginBottom={2} gap={1}>
+    <Box display={"flex"} flexDirection={"row"} marginBottom={2} gap={3}>
       <SquareIcon sx={{ color: "#DDD" }} />
       <Typography variant="body1">{title}</Typography>
     </Box>
@@ -36,18 +36,19 @@ function AboutPage() {
             sx={{
               width: { md: "450px", xs: "350px" },
             }}
-            src={
-              "https://react.hanstarcarrental.com/public/upload/1711023636_SwUHlylPjap1XXxsym5J776bS.png"
-            }
+            src={aboutImg}
             alt="About Image"
           />
         </Grid>
         <Grid item md={5} sx={{ display: "flex", alignItems: "center" }}>
           <Box>
-            <Typography sx={{ fontWeight: 600, marginTop: 3 }}>
-              {/* <RenderRte rte={homeData?.siteContent[0]?.title} /> */}
+            <Typography
+              variant="h3"
+              sx={{ fontWeight: 700, marginTop: 1, textTransform: "uppercase" }}
+            >
+              {t("main.AboutUs")}
             </Typography>
-            <Typography variant="h5" sx={{ py: 2 }}>
+            <Typography variant="h5" fontWeight={600}>
               <RenderRte rte={findObj("Home About")?.title} />
             </Typography>
             <Typography sx={{ py: 2 }}>
