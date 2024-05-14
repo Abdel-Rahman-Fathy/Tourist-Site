@@ -8,6 +8,9 @@ import { imgPath } from "methods/img";
 import { useContext, useEffect, useState } from "react";
 import { ProductSliderType } from "types/HardProducts";
 import RenderRte from "Components/RenderRte";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay, Navigation } from "swiper/modules";
+
 function SliderAndTable({ productInfo }: PropsType) {
   const images = [
     ...(productInfo?.product.images?.map((item) => ({
@@ -36,6 +39,7 @@ function SliderAndTable({ productInfo }: PropsType) {
       window.removeEventListener("resize", handleResize); // Clean up event listener on component unmount
     };
   }, []);
+
   return (
     <>
       <Typography
@@ -46,17 +50,30 @@ function SliderAndTable({ productInfo }: PropsType) {
       </Typography>
       {images.length > 0 ? (
         <Box sx={{ py: 3 }}>
-          <SimpleImageSlider
-            width={sliderWidth}
-            height={sliderHeight}
-            images={images ? images : []}
-            showBullets={false}
-            showNavs={true}
-            loop={true}
-            autoPlay={true}
-            slideDuration={1.5}
-            autoPlayDelay={2}
-          />
+          <Swiper
+            slidesPerView={1}
+            style={{ height: "100%" }}
+            spaceBetween={50}
+            modules={[EffectFade, Autoplay, Navigation]}
+            allowSlideNext={true}
+            allowSlidePrev={true}
+            autoplay={{ delay: 1500, disableOnInteraction: true }}
+            effect="fade"
+            loop
+            navigation={true}
+            fadeEffect={{ crossFade: true }}
+            key={images.join()}
+          >
+            {productInfo?.product.images.map((image) => (
+              <SwiperSlide key={image.id}>
+                <img
+                  src={imgPath(image.image)}
+                  alt="card media image"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </Box>
       ) : (
         "لا يوجد صور للعرض"

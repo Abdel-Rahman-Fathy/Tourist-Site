@@ -3,6 +3,10 @@ import SimpleImageSlider from "react-simple-image-slider";
 import { useContext } from "react";
 import { homeContext } from "pages/HomeContext";
 import { imgPath } from "methods/img";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay, Navigation } from "swiper/modules";
+import { Box } from "@mui/material";
+import "./Slider.css";
 function Slider() {
   const { homeData } = useContext(homeContext);
   const images = [
@@ -12,19 +16,33 @@ function Slider() {
   return (
     <>
       {images.length > 0 ? (
-        <div>
-          <SimpleImageSlider
-            width={"100%"}
-            height={"100vh"}
-            images={images ? images : []}
-            showBullets={false}
-            showNavs={true}
-            loop={true}
-            autoPlay={true}
-            slideDuration={1.5}
-            autoPlayDelay={2}
-          />
-        </div>
+        <Box>
+          <Swiper
+            className="Swiper_test"
+            slidesPerView={1}
+            // style={{ height: "100vh" }}
+            spaceBetween={50}
+            modules={[EffectFade, Autoplay, Navigation]}
+            allowSlideNext={true}
+            allowSlidePrev={true}
+            autoplay={{ delay: 2000, disableOnInteraction: true }}
+            effect="cards"
+            loop
+            navigation={true}
+            fadeEffect={{ crossFade: true }}
+            key={images.join()}
+          >
+            {homeData?.sliders.map((image) => (
+              <SwiperSlide key={image.id}>
+                <img
+                  src={imgPath(image.image)}
+                  alt="card media image"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
       ) : (
         "لا يوجد صور للعرض"
       )}

@@ -110,11 +110,13 @@ function FristNavbar() {
     >
       <Container maxWidth="lg">
         <Toolbar disableGutters>
-          <Grid container spacing={3}>
+          <Grid container spacing={1}>
             <Grid
               display={"flex"}
-              flexDirection={"row"}
-              alignItems={"center"}
+              sx={{
+                flexDirection: { md: "row", xs: "column" },
+                alignItems: { md: "center", xs: "start" },
+              }}
               item
               md={7}
             >
@@ -154,9 +156,12 @@ function FristNavbar() {
               </NavLink>
             </Grid>
             <Grid
-              display={"flex"}
-              flexDirection={"row"}
-              justifyContent={"space-around"}
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                width: "190px",
+                justifyContent: "end",
+              }}
               item
               md={2}
             >
