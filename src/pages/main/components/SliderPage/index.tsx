@@ -22,11 +22,12 @@ function Slider() {
             slidesPerView={1}
             // style={{ height: "100vh" }}
             spaceBetween={50}
+            speed={900}
             modules={[EffectFade, Autoplay, Navigation]}
             allowSlideNext={true}
             allowSlidePrev={true}
             autoplay={{ delay: 2000, disableOnInteraction: true }}
-            effect="cards"
+            effect="coverflow"
             loop
             navigation={true}
             fadeEffect={{ crossFade: true }}

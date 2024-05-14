@@ -1,6 +1,6 @@
 import { Box, Button, Stack } from "@mui/material";
 import FixedSection from "Components/FixedSection";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { api } from "methods/api";
@@ -9,10 +9,11 @@ import { ProductSliderType } from "types/HardProducts";
 import Spinner from "pages/SpinnerPage/Spinner";
 import SliderAndTableHotel from "./SliderAndTable";
 import { HotelSliderType } from "types/Hotel";
+import { homeContext } from "pages/HomeContext";
 
 function SliderHotel() {
   const [t, i18n] = useTranslation();
-  const { language } = i18n;
+  const { homeData } = useContext(homeContext);
   const { id } = useParams();
   const [status, setStatus] = useState<"none" | "loading" | "done">("none");
   const [cardHotelInfo, setcardHotelInfo] = useState<
@@ -53,7 +54,7 @@ function SliderHotel() {
               <Button
                 target="_blank"
                 variant="contained"
-                href=""
+                href={cardHotelInfo?.hotel?.link || " "}
                 sx={{
                   borderRadius: "10px",
                   backgroundColor: "#0052a4",

@@ -52,6 +52,7 @@ function SliderHurhada() {
             <SliderAndTable productInfo={productInfo} />
             <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
               <Button
+                sx={{ borderRadius: "10px", padding: "10px 20px" }}
                 variant="contained"
                 onClick={() => {
                   setOpen(!open);

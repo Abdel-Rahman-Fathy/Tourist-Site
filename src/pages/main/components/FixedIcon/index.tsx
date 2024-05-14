@@ -1,16 +1,15 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
-import PrintIcon from "@mui/icons-material/Print";
-import ShareIcon from "@mui/icons-material/Share";
 import EditIcon from "@mui/icons-material/Edit";
 import SettingsPhoneIcon from "@mui/icons-material/SettingsPhone";
 import MarkUnreadChatAltIcon from "@mui/icons-material/MarkUnreadChatAlt";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import CallIcon from "@mui/icons-material/Call";
+import icons from "../../../../assets/iconMessage.png";
+import CloseIcon from "@mui/icons-material/Close";
 const actions = [
   {
     icon: <WhatsAppIcon sx={{ color: "#fff", fontSize: "40px" }} />,
@@ -50,18 +49,18 @@ function FixedIcon() {
         transform: "translateZ(0px)",
         flexGrow: 1,
         position: "fixed",
-        bottom: "10px",
-        right: "20px",
+        bottom: "5px",
+        right: "10px",
         zIndex: "10000000000000000000000",
       }}
     >
       <SpeedDial
         ariaLabel="SpeedDial openIcon example"
-        sx={{ position: "absolute", bottom: 16, right: 16, fontSize: "200px" }}
+        sx={{ position: "absolute", bottom: 10, right: 0 }}
         icon={
           <SpeedDialIcon
-            icon={<EditIcon />}
-            openIcon={<MarkUnreadChatAltIcon />}
+            icon={<MarkUnreadChatAltIcon />}
+            openIcon={<CloseIcon />}
           />
         }
       >

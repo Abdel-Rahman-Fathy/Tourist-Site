@@ -3,10 +3,13 @@ import ButtonChip from "../../../../Components/ButtonChip";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
 import { homeContext } from "../../../HomeContext";
+import { Category } from "types/Root";
 
 function HurghadaPage() {
   const [t] = useTranslation();
   const { homeData } = useContext(homeContext);
+  const cat: Category[] | undefined = [...(homeData?.Categories || [])];
+  console.log("cat", cat);
   return (
     <Paper sx={{ padding: "60px 0px" }}>
       <Container maxWidth="lg">
@@ -21,7 +24,7 @@ function HurghadaPage() {
           {t("main.ExursionsFromHurghada")}
         </Typography>
         <Grid container padding={"30px 0"}>
-          {homeData?.Categories.map((trip) => (
+          {cat.reverse().map((trip) => (
             <ButtonChip
               key={trip.id}
               name={trip.title}

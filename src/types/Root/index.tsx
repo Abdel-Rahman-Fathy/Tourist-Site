@@ -105,11 +105,12 @@ export interface Blog {
 }
 
 export interface Brand {
-  id: number;
-  name: unknown;
-  link: unknown;
-  image: string;
   created_at: string;
+  id: number;
+  image: string;
+  image_path: string[];
+  link: null;
+  name: null;
   updated_at: string;
 }
 

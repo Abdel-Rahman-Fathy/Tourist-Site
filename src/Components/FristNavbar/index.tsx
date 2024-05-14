@@ -60,14 +60,16 @@ const flags = [
     name: "TUR",
   },
 
-  // {
-  //   value: "bu",
-  //   path: pol,
-  // },
-  // {
-  //   value: "ar",
-  //   path: eg,
-  // },
+  {
+    value: "bu",
+    path: pol,
+    name: "BUL",
+  },
+  {
+    value: "ar",
+    path: eg,
+    name: "AR",
+  },
 ];
 
 function FristNavbar() {

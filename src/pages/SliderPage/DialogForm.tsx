@@ -174,7 +174,7 @@ function DialogForm({ open, setOpen }: PropsType) {
             <Button
               type="submit"
               variant="contained"
-              sx={{ borderRadius: "10px" }}
+              sx={{ borderRadius: "10px", padding: "10px 20px" }}
             >
               {t("Hurghada.BookNow")}
             </Button>

@@ -23,6 +23,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { homeContext } from "pages/HomeContext";
 import { imgPath } from "methods/img";
+import { Category } from "types/Root";
 
 function SubMenu({ title, link }: PropsType) {
   return (
@@ -40,7 +41,7 @@ function SubMenu({ title, link }: PropsType) {
 function SecondNavbar() {
   const [t] = useTranslation();
   const { homeData } = useContext(homeContext);
-
+  const cat: Category[] | undefined = [...(homeData?.Categories || [])];
   const theme = useTheme();
   const { scrollY } = useWindowScrollPosition();
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -110,7 +111,13 @@ function SecondNavbar() {
               item
               md={4}
             >
-              <Box display={"flex"} flexDirection={"row"} marginY={1}>
+              <Box
+                component={NavLink}
+                to={""}
+                display={"flex"}
+                flexDirection={"row"}
+                marginY={1}
+              >
                 <img
                   src={imgPath(homeData?.siteInformation.logo)}
                   alt="logo"
@@ -144,7 +151,7 @@ function SecondNavbar() {
                   </NavLink>
                   <Paper className="subMenu">
                     <MenuList>
-                      {homeData?.Categories.map((item) => (
+                      {cat.reverse().map((item) => (
                         <SubMenu
                           key={item.id}
                           title={item.title}
@@ -188,7 +195,10 @@ function SecondNavbar() {
                   </Paper>
                 </li>
                 <li>
-                  <NavLink className={"link"} to={""}>
+                  <NavLink
+                    className={"link"}
+                    to={`blog/${homeData?.blogs[0].id}`}
+                  >
                     {t("main.Blog")}
                   </NavLink>
                   <Paper className="subMenu">
@@ -249,7 +259,7 @@ function SecondNavbar() {
                       borderRadius: "10px",
                     }}
                   >
-                    {homeData?.Categories.map((item) => (
+                    {cat.reverse().map((item) => (
                       <NavLink
                         key={item.id}
                         onClick={() => {

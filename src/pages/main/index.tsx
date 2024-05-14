@@ -9,6 +9,7 @@ import ShoppingPage from "./components/Shopping";
 import Slider from "./components/SliderPage";
 import WhyusPage from "./components/WhyusPage";
 import { homeContext } from "pages/HomeContext";
+import SliderLogo from "./components/SliderLogo";
 
 function MainPages() {
   return (
@@ -21,6 +22,7 @@ function MainPages() {
       <WhyusPage />
       <ImportPage />
       <BlogPage />
+      <SliderLogo />
       <ContactUs />
     </>
   );

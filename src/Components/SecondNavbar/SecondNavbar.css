@@ -1,9 +1,11 @@
 .secNavbar {
   display: flex;
-  align-items: center !important;
+  /* align-items: center !important; */
 }
 .secNavbar li {
   margin: 0 10px;
+  align-content: center;
+  height: 1;
 }
 .secNavbar li:last-child {
   margin-right: 0;
@@ -38,7 +40,7 @@
 }
 .secNavbar li:hover .subMenu {
   z-index: 999999;
-  margin-top: 0px;
+  margin-top: 30px;
   height: auto;
 }
 .link_down {

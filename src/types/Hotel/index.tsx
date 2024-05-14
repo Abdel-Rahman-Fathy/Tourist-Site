@@ -20,4 +20,5 @@ interface Hotel {
   Fully: string;
   English: string;
   metaImage: ImageProduct[];
+  link: string;
 }

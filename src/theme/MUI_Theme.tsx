@@ -45,7 +45,7 @@ export const theme = createTheme({
       },
       styleOverrides: {
         root: {
-          fontFamily: "sans-serif",
+          fontFamily: "sans-serif ",
         },
       },
     },

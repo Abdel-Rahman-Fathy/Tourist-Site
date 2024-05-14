@@ -5,6 +5,7 @@ import {
   CardContent,
   Container,
   Grid,
+  Paper,
   Stack,
   Typography,
 } from "@mui/material";
@@ -18,7 +19,7 @@ function BlogPage() {
   const { homeData } = useContext(homeContext);
 
   return (
-    <Stack sx={{ padding: "80px 30px" }}>
+    <Paper sx={{ padding: "80px 30px" }}>
       <Typography
         variant="h3"
         sx={{
@@ -104,7 +105,7 @@ function BlogPage() {
           ))}
         </Grid>
       </Container>
-    </Stack>
+    </Paper>
   );
 }
 
