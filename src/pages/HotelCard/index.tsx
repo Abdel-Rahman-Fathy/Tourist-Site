@@ -24,7 +24,6 @@ import { imgPath } from "methods/img";
 import { HotelCardType } from "types/Hotel";
 function HotelCard() {
   const [t, i18n] = useTranslation();
-  const { language } = i18n;
   const navigate = useNavigate();
   const { id } = useParams();
   const [status, setStatus] = useState<"none" | "loading" | "done">("none");

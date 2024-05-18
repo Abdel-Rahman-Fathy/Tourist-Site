@@ -140,7 +140,7 @@ function FristNavbar() {
               flexDirection={"row"}
               justifyContent={"end"}
               alignItems={"center"}
-              gap={2}
+              gap={1}
               item
               md={3}
             >
@@ -161,7 +161,7 @@ function FristNavbar() {
               sx={{
                 display: "flex",
                 flexDirection: "row",
-                width: "190px",
+                width: "150px",
                 justifyContent: "end",
               }}
               item
