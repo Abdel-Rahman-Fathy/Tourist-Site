@@ -39,7 +39,7 @@ export function HomeContextProvider({
   }
   useEffect(() => {
     getHomeData();
-  }, []);
+  }, [language]);
   return (
     <homeContext.Provider value={{ homeData, status }}>
       {children}

@@ -77,6 +77,8 @@ function HotelCard() {
                     >
                       <Stack sx={{ position: "relative" }}>
                         <Box
+                          component={NavLink}
+                          to={`/hotel/${card.id}`}
                           sx={{
                             overflow: "hidden",
                             "&:hover img": {
@@ -119,7 +121,7 @@ function HotelCard() {
                         <Typography
                           variant="h6"
                           component={NavLink}
-                          to="#"
+                          to={`/hotel/${card.id}`}
                           sx={{
                             fontWeight: 700,
                             marginY: 0.5,

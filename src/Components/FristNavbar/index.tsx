@@ -4,7 +4,7 @@ import Ger from "../../assets/flags/Ger.png";
 import Hun from "../../assets/flags/Hun.png";
 import en from "../../assets/flags/en.png";
 import pol from "../../assets/flags/pol.png";
-import romania from "../../assets/flags/romania.png";
+import rom from "../../assets/flags/romania.png";
 import rus from "../../assets/flags/rus.png";
 import tur from "../../assets/flags/tur.png";
 import eg from "../../assets/flags/eg.png";
@@ -48,6 +48,11 @@ const flags = [
     path: pol,
     name: "POL",
   },
+  {
+    value: "ro",
+    path: rom,
+    name: "ROM",
+  },
 
   {
     value: "hu",
@@ -60,11 +65,6 @@ const flags = [
     name: "TUR",
   },
 
-  {
-    value: "bu",
-    path: pol,
-    name: "BUL",
-  },
   {
     value: "ar",
     path: eg,
@@ -172,6 +172,12 @@ function FristNavbar() {
                   <MenuItem
                     key={item.value}
                     value={item.value}
+                    sx={{
+                      backgroundColor: "primary.main",
+                      "&:hover": {
+                        backgroundColor: "primary.main",
+                      },
+                    }}
                     onClick={() => {
                       handleLanguage(item.value);
                     }}
@@ -185,7 +191,10 @@ function FristNavbar() {
                       <img src={item.path} height={"15px"} width={"30px"} />
                       <Typography
                         variant="body1"
-                        sx={{ color: "#000", fontSize: "18px" }}
+                        sx={{
+                          color: "#fff",
+                          fontSize: "18px",
+                        }}
                       >
                         {item.name}
                       </Typography>

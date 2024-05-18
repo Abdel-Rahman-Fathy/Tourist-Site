@@ -146,9 +146,9 @@ function SecondNavbar() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className={"link"} to={`products/${cat[0].id}`}>
+                  <Typography className={"link"}>
                     {t("main.ExursionsFromHurghada")}
-                  </NavLink>
+                  </Typography>
                   <Paper className="subMenu">
                     <MenuList>
                       {cat.reverse().map((item) => (
@@ -162,12 +162,9 @@ function SecondNavbar() {
                   </Paper>
                 </li>
                 <li>
-                  <NavLink
-                    className={"link"}
-                    to={`hotels/${homeData?.category_hotels[0].id}`}
-                  >
+                  <Typography className={"link"}>
                     {t("main.Hotels")}{" "}
-                  </NavLink>
+                  </Typography>
 
                   <Paper className="subMenu">
                     <MenuList>
@@ -182,12 +179,9 @@ function SecondNavbar() {
                   </Paper>
                 </li>
                 <li>
-                  <NavLink
-                    className={"link"}
-                    to={`shopping/${homeData?.shippings[0].id}`}
-                  >
+                  <Typography className={"link"}>
                     {t("main.Shopping")}
-                  </NavLink>
+                  </Typography>
                   <Paper className="subMenu">
                     <MenuList>
                       {homeData?.shippings.map((item, index) => (
