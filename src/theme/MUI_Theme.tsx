@@ -3,74 +3,64 @@ import "../assets/fonts/include.scss";
 import "./Mui_Custom.scss";
 import { colors } from "@mui/material";
 
-export const theme = createTheme({
-  direction: "rtl",
-  shape: {
-    borderRadius: 3,
-  },
-  palette: {
-    primary: {
-      main: "#0052a4",
-      contrastText: "#FFFFFF",
+export const theme = (
+  maincolor?: string,
+  secondaryColor?: string,
+  lang?: string
+) =>
+  createTheme({
+    direction: "rtl",
+    shape: {
+      borderRadius: 3,
     },
-    secondary: {
-      main: "#F19B02",
-      contrastText: "#FFF",
-    },
-    success: {
-      main: "#18CB5F",
-      contrastText: "#FFFFFF",
-    },
-    error: {
-      main: "#CB1818",
-    },
-    warning: {
-      main: "#F19B02",
-      contrastText: "#FFF",
-    },
-    background: {
-      paper: "#F3F5F7",
-      default: "#FFFFFF",
-    },
-    text: {
-      primary: "#0052a4",
-      secondary: colors.grey[600],
-      disabled: colors.grey[600],
-    },
-  },
-  components: {
-    MuiTypography: {
-      defaultProps: {
-        color: "text.primary",
+    palette: {
+      primary: {
+        main: maincolor || "#09c",
+        contrastText: "#FFFFFF",
       },
-      styleOverrides: {
-        root: {
-          fontFamily: "sans-serif ",
+      secondary: {
+        main: secondaryColor || "#F19B02",
+        contrastText: "#FFF",
+      },
+      success: {
+        main: "#18CB5F",
+        contrastText: "#FFFFFF",
+      },
+      error: {
+        main: "#CB1818",
+      },
+      warning: {
+        main: secondaryColor || "#F19B02",
+        contrastText: "#FFF",
+      },
+      background: {
+        paper: "#F3F5F7",
+        default: "#FFFFFF",
+      },
+      text: {
+        primary: maincolor || "f00",
+        secondary: colors.grey[600],
+        disabled: colors.grey[600],
+      },
+    },
+    components: {
+      MuiTypography: {
+        defaultProps: {
+          color: "text.primary",
+        },
+        styleOverrides: {
+          root: {
+            fontFamily: lang == "ar" ? "Aref Ruqaa " : "sans-serif",
+          },
         },
       },
-    },
-    MuiButton: {
-      defaultProps: {
-        disableElevation: true,
+      MuiButton: {
+        defaultProps: {
+          disableElevation: true,
+        },
+      },
+      MuiPaper: {
+        defaultProps: { elevation: 0 },
       },
     },
-    MuiPaper: {
-      defaultProps: { elevation: 0 },
-    },
-  },
-  typography: {
-    // fontFamily: [
-    //   "Arial", // Update font family here
-    //   "-apple-system",
-    //   "BlinkMacSystemFont",
-    //   '"Segoe UI"',
-    //   "Roboto",
-    //   '"Helvetica Neue"',
-    //   "Arial",
-    //   "sans-serif",
-    //   '"Apple Color Emoji"',
-    //   '"Segoe UI Emoji"',
-    //   '"Segoe UI Symbol"',
-    // ].join(","),
-  },
-});
+  });

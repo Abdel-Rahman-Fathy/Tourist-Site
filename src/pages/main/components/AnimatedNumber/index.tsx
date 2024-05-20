@@ -38,7 +38,7 @@ function AnimationNumber() {
   return (
     <Stack
       sx={{
-        backgroundImage: `linear-gradient(rgba(0, 82, 164,.8), rgba(0, 82, 164,.8)
+        backgroundImage: `linear-gradient(rgba(0, 82, 164, 0.8), rgba(0, 82, 164, 0.8)
 ), url(${bgAnimated})`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
@@ -48,14 +48,7 @@ function AnimationNumber() {
       }}
     >
       <Container maxWidth="xl">
-        <Grid
-          container
-          // sx={{
-          //   display: "flex",
-          //   flexDirection: "row",
-          //   justifyContent: "space-evenly",
-          // }}
-        >
+        <Grid container>
           {archievmentsList.map((arch, index) => (
             <Grid
               key={index}

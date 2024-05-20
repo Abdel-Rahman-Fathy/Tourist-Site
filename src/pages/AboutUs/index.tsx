@@ -5,14 +5,15 @@ import { useTranslation } from "react-i18next";
 import FixedSection from "../../Components/FixedSection";
 import RenderRtchText from "../../Components/RenderRte";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "methods/api";
 import { AboutType } from "types/About";
+import { homeContext } from "pages/HomeContext";
 function AboutUs() {
   const [status, setStatus] = useState<"none" | "loading" | "done">("none");
   const [aboutData, setAboutData] = useState<AboutType | undefined>(undefined);
   const [t, i18n] = useTranslation();
-  const { language } = i18n;
+  const { homeData } = useContext(homeContext);
   function getAboutData() {
     setStatus("loading");
     axios
@@ -50,7 +51,19 @@ function AboutUs() {
             <Typography
               className="subAbout"
               variant="h5"
-              sx={{ py: 3, fontWeight: "600" }}
+              sx={{
+                py: 3,
+                fontWeight: "600",
+                "&::before": {
+                  content: '""',
+                  top: "0",
+                  left: "0",
+                  width: "100%",
+                  height: "100%",
+                  marginRight: "15px",
+                  borderRight: `5px solid ${homeData?.SiteColor.mainColor}`,
+                },
+              }}
             >
               {aboutData?.siteInformation?.about}
             </Typography>

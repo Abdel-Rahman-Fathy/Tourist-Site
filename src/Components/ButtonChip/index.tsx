@@ -1,7 +1,10 @@
 import { Grid, Stack } from "@mui/material";
+import { homeContext } from "pages/HomeContext";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 function ButtonChip({ id, name, link }: PropsType) {
+  const { homeData } = useContext(homeContext);
   return (
     <Grid sx={{ p: 1 }} item md={3} xs={12}>
       <Stack
@@ -18,7 +21,7 @@ function ButtonChip({ id, name, link }: PropsType) {
           transition: "all .3s",
           color: "#fff",
           "&:hover": {
-            background: "#F19B02",
+            background: homeData?.SiteColor.secondaryColor || "#F19B02",
           },
         }}
       >

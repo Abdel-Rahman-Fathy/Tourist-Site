@@ -20,6 +20,7 @@ export interface Root {
   Categories: Category[];
   shippings: Shipping[];
   category_hotels: HotelCat[];
+  SiteColor: SiteColor;
 }
 
 export interface SiteInformation {
@@ -78,6 +79,14 @@ export interface HotelCat {
   image: string;
 }
 
+export interface SiteColor {
+  created_at: string;
+  id: number;
+  mainColor: string;
+  secondaryColor: string;
+  textColor: string;
+  updated_at: string;
+}
 export interface SiteContent {
   id: number;
   position: string;

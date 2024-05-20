@@ -10,13 +10,15 @@ import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
 import axios from "axios";
 import isRtl from "methods/isRtl";
-import { HomeContextProvider } from "pages/HomeContext";
 import Cookies from "js-cookie";
+import { useContext } from "react";
+import { homeContext } from "pages/HomeContext";
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 function App() {
   const [t, i18n] = useTranslation();
   const { language } = i18n;
+  const { homeData } = useContext(homeContext);
 
   // Set the selected language in a cookie
   Cookies.set("selectedLanguage", language);
@@ -31,17 +33,21 @@ function App() {
   if (language !== storedLanguage) {
     i18n.changeLanguage(storedLanguage || language);
   }
-
+  console.log(language);
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider
+      theme={theme(
+        homeData?.SiteColor.mainColor,
+        homeData?.SiteColor.secondaryColor,
+        language
+      )}
+    >
       <Stack
         sx={{ direction: isRtl(storedLanguage || language) ? "rtl" : "ltr" }}
         component={"main"}
         className="App"
       >
-        <HomeContextProvider>
-          <Layout key={storedLanguage || language} />
-        </HomeContextProvider>
+        <Layout key={storedLanguage || language} />
       </Stack>
     </ThemeProvider>
   );
