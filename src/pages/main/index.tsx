@@ -10,13 +10,21 @@ import Slider from "./components/SliderPage";
 import WhyusPage from "./components/WhyusPage";
 import { homeContext } from "pages/HomeContext";
 import SliderLogo from "./components/SliderLogo";
+import { useTranslation } from "react-i18next";
 
 function MainPages() {
+  const [t, i18n] = useTranslation();
+  const { language } = i18n;
   return (
     <>
       <Slider />
-      <HurghadaPage />
-      <ShoppingPage />
+      {language !== "ar" && (
+        <>
+          <HurghadaPage />
+          <ShoppingPage />
+        </>
+      )}
+
       <AboutPage />
       <AnimationNumber />
       <WhyusPage />

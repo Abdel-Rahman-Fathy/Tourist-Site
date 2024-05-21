@@ -47,7 +47,8 @@ function SubMenu({ title, link }: PropsType) {
 }
 
 function SecondNavbar() {
-  const [t] = useTranslation();
+  const [t, i18n] = useTranslation();
+  const { language } = i18n;
   const { homeData } = useContext(homeContext);
   const cat: Category[] | undefined = [...(homeData?.Categories || [])];
   Color = homeData?.SiteColor.secondaryColor;
@@ -173,29 +174,33 @@ function SecondNavbar() {
                     {t("main.AboutUs")}
                   </Typography>
                 </li>
-                <li>
-                  <Typography
-                    className={"link"}
-                    sx={{
-                      "&:hover": {
-                        color: homeData?.SiteColor.secondaryColor || "#F19B02",
-                      },
-                    }}
-                  >
-                    {t("main.ExursionsFromHurghada")}
-                  </Typography>
-                  <Paper className="subMenu">
-                    <MenuList>
-                      {cat.reverse().map((item) => (
-                        <SubMenu
-                          key={item.id}
-                          title={item.title}
-                          link={`products/${item.id}`}
-                        />
-                      ))}
-                    </MenuList>
-                  </Paper>
-                </li>
+                {language !== "ar" && (
+                  <li>
+                    <Typography
+                      className={"link"}
+                      sx={{
+                        "&:hover": {
+                          color:
+                            homeData?.SiteColor.secondaryColor || "#F19B02",
+                        },
+                      }}
+                    >
+                      {t("main.ExursionsFromHurghada")}
+                    </Typography>
+                    <Paper className="subMenu">
+                      <MenuList>
+                        {cat.reverse().map((item) => (
+                          <SubMenu
+                            key={item.id}
+                            title={item.title}
+                            link={`products/${item.id}`}
+                          />
+                        ))}
+                      </MenuList>
+                    </Paper>
+                  </li>
+                )}
+
                 <li>
                   <Typography
                     className={"link"}
@@ -220,29 +225,33 @@ function SecondNavbar() {
                     </MenuList>
                   </Paper>
                 </li>
-                <li>
-                  <Typography
-                    className={"link"}
-                    sx={{
-                      "&:hover": {
-                        color: homeData?.SiteColor.secondaryColor || "#F19B02",
-                      },
-                    }}
-                  >
-                    {t("main.Shopping")}
-                  </Typography>
-                  <Paper className="subMenu">
-                    <MenuList>
-                      {homeData?.shippings.map((item, index) => (
-                        <SubMenu
-                          key={item.id}
-                          title={item.name}
-                          link={`shopping/${item.id}`}
-                        />
-                      ))}
-                    </MenuList>
-                  </Paper>
-                </li>
+                {language !== "ar" && (
+                  <li>
+                    <Typography
+                      className={"link"}
+                      sx={{
+                        "&:hover": {
+                          color:
+                            homeData?.SiteColor.secondaryColor || "#F19B02",
+                        },
+                      }}
+                    >
+                      {t("main.Shopping")}
+                    </Typography>
+                    <Paper className="subMenu">
+                      <MenuList>
+                        {homeData?.shippings.map((item, index) => (
+                          <SubMenu
+                            key={item.id}
+                            title={item.name}
+                            link={`shopping/${item.id}`}
+                          />
+                        ))}
+                      </MenuList>
+                    </Paper>
+                  </li>
+                )}
+
                 <li>
                   <Typography
                     component={NavLink}
@@ -315,37 +324,47 @@ function SecondNavbar() {
                   </MenuItem>
                 </Typography>
                 {/* Frist sub item */}
-                <MenuItem onClick={toggleExursionsSubMenu}>
-                  {t("main.ExursionsFromHurghada")}{" "}
-                  {isExursionsFromHurghadaSubMenuOpen ? (
-                    <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
-                  ) : (
-                    <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
-                  )}
-                </MenuItem>
-                {isExursionsFromHurghadaSubMenuOpen && (
-                  <Box
-                    sx={{
-                      backgroundColor: "primary.main",
-                      mx: 1,
-                      borderRadius: "10px",
-                    }}
-                  >
-                    {cat.map((item) => (
-                      <Typography
-                        component={NavLink}
-                        key={item.id}
-                        onClick={() => {
-                          toggleMobileMenu();
-                          toggleExursionsSubMenu();
+                {language !== "ar" && (
+                  <>
+                    {" "}
+                    <MenuItem onClick={toggleExursionsSubMenu}>
+                      {t("main.ExursionsFromHurghada")}{" "}
+                      {isExursionsFromHurghadaSubMenuOpen ? (
+                        <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
+                      ) : (
+                        <KeyboardArrowDownIcon
+                          sx={{ fontWeight: 600, ml: 2 }}
+                        />
+                      )}
+                    </MenuItem>
+                    {isExursionsFromHurghadaSubMenuOpen && (
+                      <Box
+                        sx={{
+                          backgroundColor: "primary.main",
+                          mx: 1,
+                          borderRadius: "10px",
                         }}
-                        to={`products/${item.id}`}
                       >
-                        <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
-                      </Typography>
-                    ))}
-                  </Box>
+                        {cat.map((item) => (
+                          <Typography
+                            component={NavLink}
+                            key={item.id}
+                            onClick={() => {
+                              toggleMobileMenu();
+                              toggleExursionsSubMenu();
+                            }}
+                            to={`products/${item.id}`}
+                          >
+                            <MenuItem sx={{ color: "#fff" }}>
+                              {item.title}
+                            </MenuItem>
+                          </Typography>
+                        ))}
+                      </Box>
+                    )}
+                  </>
                 )}
+
                 {/* sec sub item */}
                 <MenuItem onClick={toggleHotelSubMenu}>
                   {t("main.Hotels")}
@@ -379,37 +398,47 @@ function SecondNavbar() {
                   </Box>
                 )}
                 {/* third sub item */}
-                <MenuItem onClick={toggleShoppingSubMenu}>
-                  {t("main.Shopping")}
-                  {isShoppingSubMenuOpen ? (
-                    <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
-                  ) : (
-                    <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
-                  )}
-                </MenuItem>
-                {isShoppingSubMenuOpen && (
-                  <Box
-                    sx={{
-                      backgroundColor: "primary.main",
-                      mx: 1,
-                      borderRadius: "10px",
-                    }}
-                  >
-                    {homeData?.shippings.map((item) => (
-                      <Typography
-                        component={NavLink}
-                        key={item.id}
-                        onClick={() => {
-                          toggleMobileMenu();
-                          toggleShoppingSubMenu();
+                {language !== "ar" && (
+                  <>
+                    {" "}
+                    <MenuItem onClick={toggleShoppingSubMenu}>
+                      {t("main.Shopping")}
+                      {isShoppingSubMenuOpen ? (
+                        <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
+                      ) : (
+                        <KeyboardArrowDownIcon
+                          sx={{ fontWeight: 600, ml: 2 }}
+                        />
+                      )}
+                    </MenuItem>
+                    {isShoppingSubMenuOpen && (
+                      <Box
+                        sx={{
+                          backgroundColor: "primary.main",
+                          mx: 1,
+                          borderRadius: "10px",
                         }}
-                        to={`shopping/${item.id}`}
                       >
-                        <MenuItem sx={{ color: "#fff" }}>{item.name}</MenuItem>
-                      </Typography>
-                    ))}
-                  </Box>
+                        {homeData?.shippings.map((item) => (
+                          <Typography
+                            component={NavLink}
+                            key={item.id}
+                            onClick={() => {
+                              toggleMobileMenu();
+                              toggleShoppingSubMenu();
+                            }}
+                            to={`shopping/${item.id}`}
+                          >
+                            <MenuItem sx={{ color: "#fff" }}>
+                              {item.name}
+                            </MenuItem>
+                          </Typography>
+                        ))}
+                      </Box>
+                    )}
+                  </>
                 )}
+
                 {/* Blogs */}
                 <MenuItem onClick={toggleBlogsSubMenu}>
                   {t("main.Blog")}

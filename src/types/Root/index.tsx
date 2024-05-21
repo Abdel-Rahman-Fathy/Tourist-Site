@@ -22,7 +22,10 @@ export interface Root {
   category_hotels: HotelCat[];
   SiteColor: SiteColor;
 }
-
+export interface Data {
+  egyptos: true | false;
+  status: true | false;
+}
 export interface SiteInformation {
   id: number;
   about: string;

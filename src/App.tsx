@@ -11,14 +11,17 @@ import "swiper/css/effect-fade";
 import axios from "axios";
 import isRtl from "methods/isRtl";
 import Cookies from "js-cookie";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { homeContext } from "pages/HomeContext";
+import { Data } from "types/Root";
+import Spinner from "pages/SpinnerPage/Spinner";
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 function App() {
   const [t, i18n] = useTranslation();
   const { language } = i18n;
   const { homeData } = useContext(homeContext);
+  const [statusError, setStatusError] = useState<Data | undefined>(undefined);
 
   // Set the selected language in a cookie
   Cookies.set("selectedLanguage", language);
@@ -33,7 +36,18 @@ function App() {
   if (language !== storedLanguage) {
     i18n.changeLanguage(storedLanguage || language);
   }
-  console.log(language);
+
+  useEffect(() => {
+    axios
+      .get(`https://abdelrahman-eldesoky.online/api/control`)
+      .then((res) => {
+        setStatusError(res.data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  }, []);
+
   return (
     <ThemeProvider
       theme={theme(
@@ -42,13 +56,17 @@ function App() {
         language
       )}
     >
-      <Stack
-        sx={{ direction: isRtl(storedLanguage || language) ? "rtl" : "ltr" }}
-        component={"main"}
-        className="App"
-      >
-        <Layout key={storedLanguage || language} />
-      </Stack>
+      {statusError?.status ? (
+        <Stack
+          sx={{ direction: isRtl(storedLanguage || language) ? "rtl" : "ltr" }}
+          component={"main"}
+          className="App"
+        >
+          <Layout key={storedLanguage || language} />
+        </Stack>
+      ) : (
+        <Spinner />
+      )}
     </ThemeProvider>
   );
 }

@@ -75,7 +75,7 @@ function AboutPage() {
               </Typography>
               <Typography
                 variant="body1"
-                sx={{ position: "relative", bottom: "50px", left: "15px" }}
+                sx={{ position: "relative", bottom: "50px", left: "0px" }}
               >
                 <RenderRte rte={findObj("Home About Years")?.description} />
               </Typography>

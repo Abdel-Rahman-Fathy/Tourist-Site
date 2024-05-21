@@ -16,8 +16,11 @@ import SliderHotel from "pages/HotelCard/SliderPage";
 import ShopCard from "pages/ShoppingCard";
 import { Stack, Typography } from "@mui/material";
 import NotFound from "Components/NotFound";
+import { useTranslation } from "react-i18next";
 
 function Layout() {
+  const [t, i18n] = useTranslation();
+  const { language } = i18n;
   const { status } = useContext(homeContext);
   const { pathname } = useLocation();
   useEffect(() => {
@@ -31,11 +34,19 @@ function Layout() {
           <div className="main-view">
             <Routes>
               <Route path="" element={<MainPages />} />
-              <Route path="products/:id" element={<HurghadaCard />} />
-              <Route path="product/:id" element={<SliderHurhada />} />
+              {language !== "ar" && (
+                <>
+                  <Route path="products/:id" element={<HurghadaCard />} />
+                  <Route path="product/:id" element={<SliderHurhada />} />
+                </>
+              )}
+
               <Route path="hotels/:id" element={<HotelCard />} />
               <Route path="hotel/:id" element={<SliderHotel />} />
-              <Route path="shopping/:id" element={<ShopCard />} />
+              {language !== "ar" && (
+                <Route path="shopping/:id" element={<ShopCard />} />
+              )}
+
               <Route path="about" element={<AboutUs />} />
               <Route path="blog/:id" element={<Blog />} />
               <Route path="contact" element={<ContactUsPage />} />

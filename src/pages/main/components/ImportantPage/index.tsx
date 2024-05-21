@@ -13,7 +13,7 @@ function ImportPage() {
         <Grid container>
           <Grid item md={6} p={6}>
             <Typography
-              sx={{ color: "#fff", fontWeight: 600, fontSize: "30px", pr: 5 }}
+              sx={{ color: "#fff", fontWeight: 600, fontSize: "30px" }}
             >
               <RenderRte rte={findObj("Why Choose Us")?.description} />
             </Typography>

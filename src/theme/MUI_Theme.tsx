@@ -50,7 +50,7 @@ export const theme = (
         },
         styleOverrides: {
           root: {
-            fontFamily: lang == "ar" ? "Aref Ruqaa " : "sans-serif",
+            fontFamily: lang == "ar" ? "Almarai " : "sans-serif",
           },
         },
       },
