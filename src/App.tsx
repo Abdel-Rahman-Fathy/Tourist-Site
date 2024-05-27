@@ -32,8 +32,8 @@ function App() {
   const storedLanguage = Cookies.get("selectedLanguage");
 
   useEffect(() => {
-    if (storedLanguage && !langParam) {
-      setLangParam(storedLanguage);
+    if (!langParam) {
+      setLangParam(language);
     }
   }, [langParam]);
 
