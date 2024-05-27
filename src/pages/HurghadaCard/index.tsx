@@ -106,7 +106,7 @@ function HurghadaCard() {
                             bottom: "0",
                             left: "50%",
                             fontWeight: "700",
-                            p: "3px 20px",
+                            p: "3px 12px",
                             transform: "translateY(50%) translateX(-50%)",
                             borderRadius: "10px",
                           }}

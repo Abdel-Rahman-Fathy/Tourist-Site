@@ -15,6 +15,7 @@ import { useContext, useEffect, useState } from "react";
 import { homeContext } from "pages/HomeContext";
 import { Data } from "types/Root";
 import Spinner from "pages/SpinnerPage/Spinner";
+
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 function App() {

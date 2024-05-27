@@ -120,7 +120,7 @@ function SecondNavbar() {
               flexDirection={"row"}
               alignItems={"center"}
               item
-              md={4}
+              md={3}
             >
               <Box
                 component={NavLink}
@@ -139,10 +139,10 @@ function SecondNavbar() {
             <Grid
               flexDirection={"row"}
               item
-              md={8}
+              md={9}
               sx={{
                 display: { md: "flex", xs: "none" },
-                justifyContent: "center",
+                justifyContent: "end",
               }}
             >
               <ul className="secNavbar">

@@ -84,7 +84,8 @@ function Footer() {
               variant="outlined"
               sx={{ color: "red", width: "80%" }}
             />
-            <Button variant="contained" color="secondary" sx={{ m: 3 }}>
+            <br />
+            <Button variant="contained" color="secondary" sx={{ mt: 3 }}>
               {findObj("Newsletter")?.title}
             </Button>
           </Grid>

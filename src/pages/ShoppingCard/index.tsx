@@ -146,7 +146,6 @@ function ShopCard() {
                           variant="h4"
                           sx={{
                             fontWeight: 600,
-                            color: "rgba(40, 140, 160)",
                           }}
                         >
                           {card.cost}
@@ -156,7 +155,7 @@ function ShopCard() {
                         sx={{
                           width: 0,
                           height: "5px",
-                          backgroundColor: "rgba(40, 140, 160)",
+                          backgroundColor: "primary.main",
                           transition: "all .8s",
                         }}
                         className={"line"}
