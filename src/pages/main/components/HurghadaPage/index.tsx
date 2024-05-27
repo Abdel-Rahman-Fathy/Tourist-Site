@@ -9,7 +9,6 @@ function HurghadaPage() {
   const [t] = useTranslation();
   const { homeData } = useContext(homeContext);
   const cat: Category[] | undefined = [...(homeData?.Categories || [])];
-  console.log("cat", cat);
   return (
     <Paper sx={{ padding: "60px 0px" }}>
       <Container maxWidth="lg">

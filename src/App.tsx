@@ -32,6 +32,8 @@ function App() {
   const storedLanguage = Cookies.get("selectedLanguage");
 
   useEffect(() => {
+    console.log("first", language);
+
     if (!langParam) {
       setLangParam(language);
     }
@@ -42,9 +44,14 @@ function App() {
     langParam || storedLanguage || language;
 
   // Handle hard refresh and set language again
-  if (language !== storedLanguage || (langParam && langParam !== language)) {
-    i18n.changeLanguage(langParam || storedLanguage || language);
-  }
+  useEffect(() => {
+    const storedLanguage = Cookies.get("selectedLanguage");
+    if (storedLanguage && storedLanguage !== language) {
+      i18n.changeLanguage(storedLanguage);
+    }
+    setLangParam(language);
+    axios.defaults.headers.common["lang"] = storedLanguage || language;
+  }, [language, i18n]);
 
   useEffect(() => {
     axios

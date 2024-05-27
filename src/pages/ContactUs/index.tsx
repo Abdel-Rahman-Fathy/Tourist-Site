@@ -110,6 +110,7 @@ function ContactUsPage() {
                       {contactData?.siteInformation?.phone1}
                     </Typography>
                   )}
+                  <br />
                   {contactData?.siteInformation?.phone2 && (
                     <Typography
                       variant="body1"
@@ -121,6 +122,8 @@ function ContactUsPage() {
                       {contactData?.siteInformation?.phone2}
                     </Typography>
                   )}
+                  <br />
+
                   {contactData?.siteInformation?.phone3 && (
                     <Typography
                       variant="body1"
@@ -132,6 +135,8 @@ function ContactUsPage() {
                       {contactData?.siteInformation?.phone3}
                     </Typography>
                   )}
+                  <br />
+
                   {contactData?.siteInformation?.phone4 && (
                     <Typography
                       variant="body1"
@@ -143,6 +148,7 @@ function ContactUsPage() {
                       {contactData?.siteInformation?.phone4}
                     </Typography>
                   )}
+                  <br />
                 </Grid>
                 <Grid item md={4} xs={12} sx={{ py: 8 }}>
                   <EmailOutlinedIcon

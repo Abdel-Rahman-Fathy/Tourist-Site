@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 
 function RenderRte(props: PropsType) {
-  const ali = useRef<HTMLDivElement | null>(null);
+  const element = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    if (ali?.current && props.rte) {
-      ali.current.innerHTML = props.rte;
+    if (element?.current && props.rte) {
+      element.current.innerHTML = props.rte;
     }
   });
-  return <div ref={ali}></div>;
+  return <div ref={element}></div>;
 }
 
 export default RenderRte;

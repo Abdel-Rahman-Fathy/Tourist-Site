@@ -52,6 +52,7 @@ function DialogForm({ open, setOpen }: PropsType) {
       .post(api(`book/${id}`), { ...data })
       .then(() => {
         // enqueueSnackbar("تم حذف الخدمة بنجاح");
+        setOpen(!open);
         reset({
           name: "",
           email: "",

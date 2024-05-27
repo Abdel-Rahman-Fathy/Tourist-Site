@@ -15,6 +15,8 @@ import axios from "axios";
 import { useSnackbar } from "notistack";
 import { api } from "methods/api";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
+import { homeContext } from "pages/HomeContext";
 const styles = {
   root: {
     "& .MuiInputLabel-root": {
@@ -30,6 +32,7 @@ const styles = {
 };
 const CustomTextField = withStyles(styles)(TextField);
 function FormPage() {
+  const { homeData } = useContext(homeContext);
   const [t, i18n] = useTranslation();
   const contactSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -159,7 +162,7 @@ function FormPage() {
           </Grid>
           <Grid item xs={12} sx={{ my: 3 }}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6922.018878939414!2d31.254526996780413!3d29.835149312149156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14584b87dc71afdd%3A0x567dbd805f095230!2z2K3ZhNmI2KfZhg!5e0!3m2!1sar!2seg!4v1715283446984!5m2!1sar!2seg"
+              src={homeData?.siteInformation.map}
               width="100%"
               height="450"
               loading="lazy"

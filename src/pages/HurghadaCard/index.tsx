@@ -122,7 +122,8 @@ function HurghadaCard() {
                           to={`/product/${card.id}`}
                           sx={{
                             fontWeight: 700,
-                            marginY: 1,
+                            marginTop: 4,
+                            marginBottom: 2,
                             display: "inline-block",
                           }}
                         >

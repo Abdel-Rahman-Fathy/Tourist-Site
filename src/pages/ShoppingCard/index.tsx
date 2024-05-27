@@ -9,23 +9,17 @@ import {
   Typography,
 } from "@mui/material";
 import FixedSection from "../../Components/FixedSection";
-import img1 from "../../assets/WhyUsImage.png";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
-import { BorderBottom } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { api } from "methods/api";
-import { HardProductsType } from "types/HardProducts";
-import RenderRte from "Components/RenderRte";
 import Spinner from "pages/SpinnerPage/Spinner";
 import { imgPath } from "methods/img";
 import { ShoppingCardType } from "types/Shopping";
 function ShopCard() {
   const [t, i18n] = useTranslation();
-  const { language } = i18n;
-  const navigate = useNavigate();
   const { id } = useParams();
   const [status, setStatus] = useState<"none" | "loading" | "done">("none");
   const [products, setProducts] = useState<ShoppingCardType | undefined>(
