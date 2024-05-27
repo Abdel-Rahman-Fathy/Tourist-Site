@@ -28,14 +28,14 @@ function App() {
   // Set the selected language in a cookie
   Cookies.set("selectedLanguage", language);
 
-  useEffect(() => {
-    if (langParam) {
-      setLangParam(null);
-    }
-  });
-
   // Retrieve the selected language from the cookie
   const storedLanguage = Cookies.get("selectedLanguage");
+
+  useEffect(() => {
+    if (storedLanguage && !langParam) {
+      setLangParam(storedLanguage);
+    }
+  }, [langParam]);
 
   // Set the language in axios headers
   axios.defaults.headers.common["lang"] =
