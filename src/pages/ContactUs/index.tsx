@@ -99,56 +99,57 @@ function ContactUsPage() {
                   <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
                     {t("ContactUs.Phone")}
                   </Typography>
-                  {contactData?.siteInformation?.phone1 && (
-                    <Typography
-                      variant="body1"
-                      fontWeight={500}
-                      component={NavLink}
-                      to={""}
-                      sx={{ fontWeight: 500, mb: 2, px: 3 }}
-                    >
-                      {contactData?.siteInformation?.phone1}
-                    </Typography>
-                  )}
-                  <br />
-                  {contactData?.siteInformation?.phone2 && (
-                    <Typography
-                      variant="body1"
-                      fontWeight={500}
-                      component={NavLink}
-                      to={""}
-                      sx={{ fontWeight: 500, mb: 2, px: 3 }}
-                    >
-                      {contactData?.siteInformation?.phone2}
-                    </Typography>
-                  )}
-                  <br />
+                  <Box sx={{ direction: "ltr" }}>
+                    {contactData?.siteInformation?.phone1 && (
+                      <Typography
+                        variant="body1"
+                        fontWeight={500}
+                        component={NavLink}
+                        to={""}
+                        sx={{ fontWeight: 500, mb: 2, px: 3 }}
+                      >
+                        {contactData?.siteInformation?.phone1}
+                      </Typography>
+                    )}
+                    <br />
+                    {contactData?.siteInformation?.phone2 && (
+                      <Typography
+                        variant="body1"
+                        fontWeight={500}
+                        component={NavLink}
+                        to={""}
+                        sx={{ fontWeight: 500, mb: 2, px: 3 }}
+                      >
+                        {contactData?.siteInformation?.phone2}
+                      </Typography>
+                    )}
+                    <br />
 
-                  {contactData?.siteInformation?.phone3 && (
-                    <Typography
-                      variant="body1"
-                      fontWeight={500}
-                      component={NavLink}
-                      to={""}
-                      sx={{ fontWeight: 500, mb: 2, px: 3 }}
-                    >
-                      {contactData?.siteInformation?.phone3}
-                    </Typography>
-                  )}
-                  <br />
+                    {contactData?.siteInformation?.phone3 && (
+                      <Typography
+                        variant="body1"
+                        fontWeight={500}
+                        component={NavLink}
+                        to={""}
+                        sx={{ fontWeight: 500, mb: 2, px: 3 }}
+                      >
+                        {contactData?.siteInformation?.phone3}
+                      </Typography>
+                    )}
+                    <br />
 
-                  {contactData?.siteInformation?.phone4 && (
-                    <Typography
-                      variant="body1"
-                      fontWeight={500}
-                      component={NavLink}
-                      to={""}
-                      sx={{ fontWeight: 500, mb: 2, px: 3 }}
-                    >
-                      {contactData?.siteInformation?.phone4}
-                    </Typography>
-                  )}
-                  <br />
+                    {contactData?.siteInformation?.phone4 && (
+                      <Typography
+                        variant="body1"
+                        fontWeight={500}
+                        component={NavLink}
+                        to={""}
+                        sx={{ fontWeight: 500, mb: 2, px: 3 }}
+                      >
+                        {contactData?.siteInformation?.phone4}
+                      </Typography>
+                    )}
+                  </Box>
                 </Grid>
                 <Grid item md={4} xs={12} sx={{ py: 8 }}>
                   <EmailOutlinedIcon

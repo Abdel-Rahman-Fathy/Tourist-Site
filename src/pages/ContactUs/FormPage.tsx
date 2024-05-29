@@ -46,6 +46,7 @@ function FormPage() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<InputContact>({
     mode: "onChange",
@@ -53,13 +54,17 @@ function FormPage() {
   });
   const onSubmit: SubmitHandler<InputContact> = (data) => {
     axios
-      .post(api(`contact`), { ...data })
+      .post(api(`message`), { ...data })
       .then(() => {
-        enqueueSnackbar("تم حذف الخدمة بنجاح");
+        reset({
+          email: "",
+          message: "",
+          name: "",
+          phone: "",
+          subject: "",
+        });
       })
-      .catch((err) => {
-        enqueueSnackbar("تعذر في حذف الخدمة", { variant: "error" });
-      });
+      .catch((err) => {});
   };
   return (
     <Stack

@@ -61,7 +61,7 @@ function ContactUs() {
                   {t("main.CallUs")}
                 </Typography>
               </Box>
-              <Box sx={{ margin: "10px 0 0 0px" }}>
+              <Box sx={{ margin: "10px 0 0 0px", direction: "ltr" }}>
                 {homeData?.siteInformation?.phone1 && (
                   <Typography variant="body1" sx={{ color: "#fff" }}>
                     {homeData?.siteInformation?.phone1}

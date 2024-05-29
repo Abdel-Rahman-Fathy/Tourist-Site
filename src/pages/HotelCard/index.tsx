@@ -9,16 +9,12 @@ import {
   Typography,
 } from "@mui/material";
 import FixedSection from "../../Components/FixedSection";
-import img1 from "../../assets/WhyUsImage.png";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
-import { BorderBottom } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { api } from "methods/api";
-import { HardProductsType } from "types/HardProducts";
-import RenderRte from "Components/RenderRte";
 import Spinner from "pages/SpinnerPage/Spinner";
 import { imgPath } from "methods/img";
 import { HotelCardType } from "types/Hotel";
@@ -33,7 +29,6 @@ function HotelCard() {
 
   function getProductsData() {
     setStatus("loading");
-    //
     axios
       .get<{ data: HotelCardType }>(api(`hotels/${id}`))
       .then(({ data }) => {
@@ -58,9 +53,7 @@ function HotelCard() {
             <Typography
               variant="h3"
               sx={{ textAlign: "center", fontWeight: 600, mb: 10 }}
-            >
-              {/* {products?.category} */}
-            </Typography>
+            ></Typography>
             <Container>
               <Grid container spacing={2}>
                 {products?.hotels?.map((card, index) => (
@@ -159,6 +152,7 @@ function HotelCard() {
                               borderRadius: "10px",
                               backgroundColor: "#0052a4",
                               transition: "all .3s",
+                              fontFamily: "Almarai ",
                             }}
                             onClick={() => {
                               navigate(`/hotel/${card.id}`);

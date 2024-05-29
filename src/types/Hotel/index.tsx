@@ -7,7 +7,7 @@ export interface HotelSliderType {
   hotel: Hotel;
 }
 
-interface Hotel {
+export interface Hotel {
   id: number;
   title: string;
   metaTags: unknown;

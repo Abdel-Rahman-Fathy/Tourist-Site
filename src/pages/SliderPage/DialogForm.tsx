@@ -28,8 +28,8 @@ function DialogForm({ open, setOpen }: PropsType) {
   const BookSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
     email: z.string().min(1, { message: "Email is required" }).email(),
-    phone: z.string().min(1, { message: "Phone is required" }),
-    date: z.string().min(1, { message: "Date is required" }),
+    mobile: z.string().min(1, { message: "mobile is required" }),
+    trip_date: z.string().min(1, { message: "Date is required" }),
     adults: z.string().min(1, { message: "Adults is required" }),
     children: z.string().min(1, { message: "Children is required" }),
     infant: z.string().min(1, { message: "Infant is required" }),
@@ -51,22 +51,19 @@ function DialogForm({ open, setOpen }: PropsType) {
     axios
       .post(api(`book/${id}`), { ...data })
       .then(() => {
-        // enqueueSnackbar("تم حذف الخدمة بنجاح");
         setOpen(!open);
         reset({
           name: "",
           email: "",
-          phone: "",
-          date: "",
+          mobile: "",
+          trip_date: "",
           adults: "",
           children: "",
           infant: "",
           message: "",
         });
       })
-      .catch((err) => {
-        // enqueueSnackbar("تعذر في حذف الخدمة", { variant: "error" });
-      });
+      .catch((err) => {});
   };
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -112,16 +109,16 @@ function DialogForm({ open, setOpen }: PropsType) {
           </Grid>
           <Grid item md={6}>
             <TextField
-              label={t("Hurghada.Phone")}
+              label={t("Hurghada.mobile")}
               fullWidth
               size="small"
-              {...register("phone")}
+              {...register("mobile")}
             />
           </Grid>
           <Grid item md={6}>
             <Controller
               control={control}
-              name="date"
+              name="trip_date"
               render={({ field }) => (
                 <DatePicker
                   label={t("Hurghada.Date")}

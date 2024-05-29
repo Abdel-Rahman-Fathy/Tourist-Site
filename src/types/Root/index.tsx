@@ -1,3 +1,5 @@
+import { Hotel } from "types/Hotel";
+
 export interface Root {
   lang: string;
   siteInformation: SiteInformation;
@@ -21,7 +23,9 @@ export interface Root {
   shippings: Shipping[];
   category_hotels: HotelCat[];
   SiteColor: SiteColor;
+  hotels: Hotel[];
 }
+
 export interface Data {
   egyptos: true | false;
   status: true | false;

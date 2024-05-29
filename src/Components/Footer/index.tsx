@@ -16,8 +16,13 @@ import { faTiktok } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { api } from "methods/api";
+import axios from "axios";
+import { z } from "zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const useStyles = makeStyles({
   root: {
@@ -34,7 +39,27 @@ function Footer() {
   const classes = useStyles();
   const { homeData } = useContext(homeContext);
   const findObj = useHomeData(homeData?.siteContent);
-
+  const emailSchema = z.object({
+    email: z.string().min(1, { message: "Email is required" }).email(),
+  });
+  type InputContact = z.infer<typeof emailSchema>;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<InputContact>({
+    mode: "onChange",
+    resolver: zodResolver(emailSchema),
+  });
+  const onSubmit: SubmitHandler<InputContact> = (data) => {
+    axios
+      .post(api(`subscribe`), { ...data })
+      .then((res) => {
+        reset({ email: "" });
+      })
+      .catch((err) => {});
+  };
   return (
     <Stack bgcolor="primary.main" padding={"80px 0px 80px 0px"}>
       <Container maxWidth="lg">
@@ -68,7 +93,12 @@ function Footer() {
               </NavLink>
             </Box>
           </Grid>
-          <Grid item md={6}>
+          <Grid
+            component={"form"}
+            onSubmit={handleSubmit(onSubmit)}
+            item
+            md={6}
+          >
             <Typography
               variant="h6"
               sx={{ color: "#fff", py: 3, fontWeight: "600" }}
@@ -79,13 +109,19 @@ function Footer() {
               {findObj("Newsletter")?.description}
             </Typography>
             <TextField
+              {...register("email")}
               className={classes.root}
               placeholder="Email"
               variant="outlined"
               sx={{ color: "red", width: "80%" }}
             />
             <br />
-            <Button variant="contained" color="secondary" sx={{ mt: 3 }}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="secondary"
+              sx={{ mt: 3 }}
+            >
               {findObj("Newsletter")?.title}
             </Button>
           </Grid>

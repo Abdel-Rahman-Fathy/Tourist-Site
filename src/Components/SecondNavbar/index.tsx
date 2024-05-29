@@ -34,6 +34,7 @@ function SubMenu({ title, link }: PropsType) {
       sx={{
         py: 1.5,
         background: MainColor || "#000",
+        fontFamily: "Almarai ",
         "&:hover": {
           color: Color || "#F19B02",
         },

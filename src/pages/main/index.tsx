@@ -11,6 +11,7 @@ import WhyusPage from "./components/WhyusPage";
 import { homeContext } from "pages/HomeContext";
 import SliderLogo from "./components/SliderLogo";
 import { useTranslation } from "react-i18next";
+import SliderHomeShopping from "./components/SliderHomeShopping";
 
 function MainPages() {
   const [t, i18n] = useTranslation();
@@ -24,8 +25,8 @@ function MainPages() {
           <ShoppingPage />
         </>
       )}
-
       <AboutPage />
+      {language === "ar" && <SliderHomeShopping />}
       <AnimationNumber />
       <WhyusPage />
       <ImportPage />

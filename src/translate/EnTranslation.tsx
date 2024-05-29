@@ -26,6 +26,7 @@ const EnTranslation = {
   },
   Hotel: {
     Stars: "Stars",
+    ViewVideo: "View Video",
   },
   ContactUs: {
     Address: "Address",

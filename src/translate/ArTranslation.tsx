@@ -26,6 +26,7 @@ const ArTranslation = {
   },
   Hotel: {
     Stars: "النجوم",
+    ViewVideo: "مشاهدة الفيديو",
   },
   ContactUs: {
     Address: "العنوان",

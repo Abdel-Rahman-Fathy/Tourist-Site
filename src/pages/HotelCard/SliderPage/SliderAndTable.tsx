@@ -76,7 +76,7 @@ function SliderAndTableHotel({ cardHotelInfo }: PropsType) {
       ) : (
         "لا يوجد صور للعرض"
       )}
-      <Stack>
+      {/* <Stack>
         <Grid container>
           <Grid
             item
@@ -140,7 +140,7 @@ function SliderAndTableHotel({ cardHotelInfo }: PropsType) {
             </Typography>
           </Grid>
         </Grid>
-      </Stack>
+      </Stack> */}
     </>
   );
 }
