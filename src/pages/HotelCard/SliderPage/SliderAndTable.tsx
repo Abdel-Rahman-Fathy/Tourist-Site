@@ -76,9 +76,9 @@ function SliderAndTableHotel({ cardHotelInfo }: PropsType) {
       ) : (
         "لا يوجد صور للعرض"
       )}
-      {/* <Stack>
+      <Stack>
         <Grid container>
-          <Grid
+          {/* <Grid
             item
             xs={5}
             sx={{ p: 1, border: "solid 1px #DEE2E6", display: "flex" }}
@@ -133,14 +133,14 @@ function SliderAndTableHotel({ cardHotelInfo }: PropsType) {
             <Typography variant="body1">
               <RenderRte rte={cardHotelInfo?.hotel?.persons} />
             </Typography>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sx={{ my: 4 }}>
             <Typography>
               <RenderRte rte={cardHotelInfo?.hotel?.overview} />
             </Typography>
           </Grid>
         </Grid>
-      </Stack> */}
+      </Stack>
     </>
   );
 }

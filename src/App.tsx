@@ -72,7 +72,7 @@ function App() {
         language
       )}
     >
-      {statusError?.status ? (
+      {statusError?.egyptos ? (
         <Stack
           sx={{ direction: isRtl(storedLanguage || language) ? "rtl" : "ltr" }}
           component={"main"}
