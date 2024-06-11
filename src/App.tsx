@@ -25,29 +25,25 @@ function App() {
   const { homeData } = useContext(homeContext);
   const [statusError, setStatusError] = useState<Data | undefined>(undefined);
   const [langParam, setLangParam] = useQueryParam("lang", StringParam);
-  // Set the selected language in a cookie
-  Cookies.set("selectedLanguage", language);
 
   // Retrieve the selected language from the cookie
-  const storedLanguage = Cookies.get("selectedLanguage");
   useEffect(() => {
     if (!langParam) {
       setLangParam(language);
     }
-  }, [langParam]);
+  }, []);
 
   // Set the language in axios headers
-  axios.defaults.headers.common["lang"] =
-    langParam || storedLanguage || language;
+  axios.defaults.headers.common["lang"] = language;
 
   // Handle hard refresh and set language again
   useEffect(() => {
-    const storedLanguage = Cookies.get("selectedLanguage");
-    if (storedLanguage && storedLanguage !== language) {
-      i18n.changeLanguage(storedLanguage);
+    if (langParam && langParam !== language) {
+      i18n.changeLanguage(langParam);
+    } else {
+      setLangParam(language);
     }
-    setLangParam(language);
-    axios.defaults.headers.common["lang"] = storedLanguage || language;
+    axios.defaults.headers.common["lang"] = language;
   }, [language, i18n]);
 
   useEffect(() => {
@@ -71,11 +67,11 @@ function App() {
     >
       {statusError?.egyptos ? (
         <Stack
-          sx={{ direction: isRtl(storedLanguage || language) ? "rtl" : "ltr" }}
+          sx={{ direction: isRtl(language) ? "rtl" : "ltr" }}
           component={"main"}
           className="App"
         >
-          <Layout key={storedLanguage || language} />
+          <Layout key={language} />
         </Stack>
       ) : (
         <Spinner />
