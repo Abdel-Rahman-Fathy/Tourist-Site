@@ -39,9 +39,9 @@ function App() {
   // Handle hard refresh and set language again
   useEffect(() => {
     if (langParam && langParam !== language) {
-      i18n.changeLanguage(langParam);
-    } else {
       setLangParam(language);
+    } else {
+      // i18n.changeLanguage(langParam);
     }
     axios.defaults.headers.common["lang"] = language;
   }, [language, i18n]);

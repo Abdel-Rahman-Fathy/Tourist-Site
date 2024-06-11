@@ -10,38 +10,48 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import CallIcon from "@mui/icons-material/Call";
 import icons from "../../../../assets/iconMessage.png";
 import CloseIcon from "@mui/icons-material/Close";
-const actions = [
-  {
-    icon: <WhatsAppIcon sx={{ color: "#fff", fontSize: "40px" }} />,
-    name: "WhatsApp",
-    bgcolor: "#25d366",
-  },
-  {
-    icon: <TelegramIcon sx={{ color: "#fff", fontSize: "40px" }} />,
-    name: "Telegram",
-    bgcolor: "#279dd8",
-  },
-  {
-    icon: (
-      <SettingsPhoneIcon
-        sx={{
-          color: "#784F99",
-          fontSize: "40px",
-          background: "#fff",
-          borderRadius: "25px",
-        }}
-      />
-    ),
-    name: "Viber",
-    bgcolor: "#784F99",
-  },
-  {
-    icon: <CallIcon sx={{ color: "#fff", fontSize: "40px" }} />,
-    name: "Phone",
-    bgcolor: "green",
-  },
-];
+import { NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { homeContext } from "pages/HomeContext";
+
 function FixedIcon() {
+  const { homeData } = useContext(homeContext);
+  const navigate = useNavigate();
+  const actions = [
+    {
+      icon: <WhatsAppIcon sx={{ color: "#fff", fontSize: "40px" }} />,
+      name: "WhatsApp",
+      bgcolor: "#25d366",
+      link: `${homeData?.contactus.whatsup}`,
+    },
+    {
+      icon: <TelegramIcon sx={{ color: "#fff", fontSize: "40px" }} />,
+      name: "Telegram",
+      bgcolor: "#279dd8",
+      link: `${homeData?.contactus.telegram}`,
+    },
+    {
+      icon: (
+        <SettingsPhoneIcon
+          sx={{
+            color: "#784F99",
+            fontSize: "40px",
+            background: "#fff",
+            borderRadius: "25px",
+          }}
+        />
+      ),
+      name: "Viber",
+      bgcolor: "#784F99",
+      link: `${homeData?.contactus.viber}`,
+    },
+    {
+      icon: <CallIcon sx={{ color: "#fff", fontSize: "40px" }} />,
+      name: "Phone",
+      bgcolor: "green",
+      link: `${homeData?.contactus.phone}`,
+    },
+  ];
   return (
     <Box
       sx={{
@@ -69,6 +79,9 @@ function FixedIcon() {
             key={index}
             icon={action.icon}
             tooltipTitle={action.name}
+            onClick={() => {
+              window.open(`${action.link}`, "_blank");
+            }}
             sx={{
               width: "60px",
               height: "60px",

@@ -11,13 +11,14 @@ import {
 import FixedSection from "../../Components/FixedSection";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { api } from "methods/api";
 import Spinner from "pages/SpinnerPage/Spinner";
 import { imgPath } from "methods/img";
 import { HotelCardType } from "types/Hotel";
+import { homeContext } from "pages/HomeContext";
 function HotelCard() {
   const [t, i18n] = useTranslation();
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function HotelCard() {
   const [products, setProducts] = useState<HotelCardType | undefined>(
     undefined
   );
-
+  useEffect(() => {}, []);
   function getProductsData() {
     setStatus("loading");
     axios
@@ -53,7 +54,9 @@ function HotelCard() {
             <Typography
               variant="h3"
               sx={{ textAlign: "center", fontWeight: 600, mb: 10 }}
-            ></Typography>
+            >
+              {products?.department}
+            </Typography>
             <Container>
               <Grid container spacing={2}>
                 {products?.hotels?.map((card, index) => (

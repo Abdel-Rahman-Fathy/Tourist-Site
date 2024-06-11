@@ -31,7 +31,7 @@ function DialogForm({ open, setOpen }: PropsType) {
     mobile: z.string().min(1, { message: "mobile is required" }),
     trip_date: z.string().min(1, { message: "Date is required" }),
     adults: z.string().min(1, { message: "Adults is required" }),
-    children: z.string().min(1, { message: "Children is required" }),
+    childern: z.string().min(1, { message: "Children is required" }),
     infant: z.string().min(1, { message: "Infant is required" }),
     message: z.string().min(1, { message: "message is required" }),
   });
@@ -58,7 +58,7 @@ function DialogForm({ open, setOpen }: PropsType) {
           mobile: "",
           trip_date: "",
           adults: "",
-          children: "",
+          childern: "",
           infant: "",
           message: "",
         });
@@ -157,7 +157,7 @@ function DialogForm({ open, setOpen }: PropsType) {
               label={t("Hurghada.Children")}
               fullWidth
               size="small"
-              {...register("children")}
+              {...register("childern")}
             />
           </Grid>
           <Grid item md={4}>

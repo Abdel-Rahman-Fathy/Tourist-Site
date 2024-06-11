@@ -1,4 +1,4 @@
-import { Box, Container, Stack, useTheme } from "@mui/material";
+import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import FeaturedCard, { FeaturedCardProps } from "./FeaturedCard";
@@ -36,7 +36,17 @@ function SliderHomeShopping() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cols]);
   return (
-    <Stack sx={{ pt: "80px" }}>
+    <Stack>
+      <Typography
+        variant="h4"
+        sx={{
+          py: 4,
+          fontWeight: 600,
+          textAlign: "center",
+        }}
+      >
+        الفنادق
+      </Typography>
       <Container maxWidth="lg">
         <Swiper
           slidesPerView={cols}

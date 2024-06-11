@@ -2,6 +2,7 @@ import { ImageProduct } from "types/HardProducts";
 
 export interface HotelCardType {
   hotels: Hotel[];
+  department: string;
 }
 export interface HotelSliderType {
   hotel: Hotel;

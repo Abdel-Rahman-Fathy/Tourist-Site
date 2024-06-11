@@ -27,7 +27,7 @@ function CardRight() {
               height={"70px"}
               width={"70px"}
             />
-            <Box sx={{ ml: 2 }}>
+            <Box sx={{ mx: 2 }}>
               <Typography
                 variant="body2"
                 sx={{ fontWeight: "700", fontSize: "15px" }}

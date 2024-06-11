@@ -14,6 +14,7 @@ import { homeContext } from "pages/HomeContext";
 import { imgPath } from "methods/img";
 import RenderRte from "Components/RenderRte";
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
 function BlogPage() {
   const [t] = useTranslation();
   const { homeData } = useContext(homeContext);
@@ -34,7 +35,13 @@ function BlogPage() {
       <Container>
         <Grid container spacing={2}>
           {homeData?.blogs.map((item, index) => (
-            <Grid item md={4} key={index}>
+            <Grid
+              item
+              md={4}
+              key={index}
+              component={NavLink}
+              to={`../../blog/${item.id}`}
+            >
               <Card variant="outlined">
                 <Box
                   sx={{
@@ -76,8 +83,8 @@ function BlogPage() {
                 <CardContent>
                   <Typography
                     variant="h6"
-                    // component={NavLink}
-                    // to="#"
+                    component={NavLink}
+                    to={`../../blog/${item.id}`}
                     sx={{
                       fontSize: "17px",
                       fontWeight: 600,
@@ -96,7 +103,10 @@ function BlogPage() {
                   >
                     <RenderRte rte={item.description} />
                   </Typography>
-                  <Button variant="outlined" sx={{ mt: 2 }}>
+                  <Button
+                    variant="outlined"
+                    sx={{ mt: 2, fontFamily: "Almarai " }}
+                  >
                     {t("main.ReadMore")}
                   </Button>
                 </CardContent>

@@ -20,7 +20,6 @@ function Slider() {
           <Swiper
             className="Swiper_test"
             slidesPerView={1}
-            style={{ height: "73vh" }}
             spaceBetween={50}
             speed={900}
             modules={[EffectFade, Autoplay, Navigation]}

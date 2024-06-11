@@ -17,7 +17,7 @@ function AspectRatio({
         position: "relative",
         overflow: "hidden",
         // [relevantToHeight ? "pl" : "pt"]: `${p}%`,
-        aspectRatio: ratio,
+        aspectRatio: { lg: 1, xs: 0.5 },
         borderRadius: 1,
         ...props.sx,
       }}

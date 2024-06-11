@@ -18,12 +18,12 @@ function FixedSection({ title }: { title?: string }) {
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
         padding: "100px 0px",
-        height: "73vh",
+        height: "65vh",
       }}
     >
       <Typography
         variant="h3"
-        sx={{ fontWeight: "700", color: "#fff", mt: 10, textAlign: "center" }}
+        sx={{ fontWeight: "700", color: "#fff", mt: 23, textAlign: "center" }}
       >
         <RenderRte rte={title} />
       </Typography>

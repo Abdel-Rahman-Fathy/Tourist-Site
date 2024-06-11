@@ -40,7 +40,7 @@ function AnimationNumber() {
             }}
           >
             <CheckBoxIcon sx={{ fontSize: "50px" }} />
-            <Typography>
+            <Typography sx={{ direction: "ltr" }}>
               <AnimatedNumber
                 includeComma
                 animateToNumber={parseInt(
@@ -76,7 +76,7 @@ function AnimationNumber() {
             }}
           >
             <PersonIcon sx={{ fontSize: "50px" }} />
-            <Typography>
+            <Typography sx={{ direction: "ltr" }}>
               <AnimatedNumber
                 includeComma
                 animateToNumber={parseInt(
@@ -112,7 +112,7 @@ function AnimationNumber() {
             }}
           >
             <ThumbsUpDownIcon sx={{ fontSize: "50px" }} />
-            <Typography>
+            <Typography sx={{ direction: "ltr" }}>
               <AnimatedNumber
                 includeComma
                 animateToNumber={parseInt(
@@ -148,7 +148,7 @@ function AnimationNumber() {
             }}
           >
             <ThumbUpAltIcon sx={{ fontSize: "50px" }} />
-            <Typography>
+            <Typography sx={{ direction: "ltr" }}>
               <AnimatedNumber
                 includeComma
                 animateToNumber={parseInt(

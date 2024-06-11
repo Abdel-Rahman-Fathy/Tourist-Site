@@ -49,7 +49,7 @@ const flags = [
     name: "POL",
   },
   {
-    value: "ro",
+    value: "bu",
     path: rom,
     name: "ROM",
   },
@@ -144,16 +144,23 @@ function FristNavbar() {
               item
               md={3}
             >
-              <NavLink to={homeData?.socialMedia[0].link || ""}>
-                <FontAwesomeIcon icon={faFacebook} className="icons" />
+              <NavLink to={homeData?.socialMedia[0].link || ""} target="_blank">
+                <FontAwesomeIcon
+                  icon={faFacebook}
+                  className="icons"
+                  target="_blank"
+                />
               </NavLink>
-              <NavLink to={homeData?.socialMedia[1].link || ""}>
+              <NavLink to={homeData?.socialMedia[1].link || ""} target="_blank">
                 <FontAwesomeIcon icon={faYoutube} className="icons" />
               </NavLink>
-              <NavLink to={homeData?.socialMedia[2].link || ""}>
+              <NavLink to={homeData?.socialMedia[2].link || ""} target="_blank">
                 <FontAwesomeIcon icon={faInstagram} className="icons" />
               </NavLink>
-              <NavLink to={homeData?.socialMedia[3]?.link || ""}>
+              <NavLink
+                to={homeData?.socialMedia[3]?.link || ""}
+                target="_blank"
+              >
                 <FontAwesomeIcon icon={faTiktok} className="icons" />
               </NavLink>
             </Grid>
