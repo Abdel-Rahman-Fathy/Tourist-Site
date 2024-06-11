@@ -19,7 +19,7 @@ function ShoppingPage() {
             textAlign: "center",
           }}
         >
-          {t("main.Shopping")}
+          {homeData?.siteInformation?.explorer_us}
         </Typography>
         <Grid container padding={"30px 0"}>
           {homeData?.shippings.map((trip) => (

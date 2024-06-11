@@ -29,7 +29,7 @@ function BlogPage() {
           textTransform: "uppercase",
         }}
       >
-        {t("main.Blog")}
+        {homeData?.siteInformation?.blog_us}
       </Typography>
       <Container>
         <Grid container spacing={2}>
@@ -61,7 +61,7 @@ function BlogPage() {
                       backgroundColor: "primary.main",
                       color: "#fff",
                       display: "inline-block",
-                      width: "80px",
+                      width: "60px",
                       padding: "10px",
                       textAlign: "center",
                       position: "absolute",
@@ -69,7 +69,7 @@ function BlogPage() {
                       left: 0,
                     }}
                   >
-                    18 Nov
+                    {item.created_dm}
                   </Typography>
                 </Box>
 

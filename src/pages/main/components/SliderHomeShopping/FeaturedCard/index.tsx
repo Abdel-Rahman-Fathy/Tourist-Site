@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { homeContext } from "pages/HomeContext";
 import { imgPath } from "methods/img";
 import { Hotel } from "types/Hotel";
+import { HotelCat } from "types/Root";
 
 function FeaturedCard({ hotels }: FeaturedCardProps) {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function FeaturedCard({ hotels }: FeaturedCardProps) {
           <Stack sx={{ position: "relative" }}>
             <Box
               component={NavLink}
-              to={`/hotel/${hotels.id}`}
+              to={`/hotels/${hotels.id}`}
               sx={{
                 overflow: "hidden",
                 "&:hover img": {
@@ -41,7 +42,7 @@ function FeaturedCard({ hotels }: FeaturedCardProps) {
             >
               <Box
                 component={"img"}
-                src={imgPath(hotels?.metaImage[0]?.image)}
+                src={hotels?.image}
                 style={{
                   width: "100%",
                   height: "150px",
@@ -54,10 +55,8 @@ function FeaturedCard({ hotels }: FeaturedCardProps) {
           </Stack>
 
           <CardContent>
-            {/* <Typography
+            <Typography
               variant="h6"
-              component={NavLink}
-              to={`/hotel/${hotels.id}`}
               sx={{
                 fontWeight: 700,
                 marginY: 0.5,
@@ -65,44 +64,28 @@ function FeaturedCard({ hotels }: FeaturedCardProps) {
               }}
             >
               {hotels?.title}
-            </Typography> */}
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                marginBottom: 1,
-              }}
-            >
-              {Array.from({ length: hotels?.stars }, (_, i) => (
-                <StarIcon
-                  key={i}
-                  sx={{ color: "warning.main", fontSize: 20 }}
-                />
-              ))}
-            </Box>
-            <Typography variant="body1" sx={{ py: 1 }}>
-              {hotels?.stars} {t("Hotel.Stars")}
             </Typography>
+
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "center",
               }}
             >
-              <Button
-                variant="contained"
-                sx={{
-                  borderRadius: "10px",
-                  backgroundColor: "#0052a4",
-                  transition: "all .3s",
-                  fontFamily: "Almarai ",
-                }}
-                onClick={() => {
-                  navigate(`/hotel/${hotels.id}`);
-                }}
-              >
-                {t("main.ReadMore")}
-              </Button>
+              {/* <Button
+                  variant="contained"
+                  sx={{
+                    borderRadius: "10px",
+                    backgroundColor: "#0052a4",
+                    transition: "all .3s",
+                    fontFamily: "Almarai ",
+                  }}
+                  onClick={() => {
+                    navigate(`/hotels/${hotels.id}`);
+                  }}
+                >
+                  {t("main.ReadMore")}
+                </Button> */}
             </Box>
           </CardContent>
           <Box
@@ -121,7 +104,7 @@ function FeaturedCard({ hotels }: FeaturedCardProps) {
 }
 
 export type FeaturedCardProps = {
-  hotels: Hotel;
+  hotels: HotelCat;
 };
 
 export default FeaturedCard;

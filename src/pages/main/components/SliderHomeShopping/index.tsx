@@ -48,7 +48,7 @@ function SliderHomeShopping() {
           }}
           key={cols}
         >
-          {homeData?.hotels.map((item) => (
+          {homeData?.category_hotels.map((item) => (
             <>
               <SwiperSlide>
                 <InfoCardContainer hotels={item} />

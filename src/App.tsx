@@ -30,10 +30,7 @@ function App() {
 
   // Retrieve the selected language from the cookie
   const storedLanguage = Cookies.get("selectedLanguage");
-
   useEffect(() => {
-    console.log("first", language);
-
     if (!langParam) {
       setLangParam(language);
     }

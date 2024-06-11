@@ -7,11 +7,12 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PhoneAndroidOutlinedIcon from "@mui/icons-material/PhoneAndroidOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import FormPage from "./FormPage";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { api } from "methods/api";
 import { ContactType } from "types/Contact";
 import Spinner from "pages/SpinnerPage/Spinner";
+import { homeContext } from "pages/HomeContext";
 
 function ContactUsPage() {
   const [t] = useTranslation();
@@ -19,6 +20,7 @@ function ContactUsPage() {
   const [contactData, setContactData] = useState<ContactType | undefined>(
     undefined
   );
+  const { homeData } = useContext(homeContext);
   function getAboutData() {
     setStatus("loading");
     axios
@@ -40,7 +42,7 @@ function ContactUsPage() {
     <>
       {status === "done" ? (
         <Stack>
-          <FixedSection title={t("main.ContactUs")} />
+          <FixedSection title={homeData?.siteInformation?.contact_us} />
           <Box
             sx={{
               backgroundImage: `url(${contactUs2})`,

@@ -46,7 +46,7 @@ function AboutPage() {
               variant="h3"
               sx={{ fontWeight: 700, marginTop: 1, textTransform: "uppercase" }}
             >
-              {t("main.AboutUs")}
+              {homeData?.siteInformation?.about_us}
             </Typography>
             <Typography variant="h5" fontWeight={600}>
               <RenderRte rte={findObj("Home About")?.title} />

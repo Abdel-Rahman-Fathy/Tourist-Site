@@ -134,7 +134,7 @@ function ShopCard() {
                           <StarIcon />
                         </Box>
                         <Typography variant="body1" sx={{ my: 1 }}>
-                          1 kg
+                          {card.description}
                         </Typography>
                         <Typography
                           variant="h4"

@@ -6,35 +6,13 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import PersonIcon from "@mui/icons-material/Person";
 import ThumbsUpDownIcon from "@mui/icons-material/ThumbsUpDown";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-const archievmentsList = [
-  {
-    postfix: "+",
-    value: "15",
-    matric: "Projects",
-    Icon: CheckBoxIcon,
-    title: "Employee",
-  },
-  {
-    prefix: "~",
-    value: "100,000",
-    matric: "Users",
-    Icon: PersonIcon,
-    title: "Happy clients",
-  },
-  {
-    matric: "Years",
-    value: "1",
-    Icon: ThumbsUpDownIcon,
-    title: "Years of Experience",
-  },
-  {
-    matric: "Years",
-    value: "10",
-    Icon: ThumbUpAltIcon,
-    title: "Customer reviews",
-  },
-];
+import { homeContext, useHomeData } from "pages/HomeContext";
+import { useContext } from "react";
+
 function AnimationNumber() {
+  const { homeData } = useContext(homeContext);
+  const findObj = useHomeData(homeData?.siteContent);
+
   return (
     <Stack
       sx={{
@@ -49,43 +27,150 @@ function AnimationNumber() {
     >
       <Container maxWidth="xl">
         <Grid container>
-          {archievmentsList.map((arch, index) => (
-            <Grid
-              key={index}
-              item
-              md={3}
-              xs={12}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                color: "#FFF",
-                marginY: 3,
-              }}
-            >
-              <arch.Icon sx={{ fontSize: "50px" }} />
-              <Typography>
-                <AnimatedNumber
-                  includeComma
-                  animateToNumber={parseInt(arch.value)}
-                  locale="en-US"
-                  transitions={(index) => ({
-                    type: "spring",
-                    duration: index + 0.8,
-                  })}
-                  fontStyle={{
-                    fontSize: 50,
-                    fontWeight: 600,
-                    fontFamily: "sans-serif",
-                    color: "#fff",
-                  }}
-                />
-              </Typography>
-              <Typography variant="body1" color={"#fff"}>
-                {arch.title}
-              </Typography>
-            </Grid>
-          ))}
+          <Grid
+            item
+            md={3}
+            xs={12}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              color: "#FFF",
+              marginY: 3,
+            }}
+          >
+            <CheckBoxIcon sx={{ fontSize: "50px" }} />
+            <Typography>
+              <AnimatedNumber
+                includeComma
+                animateToNumber={parseInt(
+                  findObj("Home Count 1")?.title || "0"
+                )}
+                locale="en-US"
+                transitions={(index) => ({
+                  type: "spring",
+                  duration: index + 0.8,
+                })}
+                fontStyle={{
+                  fontSize: 50,
+                  fontWeight: 600,
+                  fontFamily: "sans-serif",
+                  color: "#fff",
+                }}
+              />
+            </Typography>
+            <Typography variant="body1" color={"#fff"}>
+              {findObj("Home Count 1")?.description}
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            md={3}
+            xs={12}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              color: "#FFF",
+              marginY: 3,
+            }}
+          >
+            <PersonIcon sx={{ fontSize: "50px" }} />
+            <Typography>
+              <AnimatedNumber
+                includeComma
+                animateToNumber={parseInt(
+                  findObj("Home Count 2")?.title || "0"
+                )}
+                locale="en-US"
+                transitions={(index) => ({
+                  type: "spring",
+                  duration: index + 0.8,
+                })}
+                fontStyle={{
+                  fontSize: 50,
+                  fontWeight: 600,
+                  fontFamily: "sans-serif",
+                  color: "#fff",
+                }}
+              />
+            </Typography>
+            <Typography variant="body1" color={"#fff"}>
+              {findObj("Home Count 2")?.description}
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            md={3}
+            xs={12}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              color: "#FFF",
+              marginY: 3,
+            }}
+          >
+            <ThumbsUpDownIcon sx={{ fontSize: "50px" }} />
+            <Typography>
+              <AnimatedNumber
+                includeComma
+                animateToNumber={parseInt(
+                  findObj("Home Count 3")?.title || "0"
+                )}
+                locale="en-US"
+                transitions={(index) => ({
+                  type: "spring",
+                  duration: index + 0.8,
+                })}
+                fontStyle={{
+                  fontSize: 50,
+                  fontWeight: 600,
+                  fontFamily: "sans-serif",
+                  color: "#fff",
+                }}
+              />
+            </Typography>
+            <Typography variant="body1" color={"#fff"}>
+              {findObj("Home Count 3")?.description}
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            md={3}
+            xs={12}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              color: "#FFF",
+              marginY: 3,
+            }}
+          >
+            <ThumbUpAltIcon sx={{ fontSize: "50px" }} />
+            <Typography>
+              <AnimatedNumber
+                includeComma
+                animateToNumber={parseInt(
+                  findObj("Home Count 4")?.title || "0"
+                )}
+                locale="en-US"
+                transitions={(index) => ({
+                  type: "spring",
+                  duration: index + 0.8,
+                })}
+                fontStyle={{
+                  fontSize: 50,
+                  fontWeight: 600,
+                  fontFamily: "sans-serif",
+                  color: "#fff",
+                }}
+              />
+            </Typography>
+            <Typography variant="body1" color={"#fff"}>
+              {findObj("Home Count 4")?.description}
+            </Typography>
+          </Grid>
         </Grid>
       </Container>
     </Stack>

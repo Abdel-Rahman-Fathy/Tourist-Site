@@ -158,7 +158,7 @@ function SecondNavbar() {
                     }}
                     to={""}
                   >
-                    {t("main.Home")}
+                    {homeData?.siteInformation.home}
                   </Typography>
                 </li>
                 <li>
@@ -172,7 +172,7 @@ function SecondNavbar() {
                     }}
                     to={"/about"}
                   >
-                    {t("main.AboutUs")}
+                    {homeData?.siteInformation.about_us}
                   </Typography>
                 </li>
                 {language !== "ar" && (
@@ -186,7 +186,7 @@ function SecondNavbar() {
                         },
                       }}
                     >
-                      {t("main.ExursionsFromHurghada")}
+                      {homeData?.siteInformation.service_us}
                     </Typography>
                     <Paper className="subMenu">
                       <MenuList>
@@ -201,7 +201,6 @@ function SecondNavbar() {
                     </Paper>
                   </li>
                 )}
-
                 <li>
                   <Typography
                     className={"link"}
@@ -211,7 +210,7 @@ function SecondNavbar() {
                       },
                     }}
                   >
-                    {t("main.Hotels")}{" "}
+                    {homeData?.siteInformation.hotel_us}
                   </Typography>
 
                   <Paper className="subMenu">
@@ -237,7 +236,7 @@ function SecondNavbar() {
                         },
                       }}
                     >
-                      {t("main.Shopping")}
+                      {homeData?.siteInformation.explorer_us}
                     </Typography>
                     <Paper className="subMenu">
                       <MenuList>
@@ -264,7 +263,7 @@ function SecondNavbar() {
                     }}
                     to={`blog/${homeData?.blogs[0].id}`}
                   >
-                    {t("main.Blog")}
+                    {homeData?.siteInformation.blog_us}
                   </Typography>
                   <Paper className="subMenu">
                     <MenuList>
@@ -289,7 +288,7 @@ function SecondNavbar() {
                     }}
                     to={"/contact"}
                   >
-                    {t("main.ContactUs")}
+                    {homeData?.siteInformation.contact_us}
                   </Typography>
                 </li>
               </ul>
@@ -312,7 +311,7 @@ function SecondNavbar() {
                   to={"/"}
                 >
                   <MenuItem onClick={toggleMobileMenu}>
-                    {t("main.Home")}
+                    {homeData?.siteInformation.home}
                   </MenuItem>
                 </Typography>
                 <Typography
@@ -321,7 +320,7 @@ function SecondNavbar() {
                   to={"/about"}
                 >
                   <MenuItem onClick={toggleMobileMenu}>
-                    {t("main.AboutUs")}
+                    {homeData?.siteInformation.about_us}
                   </MenuItem>
                 </Typography>
                 {/* Frist sub item */}
@@ -368,7 +367,7 @@ function SecondNavbar() {
 
                 {/* sec sub item */}
                 <MenuItem onClick={toggleHotelSubMenu}>
-                  {t("main.Hotels")}
+                  {homeData?.siteInformation.hotel_us}
                   {isHotelSubMenuOpen ? (
                     <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
                   ) : (
@@ -401,9 +400,8 @@ function SecondNavbar() {
                 {/* third sub item */}
                 {language !== "ar" && (
                   <>
-                    {" "}
                     <MenuItem onClick={toggleShoppingSubMenu}>
-                      {t("main.Shopping")}
+                      {homeData?.siteInformation.explorer_us}
                       {isShoppingSubMenuOpen ? (
                         <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
                       ) : (
@@ -442,7 +440,7 @@ function SecondNavbar() {
 
                 {/* Blogs */}
                 <MenuItem onClick={toggleBlogsSubMenu}>
-                  {t("main.Blog")}
+                  {homeData?.siteInformation.blog_us}
                   {isBlogsSubMenuOpen ? (
                     <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
                   ) : (
@@ -480,7 +478,7 @@ function SecondNavbar() {
                   to={"/contact"}
                 >
                   <MenuItem onClick={toggleMobileMenu}>
-                    {t("main.ContactUs")}
+                    {homeData?.siteInformation.contact_us}
                   </MenuItem>
                 </Typography>
               </Box>

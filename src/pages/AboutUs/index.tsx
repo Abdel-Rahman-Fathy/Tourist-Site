@@ -9,6 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import { api } from "methods/api";
 import { AboutType } from "types/About";
 import { homeContext } from "pages/HomeContext";
+import RenderRte from "../../Components/RenderRte";
 function AboutUs() {
   const [status, setStatus] = useState<"none" | "loading" | "done">("none");
   const [aboutData, setAboutData] = useState<AboutType | undefined>(undefined);
@@ -33,7 +34,7 @@ function AboutUs() {
   }, []);
   return (
     <Stack>
-      <FixedSection title={aboutData?.siteInformation?.about_title} />
+      <FixedSection title={homeData?.siteInformation?.about_us} />
       <Container maxWidth={"lg"} sx={{ py: "80px" }}>
         <Grid container>
           <Grid item md={6}>
@@ -71,7 +72,7 @@ function AboutUs() {
               variant="body1"
               sx={{ color: "rgb(3, 14, 44)", fontWeight: "600" }}
             >
-              {aboutData?.siteInformation.aboutMetaDescription}
+              <RenderRte rte={aboutData?.siteInformation.description} />
             </Typography>
           </Grid>
         </Grid>

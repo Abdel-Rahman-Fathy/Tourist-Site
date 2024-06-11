@@ -33,6 +33,14 @@ export interface Data {
 export interface SiteInformation {
   id: number;
   about: string;
+  home: string;
+  about_us: string;
+  blog_us: string;
+  contact_us: string;
+  explorer_us: string;
+  product_us: string;
+  service_us: string;
+  hotel_us: string;
   description: string;
   image: string;
   aboutMetaTags: string;
@@ -118,6 +126,7 @@ export interface Blog {
   metaDescription: unknown;
   image: string;
   created_at: string;
+  created_dm: string;
 }
 
 export interface Brand {

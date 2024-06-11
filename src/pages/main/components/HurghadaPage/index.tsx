@@ -20,7 +20,7 @@ function HurghadaPage() {
             textAlign: "center",
           }}
         >
-          {t("main.ExursionsFromHurghada")}
+          {homeData?.siteInformation?.service_us}
         </Typography>
         <Grid container padding={"30px 0"}>
           {cat.reverse().map((trip) => (
