@@ -27,6 +27,7 @@ import { faTiktok } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import useUrlLanguage from "methods/changeLanguage";
 const flags = [
   {
     value: "en",
@@ -79,6 +80,7 @@ function FristNavbar() {
   const { homeData } = useContext(homeContext);
   const { scrollY } = useWindowScrollPosition();
   const theme = useTheme();
+  const changeUrlLanguage = useUrlLanguage();
 
   useEffect(() => {
     setScrollPosition(scrollY);
@@ -90,8 +92,9 @@ function FristNavbar() {
       setNavbarPosition("0");
     }
   }, [scrollPosition]);
-  function handleLanguage(lan: string) {
-    i18n.changeLanguage(lan);
+  function handleLanguage(lang: string) {
+    // i18n.changeLanguage(lan);
+    changeUrlLanguage(lang);
   }
   return (
     <AppBar

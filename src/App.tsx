@@ -16,35 +16,23 @@ import { homeContext } from "pages/HomeContext";
 import { Data } from "types/Root";
 import Spinner from "pages/SpinnerPage/Spinner";
 import { useQueryParam, StringParam } from "use-query-params";
+import { useParams } from "react-router-dom";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 function App() {
   const [t, i18n] = useTranslation();
-  const { language } = i18n;
+  const { language, changeLanguage } = i18n;
   const { homeData } = useContext(homeContext);
   const [statusError, setStatusError] = useState<Data | undefined>(undefined);
-  const [langParam, setLangParam] = useQueryParam("lang", StringParam);
-
-  // Retrieve the selected language from the cookie
-  useEffect(() => {
-    if (!langParam) {
-      setLangParam(language);
-    }
-  }, []);
-
-  // Set the language in axios headers
+  const { local } = useParams();
   axios.defaults.headers.common["lang"] = language;
 
-  // Handle hard refresh and set language again
   useEffect(() => {
-    if (langParam && langParam !== language) {
-      setLangParam(language);
-    } else {
-      // i18n.changeLanguage(langParam);
+    if (language !== local) {
+      changeLanguage(local || "en");
     }
-    axios.defaults.headers.common["lang"] = language;
-  }, [language, i18n]);
+  }, [local]);
 
   useEffect(() => {
     axios

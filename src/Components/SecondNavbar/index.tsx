@@ -24,6 +24,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { homeContext } from "pages/HomeContext";
 import { imgPath } from "methods/img";
 import { Category } from "types/Root";
+import { LocalNavLink } from "hooks/useLocalNavigate";
 
 let Color: string | undefined = "";
 let MainColor: string | undefined = "";
@@ -39,7 +40,7 @@ function SubMenu({ title, link }: PropsType) {
           color: Color || "#F19B02",
         },
       }}
-      component={NavLink}
+      component={LocalNavLink}
       to={link}
     >
       {title}
@@ -124,7 +125,7 @@ function SecondNavbar() {
               md={3}
             >
               <Box
-                component={NavLink}
+                component={LocalNavLink}
                 to={""}
                 display={"flex"}
                 flexDirection={"row"}
@@ -149,7 +150,7 @@ function SecondNavbar() {
               <ul className="secNavbar">
                 <li>
                   <Typography
-                    component={NavLink}
+                    component={LocalNavLink}
                     className={"link"}
                     sx={{
                       "&:hover": {
@@ -163,7 +164,7 @@ function SecondNavbar() {
                 </li>
                 <li>
                   <Typography
-                    component={NavLink}
+                    component={LocalNavLink}
                     className={"link"}
                     sx={{
                       "&:hover": {
@@ -254,7 +255,7 @@ function SecondNavbar() {
 
                 <li>
                   <Typography
-                    component={NavLink}
+                    component={LocalNavLink}
                     className={"link"}
                     sx={{
                       "&:hover": {
@@ -279,7 +280,7 @@ function SecondNavbar() {
                 </li>
                 <li>
                   <Typography
-                    component={NavLink}
+                    component={LocalNavLink}
                     className={"link"}
                     sx={{
                       "&:hover": {
@@ -306,7 +307,7 @@ function SecondNavbar() {
                 onKeyDown={toggleMobileMenu}
               >
                 <Typography
-                  component={NavLink}
+                  component={LocalNavLink}
                   className={"link_down"}
                   to={"/"}
                 >
@@ -315,7 +316,7 @@ function SecondNavbar() {
                   </MenuItem>
                 </Typography>
                 <Typography
-                  component={NavLink}
+                  component={LocalNavLink}
                   className={"link_down"}
                   to={"/about"}
                 >
@@ -347,7 +348,7 @@ function SecondNavbar() {
                       >
                         {cat.map((item) => (
                           <Typography
-                            component={NavLink}
+                            component={LocalNavLink}
                             key={item.id}
                             onClick={() => {
                               toggleMobileMenu();
@@ -384,7 +385,7 @@ function SecondNavbar() {
                   >
                     {homeData?.category_hotels.map((item) => (
                       <Typography
-                        component={NavLink}
+                        component={LocalNavLink}
                         key={item.id}
                         onClick={() => {
                           toggleMobileMenu();
@@ -420,7 +421,7 @@ function SecondNavbar() {
                       >
                         {homeData?.shippings.map((item) => (
                           <Typography
-                            component={NavLink}
+                            component={LocalNavLink}
                             key={item.id}
                             onClick={() => {
                               toggleMobileMenu();
@@ -457,7 +458,7 @@ function SecondNavbar() {
                   >
                     {homeData?.blogs.map((item) => (
                       <Typography
-                        component={NavLink}
+                        component={LocalNavLink}
                         key={item.id}
                         onClick={() => {
                           toggleMobileMenu();
@@ -473,7 +474,7 @@ function SecondNavbar() {
                 {/* End */}
 
                 <Typography
-                  component={NavLink}
+                  component={LocalNavLink}
                   className={"link_down"}
                   to={"/contact"}
                 >
