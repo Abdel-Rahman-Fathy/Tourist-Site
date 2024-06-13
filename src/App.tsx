@@ -29,7 +29,9 @@ function App() {
   axios.defaults.headers.common["lang"] = language;
 
   useEffect(() => {
-    if (language !== local) {
+    if (!local) {
+      changeLanguage("en");
+    } else {
       changeLanguage(local || "en");
     }
   }, [local]);
