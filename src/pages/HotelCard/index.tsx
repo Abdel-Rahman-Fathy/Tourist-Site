@@ -19,6 +19,7 @@ import Spinner from "pages/SpinnerPage/Spinner";
 import { imgPath } from "methods/img";
 import { HotelCardType } from "types/Hotel";
 import { homeContext } from "pages/HomeContext";
+import { LocalNavLink } from "hooks/useLocalNavigate";
 function HotelCard() {
   const [t, i18n] = useTranslation();
   const navigate = useNavigate();
@@ -150,20 +151,21 @@ function HotelCard() {
                             justifyContent: "center",
                           }}
                         >
-                          <Button
-                            variant="contained"
+                          <Typography
+                            variant="body1"
+                            component={LocalNavLink}
                             sx={{
                               borderRadius: "10px",
                               backgroundColor: "#0052a4",
                               transition: "all .3s",
                               fontFamily: "Almarai ",
+                              color: "#fff",
+                              padding: "9px",
                             }}
-                            onClick={() => {
-                              navigate(`/hotel/${card.id}`);
-                            }}
+                            to={`/hotel/${card.id}`}
                           >
                             {t("main.ReadMore")}
-                          </Button>
+                          </Typography>
                         </Box>
                       </CardContent>
                       <Box

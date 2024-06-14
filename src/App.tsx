@@ -31,10 +31,10 @@ function App() {
   useEffect(() => {
     if (!local) {
       changeLanguage("en");
-      navigate("/en");
     } else {
       changeLanguage(local || "en");
     }
+    navigate("/en");
   }, [local]);
 
   useEffect(() => {

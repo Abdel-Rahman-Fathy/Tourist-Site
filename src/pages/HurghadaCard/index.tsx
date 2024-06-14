@@ -21,6 +21,7 @@ import Spinner from "pages/SpinnerPage/Spinner";
 import { imgPath } from "methods/img";
 import "./main.css";
 import { homeContext } from "pages/HomeContext";
+import { LocalNavLink } from "hooks/useLocalNavigate";
 function HurghadaCard() {
   const [t, i18n] = useTranslation();
   const { language } = i18n;
@@ -157,19 +158,21 @@ function HurghadaCard() {
                             justifyContent: "center",
                           }}
                         >
-                          <Button
-                            variant="contained"
+                          <Typography
+                            variant="body1"
+                            component={LocalNavLink}
                             sx={{
                               borderRadius: "10px",
                               backgroundColor: "#0052a4",
                               transition: "all .3s",
+                              fontFamily: "Almarai ",
+                              color: "#fff",
+                              padding: "9px",
                             }}
-                            onClick={() => {
-                              navigate(`/product/${card.id}`);
-                            }}
+                            to={`/product/${card.id}`}
                           >
                             {t("main.ReadMore")}
-                          </Button>
+                          </Typography>
                         </Box>
                       </CardContent>
                       <Box

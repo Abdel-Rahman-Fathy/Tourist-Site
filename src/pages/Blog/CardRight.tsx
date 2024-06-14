@@ -4,6 +4,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { homeContext } from "pages/HomeContext";
 import { useContext } from "react";
 import { imgPath } from "methods/img";
+import { LocalNavLink } from "hooks/useLocalNavigate";
 
 function CardRight() {
   const { homeData } = useContext(homeContext);
@@ -18,8 +19,8 @@ function CardRight() {
             key={item.id}
             flexDirection={"row"}
             mb={2}
-            component={NavLink}
-            to={`../../blog/${item.id}`}
+            component={LocalNavLink}
+            to={`../blog/${item.id}`}
           >
             <img
               src={imgPath(item.image)}
