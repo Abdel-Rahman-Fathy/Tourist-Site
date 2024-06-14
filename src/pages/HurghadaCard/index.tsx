@@ -11,7 +11,7 @@ import {
 import FixedSection from "../../Components/FixedSection";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { api } from "methods/api";
@@ -20,6 +20,7 @@ import RenderRte from "Components/RenderRte";
 import Spinner from "pages/SpinnerPage/Spinner";
 import { imgPath } from "methods/img";
 import "./main.css";
+import { homeContext } from "pages/HomeContext";
 function HurghadaCard() {
   const [t, i18n] = useTranslation();
   const { language } = i18n;
@@ -29,6 +30,7 @@ function HurghadaCard() {
   const [products, setProducts] = useState<HardProductsType | undefined>(
     undefined
   );
+  const { homeData } = useContext(homeContext);
   function getProductsData() {
     setStatus("loading");
     //
@@ -51,7 +53,7 @@ function HurghadaCard() {
     <>
       {status == "done" ? (
         <>
-          <FixedSection title={t("main.ExursionsFromHurghada")} />
+          <FixedSection title={homeData?.siteInformation?.service_title} />
           <Stack sx={{ padding: "80px 30px" }}>
             <Typography
               variant="h3"

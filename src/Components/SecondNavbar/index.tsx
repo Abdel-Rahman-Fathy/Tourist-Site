@@ -122,7 +122,7 @@ function SecondNavbar() {
               flexDirection={"row"}
               alignItems={"center"}
               item
-              md={3}
+              md={2}
             >
               <Box
                 component={LocalNavLink}
@@ -141,7 +141,7 @@ function SecondNavbar() {
             <Grid
               flexDirection={"row"}
               item
-              md={9}
+              md={10}
               sx={{
                 display: { md: "flex", xs: "none" },
                 justifyContent: "end",

@@ -37,7 +37,7 @@ function Blog() {
   }, [id]);
   return (
     <Stack>
-      <FixedSection title={homeData?.siteInformation?.blog_us} />
+      <FixedSection title={homeData?.siteInformation?.blog_title} />
       <Container maxWidth={"lg"} sx={{ py: "100px" }}>
         <Grid container spacing={4}>
           <Grid item md={8} xs={12}>

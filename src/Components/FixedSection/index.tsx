@@ -23,7 +23,7 @@ function FixedSection({ title }: { title?: string }) {
     >
       <Typography
         variant="h3"
-        sx={{ fontWeight: "700", color: "#fff", mt: 23, textAlign: "center" }}
+        sx={{ fontWeight: "700", color: "#fff", mt: 15, textAlign: "center" }}
       >
         <RenderRte rte={title} />
       </Typography>

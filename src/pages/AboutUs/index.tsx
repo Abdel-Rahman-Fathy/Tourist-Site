@@ -34,7 +34,7 @@ function AboutUs() {
   }, []);
   return (
     <Stack>
-      <FixedSection title={homeData?.siteInformation?.about_us} />
+      <FixedSection title={homeData?.siteInformation?.about_title} />
       <Container maxWidth={"lg"} sx={{ py: "80px" }}>
         <Grid container>
           <Grid item md={6}>

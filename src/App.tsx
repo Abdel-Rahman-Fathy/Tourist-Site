@@ -16,7 +16,7 @@ import { homeContext } from "pages/HomeContext";
 import { Data } from "types/Root";
 import Spinner from "pages/SpinnerPage/Spinner";
 import { useQueryParam, StringParam } from "use-query-params";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
@@ -27,10 +27,11 @@ function App() {
   const [statusError, setStatusError] = useState<Data | undefined>(undefined);
   const { local } = useParams();
   axios.defaults.headers.common["lang"] = language;
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (!local) {
       changeLanguage("en");
+      navigate("/en");
     } else {
       changeLanguage(local || "en");
     }

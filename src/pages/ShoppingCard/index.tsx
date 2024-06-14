@@ -9,15 +9,16 @@ import {
   Typography,
 } from "@mui/material";
 import FixedSection from "../../Components/FixedSection";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { api } from "methods/api";
 import Spinner from "pages/SpinnerPage/Spinner";
 import { imgPath } from "methods/img";
 import { ShoppingCardType } from "types/Shopping";
+import { homeContext } from "pages/HomeContext";
 function ShopCard() {
   const [t, i18n] = useTranslation();
   const { id } = useParams();
@@ -25,6 +26,7 @@ function ShopCard() {
   const [products, setProducts] = useState<ShoppingCardType | undefined>(
     undefined
   );
+  const { homeData } = useContext(homeContext);
 
   function getProductsData() {
     setStatus("loading");
@@ -47,13 +49,13 @@ function ShopCard() {
     <>
       {status == "done" ? (
         <>
-          <FixedSection title={t("main.Shopping")} />
+          <FixedSection title={homeData?.siteInformation?.explorer_title} />
           <Stack sx={{ padding: "80px 30px" }}>
             <Typography
               variant="h3"
               sx={{ textAlign: "center", fontWeight: 600, mb: 10 }}
             >
-              {/* {products?.category} */}
+              {products?.category_name}
             </Typography>
             <Container>
               <Grid container spacing={2}>

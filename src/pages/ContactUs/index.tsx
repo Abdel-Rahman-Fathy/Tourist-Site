@@ -42,7 +42,7 @@ function ContactUsPage() {
     <>
       {status === "done" ? (
         <Stack>
-          <FixedSection title={homeData?.siteInformation?.contact_us} />
+          <FixedSection title={homeData?.siteInformation?.contact_title} />
           <Box
             sx={{
               backgroundImage: `url(${contactUs2})`,

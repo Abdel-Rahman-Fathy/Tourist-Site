@@ -27,6 +27,7 @@ function HotelCard() {
   const [products, setProducts] = useState<HotelCardType | undefined>(
     undefined
   );
+  const { homeData } = useContext(homeContext);
   useEffect(() => {}, []);
   function getProductsData() {
     setStatus("loading");
@@ -49,7 +50,7 @@ function HotelCard() {
     <>
       {status == "done" ? (
         <>
-          <FixedSection title={t("main.Hotels")} />
+          <FixedSection title={homeData?.siteInformation?.hotel_us} />
           <Stack sx={{ padding: "80px 30px" }}>
             <Typography
               variant="h3"

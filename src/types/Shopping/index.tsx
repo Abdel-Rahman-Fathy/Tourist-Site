@@ -1,5 +1,6 @@
 export interface ShoppingCardType {
   shops: ShoppingType[];
+  category_name: string;
 }
 export interface ShoppingType {
   id: number;
