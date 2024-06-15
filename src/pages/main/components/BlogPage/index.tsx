@@ -15,6 +15,7 @@ import { imgPath } from "methods/img";
 import RenderRte from "Components/RenderRte";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
+import { LocalNavLink } from "hooks/useLocalNavigate";
 function BlogPage() {
   const [t] = useTranslation();
   const { homeData } = useContext(homeContext);
@@ -39,8 +40,8 @@ function BlogPage() {
               item
               md={4}
               key={index}
-              component={NavLink}
-              to={`../../blog/${item.id}`}
+              component={LocalNavLink}
+              to={`/blog/${item.id}`}
             >
               <Card variant="outlined">
                 <Box
@@ -83,8 +84,8 @@ function BlogPage() {
                 <CardContent>
                   <Typography
                     variant="h6"
-                    component={NavLink}
-                    to={`../../blog/${item.id}`}
+                    component={LocalNavLink}
+                    to={`/blog/${item.id}`}
                     sx={{
                       fontSize: "17px",
                       fontWeight: 600,

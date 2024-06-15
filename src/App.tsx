@@ -34,7 +34,6 @@ function App() {
     } else {
       changeLanguage(local || "en");
     }
-    navigate("/en");
   }, [local]);
 
   useEffect(() => {
