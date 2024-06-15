@@ -24,7 +24,7 @@ function SliderHomeShopping() {
       } else if (width > theme.breakpoints.values.sm) {
         setCols(3);
       } else {
-        setCols(2);
+        setCols(1);
       }
     };
 

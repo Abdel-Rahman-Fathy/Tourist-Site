@@ -17,7 +17,7 @@ function FeaturedCard({ hotels }: FeaturedCardProps) {
   const { homeData } = useContext(homeContext);
   return (
     <Card className="imgCard" component={NavLink} to={""}>
-      <AspectRatio ratio={3 / 6}>
+      <AspectRatio ratio={4 / 3}>
         <Card
           sx={{
             backgroundColor: "#fff",

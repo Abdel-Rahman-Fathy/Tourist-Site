@@ -311,7 +311,10 @@ function SecondNavbar() {
                   className={"link_down"}
                   to={"/"}
                 >
-                  <MenuItem onClick={toggleMobileMenu}>
+                  <MenuItem
+                    sx={{ fontFamily: "Almarai" }}
+                    onClick={toggleMobileMenu}
+                  >
                     {homeData?.siteInformation.home}
                   </MenuItem>
                 </Typography>
@@ -320,15 +323,20 @@ function SecondNavbar() {
                   className={"link_down"}
                   to={"/about"}
                 >
-                  <MenuItem onClick={toggleMobileMenu}>
+                  <MenuItem
+                    sx={{ fontFamily: "Almarai" }}
+                    onClick={toggleMobileMenu}
+                  >
                     {homeData?.siteInformation.about_us}
                   </MenuItem>
                 </Typography>
                 {/* Frist sub item */}
                 {language !== "ar" && (
                   <>
-                    {" "}
-                    <MenuItem onClick={toggleExursionsSubMenu}>
+                    <MenuItem
+                      sx={{ fontFamily: "Almarai" }}
+                      onClick={toggleExursionsSubMenu}
+                    >
                       {t("main.ExursionsFromHurghada")}{" "}
                       {isExursionsFromHurghadaSubMenuOpen ? (
                         <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
@@ -348,6 +356,7 @@ function SecondNavbar() {
                       >
                         {cat.map((item) => (
                           <Typography
+                            sx={{ fontFamily: "Almarai" }}
                             component={LocalNavLink}
                             key={item.id}
                             onClick={() => {
@@ -367,7 +376,10 @@ function SecondNavbar() {
                 )}
 
                 {/* sec sub item */}
-                <MenuItem onClick={toggleHotelSubMenu}>
+                <MenuItem
+                  onClick={toggleHotelSubMenu}
+                  sx={{ fontFamily: "Almarai" }}
+                >
                   {homeData?.siteInformation.hotel_us}
                   {isHotelSubMenuOpen ? (
                     <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
@@ -393,7 +405,9 @@ function SecondNavbar() {
                         }}
                         to={`hotels/${item.id}`}
                       >
-                        <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
+                        <MenuItem sx={{ color: "#fff", fontFamily: "Almarai" }}>
+                          {item.title}
+                        </MenuItem>
                       </Typography>
                     ))}
                   </Box>
@@ -440,7 +454,10 @@ function SecondNavbar() {
                 )}
 
                 {/* Blogs */}
-                <MenuItem onClick={toggleBlogsSubMenu}>
+                <MenuItem
+                  onClick={toggleBlogsSubMenu}
+                  sx={{ fontFamily: "Almarai" }}
+                >
                   {homeData?.siteInformation.blog_us}
                   {isBlogsSubMenuOpen ? (
                     <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
@@ -466,7 +483,9 @@ function SecondNavbar() {
                         }}
                         to={`blog/${item.id}`}
                       >
-                        <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
+                        <MenuItem sx={{ color: "#fff", fontFamily: "Almarai" }}>
+                          {item.title}
+                        </MenuItem>
                       </Typography>
                     ))}
                   </Box>
@@ -478,7 +497,10 @@ function SecondNavbar() {
                   className={"link_down"}
                   to={"/contact"}
                 >
-                  <MenuItem onClick={toggleMobileMenu}>
+                  <MenuItem
+                    onClick={toggleMobileMenu}
+                    sx={{ fontFamily: "Almarai" }}
+                  >
                     {homeData?.siteInformation.contact_us}
                   </MenuItem>
                 </Typography>
