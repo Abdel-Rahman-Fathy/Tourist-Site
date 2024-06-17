@@ -14,7 +14,6 @@ import { homeContext } from "pages/HomeContext";
 import { imgPath } from "methods/img";
 import RenderRte from "Components/RenderRte";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
 import { LocalNavLink } from "hooks/useLocalNavigate";
 function BlogPage() {
   const [t] = useTranslation();

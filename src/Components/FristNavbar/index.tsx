@@ -128,7 +128,7 @@ function FristNavbar() {
               <Box display={"flex"} flexDirection={"row"}>
                 <MailOutlineOutlinedIcon sx={{ mx: 0.3 }} />
                 <Typography variant="body1" color={"#fff"}>
-                  {homeData?.siteInformation.email} |
+                  {homeData?.siteInformation.email}
                 </Typography>
               </Box>
               <Box display={"flex"} flexDirection={"row"}>

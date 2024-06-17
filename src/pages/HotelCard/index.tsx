@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import FixedSection from "../../Components/FixedSection";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -75,7 +75,7 @@ function HotelCard() {
                     >
                       <Stack sx={{ position: "relative" }}>
                         <Box
-                          component={NavLink}
+                          component={LocalNavLink}
                           to={`/hotel/${card.id}`}
                           sx={{
                             overflow: "hidden",
@@ -118,7 +118,7 @@ function HotelCard() {
                       <CardContent>
                         <Typography
                           variant="h6"
-                          component={NavLink}
+                          component={LocalNavLink}
                           to={`/hotel/${card.id}`}
                           sx={{
                             fontWeight: 700,

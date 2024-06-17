@@ -22,7 +22,16 @@ function AspectRatio({
         ...props.sx,
       }}
     >
-      <Box sx={{ width: 1, height: 1, top: 0, left: 0, position: "absolute" }}>
+      <Box
+        sx={{
+          width: { lg: 1, xs: 0.8 },
+          height: 1,
+          top: 0,
+          ml: { lg: 0, xs: 5 },
+          left: 0,
+          position: "absolute",
+        }}
+      >
         {children}
       </Box>
     </Box>

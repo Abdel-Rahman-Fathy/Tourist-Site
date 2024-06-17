@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import FixedSection from "../../Components/FixedSection";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -78,7 +78,7 @@ function HurghadaCard() {
                     >
                       <Stack sx={{ position: "relative" }}>
                         <Box
-                          component={NavLink}
+                          component={LocalNavLink}
                           to={`/product/${card.id}`}
                           sx={{
                             overflow: "hidden",
@@ -121,7 +121,7 @@ function HurghadaCard() {
                       <CardContent>
                         <Typography
                           variant="h6"
-                          component={NavLink}
+                          component={LocalNavLink}
                           to={`/product/${card.id}`}
                           sx={{
                             fontWeight: 700,

@@ -10,6 +10,7 @@ import { homeContext } from "pages/HomeContext";
 import { imgPath } from "methods/img";
 import { Hotel } from "types/Hotel";
 import { HotelCat } from "types/Root";
+import { LocalNavLink } from "hooks/useLocalNavigate";
 
 function FeaturedCard({ hotels }: FeaturedCardProps) {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function FeaturedCard({ hotels }: FeaturedCardProps) {
         >
           <Stack sx={{ position: "relative" }}>
             <Box
-              component={NavLink}
+              component={LocalNavLink}
               to={`/hotels/${hotels.id}`}
               sx={{
                 overflow: "hidden",

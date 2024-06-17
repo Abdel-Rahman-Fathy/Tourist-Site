@@ -10,7 +10,7 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import CallIcon from "@mui/icons-material/Call";
 import icons from "../../../../assets/iconMessage.png";
 import CloseIcon from "@mui/icons-material/Close";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { homeContext } from "pages/HomeContext";
 

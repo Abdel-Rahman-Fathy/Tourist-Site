@@ -1,10 +1,10 @@
 import { Box, Card } from "@mui/material";
 import AspectRatio from "Components/AspectRatio";
 import "./card.css";
-import { NavLink } from "react-router-dom";
+import { LocalNavLink } from "hooks/useLocalNavigate";
 function FeaturedCard({ image }: FeaturedCardProps) {
   return (
-    <Card className="imgCard" component={NavLink} to={""}>
+    <Card className="imgCard" component={LocalNavLink} to={""}>
       <AspectRatio ratio={3 / 2}>
         <Box
           sx={{

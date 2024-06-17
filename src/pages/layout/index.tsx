@@ -40,9 +40,13 @@ function Layout() {
                   <Route path="product/:id" element={<SliderHurhada />} />
                 </>
               )}
+              {(language === "ar" || language === "en") && (
+                <>
+                  <Route path="hotels/:id" element={<HotelCard />} />
+                  <Route path="hotel/:id" element={<SliderHotel />} />
+                </>
+              )}
 
-              <Route path="hotels/:id" element={<HotelCard />} />
-              <Route path="hotel/:id" element={<SliderHotel />} />
               {language !== "ar" && (
                 <Route path="shopping/:id" element={<ShopCard />} />
               )}
