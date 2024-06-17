@@ -36,16 +36,16 @@ function App() {
     }
   }, [local]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://abdelrahman-eldesoky.online/api/control`)
-  //     .then((res) => {
-  //       setStatusError(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log("error", error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`https://abdelrahman-eldesoky.online/api/control`)
+      .then((res) => {
+        setStatusError(res.data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  }, []);
 
   return (
     <ThemeProvider
@@ -55,17 +55,17 @@ function App() {
         language
       )}
     >
-      {/* {statusError?.egyptos ? ( */}
-      <Stack
-        sx={{ direction: isRtl(language) ? "rtl" : "ltr" }}
-        component={"main"}
-        className="App"
-      >
-        <Layout key={language} />
-      </Stack>
-      {/* ) : (
+      {statusError?.egyptos ? (
+        <Stack
+          sx={{ direction: isRtl(language) ? "rtl" : "ltr" }}
+          component={"main"}
+          className="App"
+        >
+          <Layout key={language} />
+        </Stack>
+      ) : (
         <Spinner />
-      )} */}
+      )}
     </ThemeProvider>
   );
 }
