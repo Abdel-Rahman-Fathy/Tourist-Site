@@ -113,6 +113,7 @@ function DialogForm({ open, setOpen }: PropsType) {
               fullWidth
               size="small"
               {...register("mobile")}
+              type="number"
             />
           </Grid>
           <Grid item md={6}>

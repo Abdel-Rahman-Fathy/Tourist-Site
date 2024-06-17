@@ -92,11 +92,11 @@ function FormPage() {
               label={t("ContactUs.Name")}
               fullWidth
             />
-            {errors.name && (
+            {/* {errors.name && (
               <Typography variant="body2" sx={{ color: "error.main" }}>
                 {errors.name.message}
               </Typography>
-            )}
+            )} */}
           </Grid>
           <Grid item xs={12} md={6}>
             <CustomTextField
@@ -105,11 +105,11 @@ function FormPage() {
               label={t("ContactUs.Email")}
               fullWidth
             />
-            {errors.email && (
+            {/* {errors.email && (
               <Typography variant="body2" sx={{ color: "error.main" }}>
                 {errors.email.message}
               </Typography>
-            )}
+            )} */}
           </Grid>
           <Grid item xs={12} md={6}>
             <CustomTextField
@@ -118,11 +118,11 @@ function FormPage() {
               label={t("ContactUs.Subject")}
               fullWidth
             />
-            {errors.subject && (
+            {/* {errors.subject && (
               <Typography variant="body2" sx={{ color: "error.main" }}>
                 {errors.subject.message}
               </Typography>
-            )}
+            )} */}
           </Grid>
           <Grid item xs={12} md={6}>
             <CustomTextField
@@ -131,11 +131,11 @@ function FormPage() {
               label={t("ContactUs.Phone")}
               fullWidth
             />
-            {errors.phone && (
+            {/* {errors.phone && (
               <Typography variant="body2" sx={{ color: "error.main" }}>
                 {errors.phone.message}
               </Typography>
-            )}
+            )} */}
           </Grid>
           <Grid item xs={12}>
             <CustomTextField
@@ -146,11 +146,11 @@ function FormPage() {
               multiline
               rows={5}
             />
-            {errors.message && (
+            {/* {errors.message && (
               <Typography variant="body2" sx={{ color: "error.main" }}>
                 {errors.message.message}
               </Typography>
-            )}
+            )} */}
           </Grid>
           <Grid item md={12}>
             <Stack alignItems={"center"}>

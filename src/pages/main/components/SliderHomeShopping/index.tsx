@@ -1,10 +1,15 @@
 import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Autoplay } from "swiper/modules";
+import {
+  EffectFade,
+  Autoplay,
+  Navigation,
+  Pagination,
+  Scrollbar,
+} from "swiper/modules";
 import FeaturedCard, { FeaturedCardProps } from "./FeaturedCard";
 import { useContext, useEffect, useState } from "react";
 import { homeContext } from "pages/HomeContext";
-import { imgPath } from "methods/img";
 const InfoCardContainer = (props: FeaturedCardProps) => (
   <Box p={2} pt={0} pb={6}>
     <FeaturedCard {...props} />
@@ -47,15 +52,17 @@ function SliderHomeShopping() {
       >
         الفنادق
       </Typography>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ pb: 5 }}>
         <Swiper
           slidesPerView={cols}
-          modules={[Autoplay]}
-          loop
+          spaceBetween={0}
+          modules={[EffectFade, Autoplay, Navigation, Pagination, Scrollbar]}
+          allowSlideNext={true}
+          allowSlidePrev={true}
           autoplay={{ delay: 4000, disableOnInteraction: true }}
-          pagination={{
-            clickable: true,
-          }}
+          // pagination={{
+          //   clickable: true,
+          // }}
           key={cols}
         >
           {homeData?.category_hotels.map((item) => (

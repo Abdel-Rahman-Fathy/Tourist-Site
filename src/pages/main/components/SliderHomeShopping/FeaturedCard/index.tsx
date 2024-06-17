@@ -46,7 +46,7 @@ function FeaturedCard({ hotels }: FeaturedCardProps) {
                 src={hotels?.image}
                 style={{
                   width: "100%",
-                  height: "150px",
+                  height: "120px",
                   objectFit: "cover",
                   transition: "all .5s",
                 }}

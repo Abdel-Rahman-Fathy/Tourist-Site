@@ -72,6 +72,7 @@ export interface SiteInformation {
   explorer_description: string;
   product_image: string;
   product_title: string;
+  hotel_title: string;
   product_description: string;
   service_image: string;
   service_title: string;

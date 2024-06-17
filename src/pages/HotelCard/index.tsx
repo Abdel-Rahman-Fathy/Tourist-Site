@@ -51,7 +51,7 @@ function HotelCard() {
     <>
       {status == "done" ? (
         <>
-          <FixedSection title={homeData?.siteInformation?.hotel_us} />
+          <FixedSection title={homeData?.siteInformation?.hotel_title} />
           <Stack sx={{ padding: "80px 30px" }}>
             <Typography
               variant="h3"
