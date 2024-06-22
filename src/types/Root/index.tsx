@@ -24,6 +24,7 @@ export interface Root {
   category_hotels: HotelCat[];
   SiteColor: SiteColor;
   hotels: Hotel[];
+  languages: Language[];
 }
 
 export interface Data {
@@ -246,4 +247,15 @@ export interface Shipping {
   cost: string;
   description: string;
   image?: string;
+}
+
+export interface Language {
+  id: number;
+  name: string;
+  code: string;
+  direction: string;
+  image?: string;
+  created_at?: string;
+  updated_at?: string;
+  image_path: string[];
 }

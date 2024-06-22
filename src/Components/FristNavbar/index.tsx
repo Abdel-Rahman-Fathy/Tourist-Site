@@ -1,13 +1,5 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./FristNavbar.css";
-import Ger from "../../assets/flags/Ger.png";
-import Hun from "../../assets/flags/Hun.png";
-import en from "../../assets/flags/en.png";
-import pol from "../../assets/flags/pol.png";
-import rom from "../../assets/flags/romania.png";
-import rus from "../../assets/flags/rus.png";
-import tur from "../../assets/flags/tur.png";
-import eg from "../../assets/flags/eg.png";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -28,50 +20,7 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import useUrlLanguage from "methods/changeLanguage";
-const flags = [
-  {
-    value: "en",
-    path: en,
-    name: "EN",
-  },
-  {
-    value: "ru",
-    path: rus,
-    name: "RUS",
-  },
-  {
-    value: "ge",
-    path: Ger,
-    name: "GER",
-  },
-  {
-    value: "po",
-    path: pol,
-    name: "POL",
-  },
-  {
-    value: "bu",
-    path: rom,
-    name: "ROM",
-  },
-
-  {
-    value: "hu",
-    path: Hun,
-    name: "HUN",
-  },
-  {
-    value: "tu",
-    path: tur,
-    name: "TUR",
-  },
-
-  {
-    value: "ar",
-    path: eg,
-    name: "AR",
-  },
-];
+import { imgPath } from "methods/img";
 
 function FristNavbar() {
   const [t, i18n] = useTranslation();
@@ -178,10 +127,10 @@ function FristNavbar() {
               md={2}
             >
               <TextField variant="standard" select value={i18n.language}>
-                {flags.map((item) => (
+                {homeData?.languages.map((item) => (
                   <MenuItem
-                    key={item.value}
-                    value={item.value}
+                    key={item.id}
+                    value={item.code}
                     sx={{
                       backgroundColor: "primary.main",
                       "&:hover": {
@@ -189,7 +138,7 @@ function FristNavbar() {
                       },
                     }}
                     onClick={() => {
-                      handleLanguage(item.value);
+                      handleLanguage(item.code);
                     }}
                   >
                     <Box
@@ -198,7 +147,11 @@ function FristNavbar() {
                       alignItems={"center"}
                       gap={1}
                     >
-                      <img src={item.path} height={"15px"} width={"30px"} />
+                      <img
+                        src={imgPath(item.image)}
+                        height={"15px"}
+                        width={"30px"}
+                      />
                       <Typography
                         variant="body1"
                         sx={{

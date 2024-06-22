@@ -10,6 +10,7 @@ export const theme = (
 ) =>
   createTheme({
     direction: "rtl",
+
     shape: {
       borderRadius: 3,
     },
@@ -38,19 +39,33 @@ export const theme = (
         default: "#FFFFFF",
       },
       text: {
-        primary: maincolor || "f00",
+        primary: maincolor || "#f00",
         secondary: colors.grey[600],
         disabled: colors.grey[600],
       },
     },
+    typography: {
+      fontFamily: "Almarai",
+      allVariants: {
+        fontFamily: "Almarai",
+      },
+    },
     components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            fontFamily: "Almarai",
+          },
+        },
+      },
       MuiTypography: {
         defaultProps: {
           color: "text.primary",
+          fontFamily: "Almarai",
         },
         styleOverrides: {
           root: {
-            fontFamily: lang == "ar" ? "Almarai " : "sans-serif",
+            fontFamily: "Almarai",
           },
         },
       },

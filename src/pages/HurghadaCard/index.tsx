@@ -163,9 +163,8 @@ function HurghadaCard() {
                             component={LocalNavLink}
                             sx={{
                               borderRadius: "10px",
-                              backgroundColor: "#0052a4",
+                              backgroundColor: homeData?.SiteColor.mainColor,
                               transition: "all .3s",
-                              fontFamily: "Almarai ",
                               color: "#fff",
                               padding: "9px",
                             }}
@@ -179,7 +178,7 @@ function HurghadaCard() {
                         sx={{
                           width: 0,
                           height: "5px",
-                          backgroundColor: "#0052a4",
+                          backgroundColor: homeData?.SiteColor.mainColor,
                           transition: "all .8s",
                         }}
                         className={"line"}

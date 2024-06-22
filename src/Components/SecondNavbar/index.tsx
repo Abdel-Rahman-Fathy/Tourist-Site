@@ -35,7 +35,6 @@ function SubMenu({ title, link }: PropsType) {
       sx={{
         py: 1.5,
         background: MainColor || "#000",
-        fontFamily: "Almarai ",
         "&:hover": {
           color: Color || "#F19B02",
         },
@@ -317,10 +316,7 @@ function SecondNavbar() {
                   className={"link_down"}
                   to={"/"}
                 >
-                  <MenuItem
-                    sx={{ fontFamily: "Almarai" }}
-                    onClick={toggleMobileMenu}
-                  >
+                  <MenuItem onClick={toggleMobileMenu}>
                     {homeData?.siteInformation.home}
                   </MenuItem>
                 </Typography>
@@ -329,20 +325,14 @@ function SecondNavbar() {
                   className={"link_down"}
                   to={"/about"}
                 >
-                  <MenuItem
-                    sx={{ fontFamily: "Almarai" }}
-                    onClick={toggleMobileMenu}
-                  >
+                  <MenuItem onClick={toggleMobileMenu}>
                     {homeData?.siteInformation.about_us}
                   </MenuItem>
                 </Typography>
                 {/* Frist sub item */}
                 {language !== "ar" && (
                   <>
-                    <MenuItem
-                      sx={{ fontFamily: "Almarai" }}
-                      onClick={toggleExursionsSubMenu}
-                    >
+                    <MenuItem onClick={toggleExursionsSubMenu}>
                       {t("main.ExursionsFromHurghada")}{" "}
                       {isExursionsFromHurghadaSubMenuOpen ? (
                         <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
@@ -362,7 +352,6 @@ function SecondNavbar() {
                       >
                         {cat.map((item) => (
                           <Typography
-                            sx={{ fontFamily: "Almarai" }}
                             component={LocalNavLink}
                             key={item.id}
                             onClick={() => {
@@ -384,10 +373,7 @@ function SecondNavbar() {
                 {/* sec sub item */}
                 {(language === "ar" || language === "en") && (
                   <>
-                    <MenuItem
-                      onClick={toggleHotelSubMenu}
-                      sx={{ fontFamily: "Almarai" }}
-                    >
+                    <MenuItem onClick={toggleHotelSubMenu}>
                       {homeData?.siteInformation.hotel_us}
                       {isHotelSubMenuOpen ? (
                         <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
@@ -415,9 +401,7 @@ function SecondNavbar() {
                             }}
                             to={`hotels/${item.id}`}
                           >
-                            <MenuItem
-                              sx={{ color: "#fff", fontFamily: "Almarai" }}
-                            >
+                            <MenuItem sx={{ color: "#fff" }}>
                               {item.title}
                             </MenuItem>
                           </Typography>
@@ -470,10 +454,7 @@ function SecondNavbar() {
                 )}
 
                 {/* Blogs */}
-                <MenuItem
-                  onClick={toggleBlogsSubMenu}
-                  sx={{ fontFamily: "Almarai" }}
-                >
+                <MenuItem onClick={toggleBlogsSubMenu}>
                   {homeData?.siteInformation.blog_us}
                   {isBlogsSubMenuOpen ? (
                     <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
@@ -499,9 +480,7 @@ function SecondNavbar() {
                         }}
                         to={`blog/${item.id}`}
                       >
-                        <MenuItem sx={{ color: "#fff", fontFamily: "Almarai" }}>
-                          {item.title}
-                        </MenuItem>
+                        <MenuItem sx={{ color: "#fff" }}>{item.title}</MenuItem>
                       </Typography>
                     ))}
                   </Box>
@@ -513,10 +492,7 @@ function SecondNavbar() {
                   className={"link_down"}
                   to={"/contact"}
                 >
-                  <MenuItem
-                    onClick={toggleMobileMenu}
-                    sx={{ fontFamily: "Almarai" }}
-                  >
+                  <MenuItem onClick={toggleMobileMenu}>
                     {homeData?.siteInformation.contact_us}
                   </MenuItem>
                 </Typography>

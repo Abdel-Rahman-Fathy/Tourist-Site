@@ -103,10 +103,7 @@ function BlogPage() {
                   >
                     <RenderRte rte={item.description} />
                   </Typography>
-                  <Button
-                    variant="outlined"
-                    sx={{ mt: 2, fontFamily: "Almarai " }}
-                  >
+                  <Button variant="outlined" sx={{ mt: 2 }}>
                     {t("main.ReadMore")}
                   </Button>
                 </CardContent>

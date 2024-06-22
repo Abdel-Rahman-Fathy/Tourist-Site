@@ -79,7 +79,6 @@ function FeaturedCard({ hotels }: FeaturedCardProps) {
                     borderRadius: "10px",
                     backgroundColor: "#0052a4",
                     transition: "all .3s",
-                    fontFamily: "Almarai ",
                   }}
                   onClick={() => {
                     navigate(`/hotels/${hotels.id}`);
@@ -93,7 +92,7 @@ function FeaturedCard({ hotels }: FeaturedCardProps) {
             sx={{
               width: 0,
               height: "5px",
-              backgroundColor: "#0052a4",
+              backgroundColor: homeData?.SiteColor.mainColor,
               transition: "all .8s",
             }}
             className={"line"}
