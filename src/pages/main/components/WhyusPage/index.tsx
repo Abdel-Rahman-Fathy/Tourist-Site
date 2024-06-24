@@ -101,7 +101,7 @@ function WhyusPage() {
               alignItems: "center",
             }}
           >
-            <Box sx={{ py: 4 }}>
+            <Box sx={{ p: 6 }}>
               <Box sx={{ border: "solid 10px #0052a4" }}>
                 <Box
                   component="img"

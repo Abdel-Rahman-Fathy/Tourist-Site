@@ -57,7 +57,7 @@ function SliderHotel() {
                 href={cardHotelInfo?.hotel?.link || " "}
                 sx={{
                   borderRadius: "10px",
-                  backgroundColor: "#0052a4",
+                  backgroundColor: "primary.main",
                   transition: "all .3s",
                 }}
               >

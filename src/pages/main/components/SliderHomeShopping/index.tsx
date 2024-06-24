@@ -11,7 +11,7 @@ import FeaturedCard, { FeaturedCardProps } from "./FeaturedCard";
 import { useContext, useEffect, useState } from "react";
 import { homeContext } from "pages/HomeContext";
 const InfoCardContainer = (props: FeaturedCardProps) => (
-  <Box p={2} pt={0} pb={6}>
+  <Box sx={{ p: { md: 5, sm: 2 } }}>
     <FeaturedCard {...props} />
   </Box>
 );
@@ -52,7 +52,7 @@ function SliderHomeShopping() {
       >
         الفنادق
       </Typography>
-      <Container maxWidth="lg" sx={{ pb: 5 }}>
+      <Container maxWidth="lg" sx={{ pb: 1 }}>
         <Swiper
           slidesPerView={cols}
           spaceBetween={0}

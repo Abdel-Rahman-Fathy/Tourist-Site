@@ -138,7 +138,7 @@ function HotelCard() {
                           {Array.from({ length: card.stars }, (_, i) => (
                             <StarIcon
                               key={i}
-                              sx={{ color: "warning.main", fontSize: 20 }}
+                              sx={{ color: "#F19B02", fontSize: 20 }}
                             />
                           ))}
                         </Box>
@@ -171,7 +171,7 @@ function HotelCard() {
                         sx={{
                           width: 0,
                           height: "5px",
-                          backgroundColor: "#0052a4",
+                          backgroundColor: "primary.main",
                           transition: "all .8s",
                         }}
                         className={"line"}

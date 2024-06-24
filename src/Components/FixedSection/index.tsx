@@ -12,8 +12,7 @@ function FixedSection({ title }: { title?: string }) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage: `linear-gradient(rgba(0, 82, 164,.5),rgba(0, 82, 164,.5)
-        ), url(${AboutImg})`,
+        backgroundImage: `url(${AboutImg})`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",

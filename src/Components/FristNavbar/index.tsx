@@ -134,7 +134,7 @@ function FristNavbar() {
                     sx={{
                       backgroundColor: "primary.main",
                       "&:hover": {
-                        backgroundColor: "primary.main",
+                        backgroundColor: "#fff",
                       },
                     }}
                     onClick={() => {
@@ -159,7 +159,7 @@ function FristNavbar() {
                           fontSize: "18px",
                         }}
                       >
-                        {item.name}
+                        {item.web_name}
                       </Typography>
                     </Box>
                   </MenuItem>

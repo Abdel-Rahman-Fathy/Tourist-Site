@@ -9,6 +9,8 @@ function FeaturedCard({ image }: FeaturedCardProps) {
         <Box
           sx={{
             position: "relative",
+            width: { md: "150px", sm: "260px" },
+            height: { md: "90px", sm: "200px" },
           }}
         >
           <img
@@ -17,7 +19,7 @@ function FeaturedCard({ image }: FeaturedCardProps) {
             style={{
               objectFit: "cover",
               width: "100%",
-              height: "90px",
+              height: "100%",
             }}
           />
           <Box

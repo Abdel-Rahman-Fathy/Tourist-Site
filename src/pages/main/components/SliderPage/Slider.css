@@ -9,3 +9,7 @@
     margin-top: 200px;
   }
 }
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff !important;
+}

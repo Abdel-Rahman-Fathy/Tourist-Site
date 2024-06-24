@@ -194,7 +194,7 @@ function SecondNavbar() {
                           <SubMenu
                             key={item.id}
                             title={item.title}
-                            link={`products/${item.id}`}
+                            link={`excursionsfromhurghada/${item.id}`}
                           />
                         ))}
                       </MenuList>
@@ -358,7 +358,7 @@ function SecondNavbar() {
                               toggleMobileMenu();
                               toggleExursionsSubMenu();
                             }}
-                            to={`products/${item.id}`}
+                            to={`excursionsfromhurghada/${item.id}`}
                           >
                             <MenuItem sx={{ color: "#fff" }}>
                               {item.title}

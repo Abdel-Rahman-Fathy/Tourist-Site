@@ -35,18 +35,19 @@ function FeaturedCard({ hotels }: FeaturedCardProps) {
               to={`/hotels/${hotels.id}`}
               sx={{
                 overflow: "hidden",
+                height: { md: "120px", sm: "200px" },
                 "&:hover img": {
                   transform: "scale(1.1)",
-                  height: "250px",
+                  height: { md: "120px", sm: "200px" },
                 },
               }}
             >
               <Box
                 component={"img"}
                 src={hotels?.image}
-                style={{
+                sx={{
                   width: "100%",
-                  height: "120px",
+                  height: { md: "120px", sm: "200px" },
                   objectFit: "cover",
                   transition: "all .5s",
                 }}

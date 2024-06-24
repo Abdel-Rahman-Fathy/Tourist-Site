@@ -22,9 +22,9 @@ function SliderLogo() {
       } else if (width > theme.breakpoints.values.md) {
         setCols(4);
       } else if (width > theme.breakpoints.values.sm) {
-        setCols(3);
+        setCols(1);
       } else {
-        setCols(2);
+        setCols(1);
       }
     };
 

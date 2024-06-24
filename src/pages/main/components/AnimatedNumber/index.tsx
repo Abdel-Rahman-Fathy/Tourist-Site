@@ -16,8 +16,7 @@ function AnimationNumber() {
   return (
     <Stack
       sx={{
-        backgroundImage: `linear-gradient(rgba(0, 82, 164, 0.8), rgba(0, 82, 164, 0.8)
-), url(${bgAnimated})`,
+        backgroundImage: `url(${bgAnimated})`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",

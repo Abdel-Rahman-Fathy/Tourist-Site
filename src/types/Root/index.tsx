@@ -258,4 +258,5 @@ export interface Language {
   created_at?: string;
   updated_at?: string;
   image_path: string[];
+  web_name: string;
 }

@@ -133,7 +133,7 @@ function HurghadaCard() {
                           {card.title}
                         </Typography>
                         <Box
-                          color={"warning.main"}
+                          color={"#F19B02"}
                           sx={{
                             borderBottom: "dashed 1px #000",
                             pb: 2,

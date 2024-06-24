@@ -36,7 +36,10 @@ function Layout() {
               <Route path="" element={<MainPages />} />
               {language !== "ar" && (
                 <>
-                  <Route path="products/:id" element={<HurghadaCard />} />
+                  <Route
+                    path="excursionsfromhurghada/:id"
+                    element={<HurghadaCard />}
+                  />
                   <Route path="product/:id" element={<SliderHurhada />} />
                 </>
               )}
