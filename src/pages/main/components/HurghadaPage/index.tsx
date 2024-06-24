@@ -28,7 +28,7 @@ function HurghadaPage() {
               key={trip.id}
               name={trip.title}
               id={trip.id}
-              link={"products"}
+              link={"excursionsfromhurghada"}
             />
           ))}
         </Grid>
