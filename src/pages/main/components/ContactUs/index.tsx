@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next";
 function ContactUs() {
   const [t] = useTranslation();
   const { homeData } = useContext(homeContext);
-  const findObj = useHomeData(homeData?.siteContent);
   return (
     <Stack
       style={{
@@ -32,10 +31,10 @@ function ContactUs() {
                   paddingBottom: "20px",
                 }}
               >
-                <RenderRte rte={findObj("Home Contact")?.title} />
+                {homeData?.siteInformation.contact_us}
               </Typography>
               <Typography variant="body1" sx={{ color: "#fff" }}>
-                <RenderRte rte={findObj("Home Contact")?.description} />
+                {homeData?.siteInformation.you_will_be}
               </Typography>
             </Box>
           </Grid>
@@ -57,7 +56,7 @@ function ContactUs() {
                     marginLeft: 2,
                   }}
                 >
-                  {t("main.CallUs")}
+                  {homeData?.siteInformation.call_us}
                 </Typography>
               </Box>
               <Box sx={{ margin: "10px 0 0 0px", direction: "ltr" }}>
@@ -102,7 +101,7 @@ function ContactUs() {
                     marginLeft: 2,
                   }}
                 >
-                  {t("main.Email")}
+                  {homeData?.siteInformation.email_trans}
                 </Typography>
               </Box>
               <Box sx={{ margin: "10px 0 0 0px" }}>

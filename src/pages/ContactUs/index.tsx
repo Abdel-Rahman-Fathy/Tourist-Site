@@ -59,10 +59,10 @@ function ContactUsPage() {
                 variant="h6"
                 sx={{ fontSize: "45px", fontWeight: 600 }}
               >
-                {contactData?.siteContent[17].title}
+                {homeData?.siteInformation.contact_us}
               </Typography>
               <Typography variant="body1" sx={{ fontSize: "25px" }}>
-                {contactData?.siteContent[17].description}
+                {homeData?.siteInformation.you_will_be}
               </Typography>
             </Box>
             <Box
@@ -82,7 +82,7 @@ function ContactUsPage() {
                     sx={{ fontSize: "60px", color: "primary.main", mb: 2 }}
                   />
                   <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
-                    {t("ContactUs.Address")}
+                    {homeData?.siteInformation.address_trans}
                   </Typography>
                   <Typography
                     variant="body1"
@@ -99,7 +99,7 @@ function ContactUsPage() {
                     sx={{ fontSize: "60px", color: "primary.main", mb: 2 }}
                   />
                   <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
-                    {t("ContactUs.Phone")}
+                    {homeData?.siteInformation.phone}
                   </Typography>
                   <Box sx={{ direction: "ltr" }}>
                     {contactData?.siteInformation?.phone1 && (
@@ -158,7 +158,7 @@ function ContactUsPage() {
                     sx={{ fontSize: "60px", color: "primary.main", mb: 2 }}
                   />
                   <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
-                    {t("ContactUs.Email")}
+                    {homeData?.siteInformation.email_trans}
                   </Typography>
                   <Typography
                     variant="body1"

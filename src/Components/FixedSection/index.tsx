@@ -2,9 +2,13 @@ import { Box, Typography } from "@mui/material";
 import AboutImg from "../../assets/animatedNumberImage.png";
 import { useTranslation } from "react-i18next";
 import RenderRte from "Components/RenderRte";
+import { homeContext } from "pages/HomeContext";
+import { useContext } from "react";
+import { imgPath } from "methods/img";
 
 function FixedSection({ title }: { title?: string }) {
   const [t] = useTranslation();
+  const { homeData } = useContext(homeContext);
 
   return (
     <Box
@@ -12,7 +16,9 @@ function FixedSection({ title }: { title?: string }) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage: `url(${AboutImg})`,
+        backgroundImage: `url(${imgPath(
+          homeData?.siteInformation.product_image
+        )})`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",

@@ -103,10 +103,10 @@ function Footer() {
               variant="h6"
               sx={{ color: "#fff", py: 3, fontWeight: "600" }}
             >
-              {findObj("Newsletter")?.title}
+              {homeData?.siteInformation?.subscribe_now}
             </Typography>
             <Typography variant="body1" sx={{ color: "#fff", pb: 3 }}>
-              {findObj("Newsletter")?.description}
+              {homeData?.siteInformation?.reach_all_now}
             </Typography>
             <TextField
               {...register("email")}
@@ -122,7 +122,7 @@ function Footer() {
               color="secondary"
               sx={{ mt: 3 }}
             >
-              {findObj("Newsletter")?.title}
+              {homeData?.siteInformation?.subscribe_now}
             </Button>
           </Grid>
         </Grid>

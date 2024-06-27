@@ -87,6 +87,14 @@ export interface SiteInformation {
   home_about_title: string;
   home_about_description: string;
   home_about_image: string;
+  address_trans: string;
+  subscribe_now: string;
+  reach_all_now: string;
+  contact: string;
+  phone: string;
+  email_trans: string;
+  call_us: string;
+  you_will_be: string;
 }
 export interface HotelCat {
   id: string;
