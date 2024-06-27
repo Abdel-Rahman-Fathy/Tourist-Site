@@ -49,7 +49,7 @@ function DialogForm({ open, setOpen }: PropsType) {
   });
   const onSubmit: SubmitHandler<InputBook> = (data) => {
     axios
-      .post(api(`book/${id}`), { ...data })
+      .post(api(`book/${id}`), { ...data, id })
       .then(() => {
         setOpen(!open);
         reset({

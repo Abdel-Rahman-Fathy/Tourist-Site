@@ -1,2 +1,2 @@
 export const imgPath = (path?: string) =>
-  `https://react.hanstarcarrental.com/public/upload${path ? "/" + path : ""}`;
+  `https://egyptos-travel.com/public/upload${path ? "/" + path : ""}`;
