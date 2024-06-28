@@ -14,7 +14,7 @@ function WhyusPage() {
   const findObj = useHomeData(homeData?.siteContent);
 
   return (
-    <Stack sx={{ padding: "80px 30px" }}>
+    <Stack sx={{ padding: "80px 0" }}>
       <Container maxWidth="lg">
         <Grid container>
           <Grid item md={6}>

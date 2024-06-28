@@ -8,6 +8,7 @@ import ThumbsUpDownIcon from "@mui/icons-material/ThumbsUpDown";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import { homeContext, useHomeData } from "pages/HomeContext";
 import { useContext } from "react";
+import { imgPath } from "methods/img";
 
 function AnimationNumber() {
   const { homeData } = useContext(homeContext);
@@ -16,7 +17,9 @@ function AnimationNumber() {
   return (
     <Stack
       sx={{
-        backgroundImage: `url(${bgAnimated})`,
+        backgroundImage: `url(${imgPath(
+          homeData?.siteInformation.home_number_image
+        )})`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
