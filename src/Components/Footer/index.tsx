@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import "./footer.css";
-import footer from "../../assets/FooterImg.png";
 import { makeStyles } from "@mui/styles";
 import { homeContext, useHomeData } from "pages/HomeContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,6 +22,7 @@ import axios from "axios";
 import { z } from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { imgPath } from "methods/img";
 
 const useStyles = makeStyles({
   root: {
@@ -65,7 +65,11 @@ function Footer() {
       <Container maxWidth="lg">
         <Grid container spacing={10}>
           <Grid item md={6}>
-            <Box component={"img"} src={footer} sx={{ width: "300px" }} />
+            <Box
+              component={"img"}
+              src={imgPath(homeData?.siteInformation.footer_logo)}
+              sx={{ width: "300px" }}
+            />
             <Typography
               variant="h5"
               sx={{ color: "#fff", py: 3, fontWeight: "600" }}

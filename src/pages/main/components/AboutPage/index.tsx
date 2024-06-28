@@ -1,5 +1,4 @@
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
-import aboutImg from "../../../../assets/about.png";
 import { useTranslation } from "react-i18next";
 import SquareIcon from "@mui/icons-material/Square";
 import { useContext } from "react";
@@ -36,7 +35,7 @@ function AboutPage() {
             sx={{
               width: { md: "450px", xs: "350px" },
             }}
-            src={aboutImg}
+            src={imgPath(homeData?.siteInformation.about_image)}
             alt="About Image"
           />
         </Grid>

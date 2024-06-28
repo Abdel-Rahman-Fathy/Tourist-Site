@@ -7,6 +7,7 @@ import BrightnessHighIcon from "@mui/icons-material/BrightnessHigh";
 import { useContext } from "react";
 import { homeContext, useHomeData } from "pages/HomeContext";
 import RenderRte from "Components/RenderRte";
+import { imgPath } from "methods/img";
 
 function WhyusPage() {
   const [t, i18n] = useTranslation();
@@ -111,7 +112,7 @@ function WhyusPage() {
                     top: "30px",
                     right: "30px",
                   }}
-                  src={aboutImg}
+                  src={imgPath(homeData?.siteInformation.home_about_image)}
                 />
               </Box>
             </Box>

@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import FixedSection from "../../Components/FixedSection";
 import { Box, Grid, Stack, Typography } from "@mui/material";
-import contactUs2 from "../../assets/ContactUs2.jpg";
 import { NavLink } from "react-router-dom";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PhoneAndroidOutlinedIcon from "@mui/icons-material/PhoneAndroidOutlined";
@@ -13,6 +12,7 @@ import { api } from "methods/api";
 import { ContactType } from "types/Contact";
 import Spinner from "pages/SpinnerPage/Spinner";
 import { homeContext } from "pages/HomeContext";
+import { imgPath } from "methods/img";
 
 function ContactUsPage() {
   const [t] = useTranslation();
@@ -45,7 +45,9 @@ function ContactUsPage() {
           <FixedSection title={homeData?.siteInformation?.contact_title} />
           <Box
             sx={{
-              backgroundImage: `url(${contactUs2})`,
+              backgroundImage: `url(${imgPath(
+                homeData?.siteInformation.service_image
+              )})`,
               backgroundSize: "cover",
               backgroundPosition: "center center",
               backgroundRepeat: "no-repeat",

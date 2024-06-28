@@ -1,12 +1,4 @@
-import {
-  Button,
-  Container,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
-import imgForm from "../../assets/imgForm.jpg";
+import { Button, Container, Grid, Stack, TextField } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -17,6 +9,7 @@ import { api } from "methods/api";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
 import { homeContext } from "pages/HomeContext";
+import { imgPath } from "methods/img";
 const styles = {
   root: {
     "& .MuiInputLabel-root": {
@@ -69,7 +62,9 @@ function FormPage() {
   return (
     <Stack
       sx={{
-        backgroundImage: `url(${imgForm})`,
+        backgroundImage: `url(${imgPath(
+          homeData?.siteInformation.contact_image
+        )})`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",

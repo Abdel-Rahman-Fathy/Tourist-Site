@@ -1,18 +1,19 @@
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
-import contactUs from "../../../../assets/ContactUs.jpg";
 import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { useContext } from "react";
-import { homeContext, useHomeData } from "pages/HomeContext";
-import RenderRte from "Components/RenderRte";
+import { homeContext } from "pages/HomeContext";
 import { useTranslation } from "react-i18next";
+import { imgPath } from "methods/img";
 function ContactUs() {
   const [t] = useTranslation();
   const { homeData } = useContext(homeContext);
   return (
     <Stack
       style={{
-        backgroundImage: `url(${contactUs})`,
+        backgroundImage: `url(${imgPath(
+          homeData?.siteInformation.home_contact_image
+        )})`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",

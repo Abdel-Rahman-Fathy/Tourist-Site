@@ -1,8 +1,8 @@
 import { Box, Grid, Stack, Typography } from "@mui/material";
-import man from "../../../../assets/manImage.jpg";
 import { homeContext, useHomeData } from "pages/HomeContext";
 import { useContext } from "react";
 import RenderRte from "Components/RenderRte";
+import { imgPath } from "methods/img";
 function ImportPage() {
   const { homeData } = useContext(homeContext);
   const findObj = useHomeData(homeData?.siteContent);
@@ -29,7 +29,7 @@ function ImportPage() {
           <Grid item md={6} sx={{ display: { md: "block", xs: "none" } }}>
             <img
               style={{ objectFit: "cover", width: "100%", height: "100%" }}
-              src={man}
+              src={imgPath(homeData?.siteInformation.pdf)}
               alt=""
             />
           </Grid>
