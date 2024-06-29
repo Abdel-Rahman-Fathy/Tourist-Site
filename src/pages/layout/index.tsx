@@ -34,7 +34,7 @@ function Layout() {
           <div className="main-view">
             <Routes>
               <Route path="" element={<MainPages />} />
-              {language !== "ar" && (
+              {/* {language !== "ar" && ( */}
                 <>
                   <Route
                     path="excursionsfromhurghada/:id"
@@ -42,13 +42,13 @@ function Layout() {
                   />
                   <Route path="product/:id" element={<SliderHurhada />} />
                 </>
-              )}
-              {(language === "ar" || language === "en") && (
-                <>
-                  <Route path="hotels/:id" element={<HotelCard />} />
-                  <Route path="hotel/:id" element={<SliderHotel />} />
-                </>
-              )}
+              {/* )} */}
+              {/* {(language === "ar" || language === "en") && ( */}
+              <>
+                <Route path="hotels/:id" element={<HotelCard />} />
+                <Route path="hotel/:id" element={<SliderHotel />} />
+              </>
+              {/* )} */}
 
               {language !== "ar" && (
                 <Route path="shopping/:id" element={<ShopCard />} />

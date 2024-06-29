@@ -175,7 +175,33 @@ function SecondNavbar() {
                     {homeData?.siteInformation.about_us}
                   </Typography>
                 </li>
-                {language !== "ar" && (
+                {/* {language !== "ar" && ( */}
+                <li>
+                  <Typography
+                    className={"link"}
+                    sx={{
+                      "&:hover": {
+                        color: homeData?.SiteColor.secondaryColor || "#F19B02",
+                      },
+                    }}
+                  >
+                    {homeData?.siteInformation.service_us}
+                  </Typography>
+                  <Paper className="subMenu">
+                    <MenuList>
+                      {cat.reverse().map((item) => (
+                        <SubMenu
+                          key={item.id}
+                          title={item.title}
+                          link={`excursionsfromhurghada/${item.id}`}
+                        />
+                      ))}
+                    </MenuList>
+                  </Paper>
+                </li>
+                {/* )} */}
+                {/* {(language === "ar" || language === "en") && ( */}
+                <>
                   <li>
                     <Typography
                       className={"link"}
@@ -186,77 +212,49 @@ function SecondNavbar() {
                         },
                       }}
                     >
-                      {homeData?.siteInformation.service_us}
+                      {homeData?.siteInformation.hotel_us}
                     </Typography>
+
                     <Paper className="subMenu">
                       <MenuList>
-                        {cat.reverse().map((item) => (
+                        {homeData?.category_hotels.map((item, index) => (
                           <SubMenu
                             key={item.id}
                             title={item.title}
-                            link={`excursionsfromhurghada/${item.id}`}
+                            link={`hotels/${item.id}`}
                           />
                         ))}
                       </MenuList>
                     </Paper>
                   </li>
-                )}
-                {(language === "ar" || language === "en") && (
-                  <>
-                    <li>
-                      <Typography
-                        className={"link"}
-                        sx={{
-                          "&:hover": {
-                            color:
-                              homeData?.SiteColor.secondaryColor || "#F19B02",
-                          },
-                        }}
-                      >
-                        {homeData?.siteInformation.hotel_us}
-                      </Typography>
+                </>
+                {/* )} */}
 
-                      <Paper className="subMenu">
-                        <MenuList>
-                          {homeData?.category_hotels.map((item, index) => (
-                            <SubMenu
-                              key={item.id}
-                              title={item.title}
-                              link={`hotels/${item.id}`}
-                            />
-                          ))}
-                        </MenuList>
-                      </Paper>
-                    </li>
-                  </>
-                )}
-
-                {language !== "ar" && (
-                  <li>
-                    <Typography
-                      className={"link"}
-                      sx={{
-                        "&:hover": {
-                          color:
-                            homeData?.SiteColor.secondaryColor || "#F19B02",
-                        },
-                      }}
-                    >
-                      {homeData?.siteInformation.explorer_us}
-                    </Typography>
-                    <Paper className="subMenu">
-                      <MenuList>
-                        {homeData?.shippings.map((item, index) => (
-                          <SubMenu
-                            key={item.id}
-                            title={item.name}
-                            link={`shopping/${item.id}`}
-                          />
-                        ))}
-                      </MenuList>
-                    </Paper>
-                  </li>
-                )}
+                {/* {language !== "ar" && ( */}
+                <li>
+                  <Typography
+                    className={"link"}
+                    sx={{
+                      "&:hover": {
+                        color: homeData?.SiteColor.secondaryColor || "#F19B02",
+                      },
+                    }}
+                  >
+                    {homeData?.siteInformation.explorer_us}
+                  </Typography>
+                  <Paper className="subMenu">
+                    <MenuList>
+                      {homeData?.shippings.map((item, index) => (
+                        <SubMenu
+                          key={item.id}
+                          title={item.name}
+                          link={`shopping/${item.id}`}
+                        />
+                      ))}
+                    </MenuList>
+                  </Paper>
+                </li>
+                {/* )} */}
 
                 <li>
                   <Typography
@@ -330,52 +328,86 @@ function SecondNavbar() {
                   </MenuItem>
                 </Typography>
                 {/* Frist sub item */}
-                {language !== "ar" && (
-                  <>
-                    <MenuItem onClick={toggleExursionsSubMenu}>
-                      {t("main.ExursionsFromHurghada")}{" "}
-                      {isExursionsFromHurghadaSubMenuOpen ? (
-                        <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
-                      ) : (
-                        <KeyboardArrowDownIcon
-                          sx={{ fontWeight: 600, ml: 2 }}
-                        />
-                      )}
-                    </MenuItem>
-                    {isExursionsFromHurghadaSubMenuOpen && (
-                      <Box
-                        sx={{
-                          backgroundColor: "primary.main",
-                          mx: 1,
-                          borderRadius: "10px",
-                        }}
-                      >
-                        {cat.map((item) => (
-                          <Typography
-                            component={LocalNavLink}
-                            key={item.id}
-                            onClick={() => {
-                              toggleMobileMenu();
-                              toggleExursionsSubMenu();
-                            }}
-                            to={`excursionsfromhurghada/${item.id}`}
-                          >
-                            <MenuItem sx={{ color: "#fff" }}>
-                              {item.title}
-                            </MenuItem>
-                          </Typography>
-                        ))}
-                      </Box>
+                {/* {language !== "ar" && ( */}
+                <>
+                  <MenuItem onClick={toggleExursionsSubMenu}>
+                    {homeData?.siteInformation.service_us}
+                    {isExursionsFromHurghadaSubMenuOpen ? (
+                      <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
+                    ) : (
+                      <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
                     )}
-                  </>
-                )}
+                  </MenuItem>
+                  {isExursionsFromHurghadaSubMenuOpen && (
+                    <Box
+                      sx={{
+                        backgroundColor: "primary.main",
+                        mx: 1,
+                        borderRadius: "10px",
+                      }}
+                    >
+                      {cat.map((item) => (
+                        <Typography
+                          component={LocalNavLink}
+                          key={item.id}
+                          onClick={() => {
+                            toggleMobileMenu();
+                            toggleExursionsSubMenu();
+                          }}
+                          to={`excursionsfromhurghada/${item.id}`}
+                        >
+                          <MenuItem sx={{ color: "#fff" }}>
+                            {item.title}
+                          </MenuItem>
+                        </Typography>
+                      ))}
+                    </Box>
+                  )}
+                </>
+                {/* )} */}
 
                 {/* sec sub item */}
-                {(language === "ar" || language === "en") && (
+                {/* {(language === "ar" || language === "en") && ( */}
+                <>
+                  <MenuItem onClick={toggleHotelSubMenu}>
+                    {homeData?.siteInformation.hotel_us}
+                    {isHotelSubMenuOpen ? (
+                      <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
+                    ) : (
+                      <KeyboardArrowDownIcon sx={{ fontWeight: 600, ml: 2 }} />
+                    )}
+                  </MenuItem>
+                  {isHotelSubMenuOpen && (
+                    <Box
+                      sx={{
+                        backgroundColor: "primary.main",
+                        mx: 1,
+                        borderRadius: "10px",
+                      }}
+                    >
+                      {homeData?.category_hotels.map((item) => (
+                        <Typography
+                          component={LocalNavLink}
+                          key={item.id}
+                          onClick={() => {
+                            toggleMobileMenu();
+                            toggleHotelSubMenu();
+                          }}
+                          to={`hotels/${item.id}`}
+                        >
+                          <MenuItem sx={{ color: "#fff" }}>
+                            {item.title}
+                          </MenuItem>
+                        </Typography>
+                      ))}
+                    </Box>
+                  )}
+                  {/* third sub item */}
+                  {/* {language !== "ar" && ( */}
                   <>
-                    <MenuItem onClick={toggleHotelSubMenu}>
-                      {homeData?.siteInformation.hotel_us}
-                      {isHotelSubMenuOpen ? (
+                    <MenuItem onClick={toggleShoppingSubMenu}>
+                      {homeData?.siteInformation.explorer_us}
+                      {isShoppingSubMenuOpen ? (
                         <KeyboardArrowUpIcon sx={{ fontWeight: 600, ml: 2 }} />
                       ) : (
                         <KeyboardArrowDownIcon
@@ -383,7 +415,7 @@ function SecondNavbar() {
                         />
                       )}
                     </MenuItem>
-                    {isHotelSubMenuOpen && (
+                    {isShoppingSubMenuOpen && (
                       <Box
                         sx={{
                           backgroundColor: "primary.main",
@@ -391,67 +423,27 @@ function SecondNavbar() {
                           borderRadius: "10px",
                         }}
                       >
-                        {homeData?.category_hotels.map((item) => (
+                        {homeData?.shippings.map((item) => (
                           <Typography
                             component={LocalNavLink}
                             key={item.id}
                             onClick={() => {
                               toggleMobileMenu();
-                              toggleHotelSubMenu();
+                              toggleShoppingSubMenu();
                             }}
-                            to={`hotels/${item.id}`}
+                            to={`shopping/${item.id}`}
                           >
                             <MenuItem sx={{ color: "#fff" }}>
-                              {item.title}
+                              {item.name}
                             </MenuItem>
                           </Typography>
                         ))}
                       </Box>
                     )}
-                    {/* third sub item */}
-                    {language !== "ar" && (
-                      <>
-                        <MenuItem onClick={toggleShoppingSubMenu}>
-                          {homeData?.siteInformation.explorer_us}
-                          {isShoppingSubMenuOpen ? (
-                            <KeyboardArrowUpIcon
-                              sx={{ fontWeight: 600, ml: 2 }}
-                            />
-                          ) : (
-                            <KeyboardArrowDownIcon
-                              sx={{ fontWeight: 600, ml: 2 }}
-                            />
-                          )}
-                        </MenuItem>
-                        {isShoppingSubMenuOpen && (
-                          <Box
-                            sx={{
-                              backgroundColor: "primary.main",
-                              mx: 1,
-                              borderRadius: "10px",
-                            }}
-                          >
-                            {homeData?.shippings.map((item) => (
-                              <Typography
-                                component={LocalNavLink}
-                                key={item.id}
-                                onClick={() => {
-                                  toggleMobileMenu();
-                                  toggleShoppingSubMenu();
-                                }}
-                                to={`shopping/${item.id}`}
-                              >
-                                <MenuItem sx={{ color: "#fff" }}>
-                                  {item.name}
-                                </MenuItem>
-                              </Typography>
-                            ))}
-                          </Box>
-                        )}
-                      </>
-                    )}
                   </>
-                )}
+                  {/* )} */}
+                </>
+                {/* )} */}
 
                 {/* Blogs */}
                 <MenuItem onClick={toggleBlogsSubMenu}>

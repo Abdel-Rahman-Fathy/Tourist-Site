@@ -20,14 +20,16 @@ function MainPages() {
   return (
     <Stack sx={{ overflow: "hidden" }}>
       <Slider />
-      {language !== "ar" && (
-        <>
-          <HurghadaPage />
-          <ShoppingPage />
-        </>
-      )}
+      {/* {language !== "ar" && ( */}
+      <>
+        <HurghadaPage />
+        <ShoppingPage />
+      </>
+      {/* )} */}
       <AboutPage />
-      {language === "ar" && <SliderHomeShopping />}
+      {/* {language === "ar" &&  */}
+      <SliderHomeShopping />
+      {/* } */}
       <AnimationNumber />
       <WhyusPage />
       <ImportPage />
