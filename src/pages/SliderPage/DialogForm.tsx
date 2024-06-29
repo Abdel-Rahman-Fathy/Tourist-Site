@@ -26,14 +26,14 @@ function DialogForm({ open, setOpen }: PropsType) {
   const { id } = useParams();
   const [t] = useTranslation();
   const BookSchema = z.object({
-    name: z.string().min(1, { message: "Name is required" }),
-    email: z.string().min(1, { message: "Email is required" }).email(),
-    mobile: z.string().min(1, { message: "mobile is required" }),
-    trip_date: z.string().min(1, { message: "Date is required" }),
-    adults: z.string().min(1, { message: "Adults is required" }),
-    childern: z.string().min(1, { message: "Children is required" }),
-    infant: z.string().min(1, { message: "Infant is required" }),
-    message: z.string().min(1, { message: "message is required" }),
+    name: z.string(),
+    email: z.string().email(),
+    mobile: z.string(),
+    trip_date: z.string(),
+    adults: z.string(),
+    childern: z.string(),
+    infant: z.string(),
+    message: z.string(),
   });
 
   type InputBook = z.infer<typeof BookSchema>;
@@ -45,7 +45,6 @@ function DialogForm({ open, setOpen }: PropsType) {
     formState: { errors, isSubmitting },
   } = useForm<InputBook>({
     mode: "onChange",
-    resolver: zodResolver(BookSchema),
   });
   const onSubmit: SubmitHandler<InputBook> = (data) => {
     axios
@@ -109,7 +108,7 @@ function DialogForm({ open, setOpen }: PropsType) {
           </Grid>
           <Grid item md={6}>
             <TextField
-              label={t("Hurghada.mobile")}
+              label={"Phone / WhatsApp / Viber "}
               fullWidth
               size="small"
               {...register("mobile")}

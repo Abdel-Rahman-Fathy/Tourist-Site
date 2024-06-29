@@ -12,12 +12,13 @@ import { homeContext } from "pages/HomeContext";
 import SliderLogo from "./components/SliderLogo";
 import { useTranslation } from "react-i18next";
 import SliderHomeShopping from "./components/SliderHomeShopping";
+import { Stack } from "@mui/material";
 
 function MainPages() {
   const [t, i18n] = useTranslation();
   const { language } = i18n;
   return (
-    <>
+    <Stack sx={{ overflow: "hidden" }}>
       <Slider />
       {language !== "ar" && (
         <>
@@ -33,7 +34,7 @@ function MainPages() {
       <BlogPage />
       <SliderLogo />
       <ContactUs />
-    </>
+    </Stack>
   );
 }
 
